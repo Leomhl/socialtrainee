@@ -1,0 +1,49 @@
+﻿/* Portrait, quando a tela está em pé */
+@media screen and (orientation:portrait) {
+	#imgsplashscreen{
+		width:90%;
+		height: 60%;
+		position:relative;
+		/*para alinhar ao centro*/
+		display: block; 
+		margin-left: auto; 
+		margin-right: auto; 
+		    
+	}/*encerra a imagem de splash*/	
+
+
+	#logotipo {
+		width:50%;
+		height: 30%;
+		position:relative;
+				/*para alinhar ao centro*/
+		display: block; 
+		margin: auto; 
+
+/*		margin-left: auto; 
+		margin-right: auto;
+*/	}/*encerra o logotipo*/
+	
+   .botao {
+	    height:9.5%; /*Altura do Botão*/
+		width:100%; /*Largura do botão*/
+		color:#FFF; /*Cor da Fonte*/
+		font-size: 3em; /*Tamanho da Fonte*/
+		font-family:"Lucida Console", Monaco, monospace; /*fonte(lucida console)*/
+		font-style:normal; /*se é negrito, itálico e etc*/
+		background-color: #000F19;/*Cor do botão   #14485B*/
+		border-style:solid; /*borda única*/
+		border-color:#3293B5; /*cor da borda*/
+		border-width:2.5px; /*espessura da borda*/
+		border-radius: 20px; /*arredonda as bordas dos botões*/ 
+   }/*encerra a classe .botao*/
+   
+	body{
+	  background-color: #000F19; /*Cor do Fundo da Tela*/
+	}/*encerra o body*/
+  
+	h1 {
+		color:#FFF;	
+	}
+
+}

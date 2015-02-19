@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+ <head>
+ 		<!-- Codificãção de caracteres -->
+		  <meta charset="utf-8" />
+
+		  <!--Impede que números de telefone sejam reconhecidos(desnecessário, mas...)-->
+		  <meta name="format-detection" content="telephone=no" />
+
+		  <!--Adapta a resolução de acordo com o tamanho da tela-->
+		  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />  
+
+		<!--Chama os documentos CSS-->
+		<!-- <link rel="stylesheet" type="text/css" href="css/retrato.css" />  -->
+		<!--<link rel="stylesheet" type="text/css" href="css/paisagem.css" />-->
+
+		  	<!-- Bootstrap -->
+			<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+
+			<!-- Responsive do Bootstrap -->
+			<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
+
+		 <!-- Para o menu e afins-->
+		 <link rel="stylesheet" type="text/css" href="css/estilos.css"> 
+
+		  <title>Jogo</title>
+</head>
+ <body>  
+
+	<div class="contaier centralizar">
+		<div class="row">
+			<div class="col-md-12">
+				<img id="logotipo" src="img/logo.png"><br/>
+			</div>
+		</div>  
+	
+		<div class="row">
+			<div class="col-md12">
+	 			<a class="btn btn-primary btn-large botao" onclick="chamatela('home.html')">Voltar</a>
+	 		</div>
+	 	</div>
+
+	 <h1>Tela onde ficará o jogo</h1>
+
+	</div> <!--Final do Container -->
+
+		  <script type="text/javascript" src="cordova.js"></script>
+		  <script type="text/javascript" src="js/index.js"></script>
+		  <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+		  <script type="text/javascript">
+				app.initialize();
+		  </script>
+	 </body>
+</html>

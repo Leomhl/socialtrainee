@@ -6,7 +6,8 @@
  
   function sair()
   { 
-	  navigator.app.exitApp();
+    navigator.app.exitApp();
+
   }
   
   

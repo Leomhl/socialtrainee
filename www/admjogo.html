@@ -21,14 +21,17 @@
       <link rel="stylesheet" href="css/skel.css" />
       <link rel="stylesheet" href="css/style.css" />
       <link rel="stylesheet" href="css/style-desktop.css" />
+      
     </noscript>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="js/bootstrap.css">
     <!--[if lte IE 9]><link rel="stylesheet" href="css/ie9.css" /><![endif]-->
     <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
 
     <!-- Accordion -->
-    
+
     <noscript>
-    <link rel="stylesheet" type="text/css" href="css/accordion/styleaccordion.css">
+    
       <style>
         .st-accordion ul li{
           height:auto;
@@ -58,7 +61,7 @@
                   <a href="home.html">Início</a>
                   <a href="jogos.html">Jogos</a>
                   <a href="instrucoes.html">Instruções</a>
-                  <a href="">Sobre</a>
+                  <a href="sobre.html">Sobre</a>
                   <a href="javascript: sair();">Sair</a>
                  <!-- <a href="onecolumn.html">Sair</a> -->
                 </nav>
@@ -84,95 +87,99 @@
                     </header>
                   
                   <!-- Criar o accordion por aqui... -->
+                      <div class="wrapper">
+                        <div id="st-accordion" class="st-accordion">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li class="active">
+                                  <a href="#">Cheques</a>
+                                    <div class="st-content">
+                                      <p>É uma ordem de pagamento muito usada pelas empresas. Um cheque é à vista, que pode ter comom beefíciário o próprio emitente ou terceiros. Existem divesos tipos de cheque, eles são:</p>
+                                                      
+                                      <ul>
+                                        <li> 1 - Ao portador</li>
+                                        <li> 2 - Nominal à ordem</li>
+                                        <li> 3 - Nominal não à ordem</li>
+                                        <li> 4 - Cruzado</li>
+                                        <li> 5 - Visado</li>
+                                        <li> 6 - Especial</li>
+                                      </ul>
 
-              <div class="wrapper">
-                <div id="st-accordion" class="st-accordion">
-                    <ul>
-                        <li>
-                          <a href="#">Cheques<span class="st-arrow">Open or Close</span></a>
-                            <div class="st-content">
-                              <p>É uma ordem de pagamento muito usada pelas empresas. Um cheque é à vista, que pode ter comom beefíciário o próprio emitente ou terceiros. Existem divesos tipos de cheque, eles são:</p>
-                                              
+                                      <p>Sem delongas, vamos aos cheques!
 
-                              <ul>
-                                <li> 1 - Ao portador</li>
-                                <li> 2 - Nominal à ordem</li>
-                                <li> 3 - Nominal não à ordem</li>
-                                <li> 4 - Cruzado</li>
-                                <li> 5 - Visado</li>
-                                <li> 6 - Especial</li>
-                              </ul>
+                                      <ul>
+                                        <li>
+                                          <p>Endosso: O endosso permite transferir o direito de posse de um documento para outra pessoa. Existem dois tipos de endoço, em branco e em preto.
 
-                              <p>Sem delongas, vamos aos cheques!
+                                            <ul>
+                                              <li>
+                                                Em branco: O endossante não especifica o endossatário. O endossante apenas assina seu nome na parte de trás do cheque.
+                                              </li>
 
-                              <ul>
-                                <li>
-                                  <p>Endosso: O endosso permite transferir o direito de posse de um documento para outra pessoa. Existem dois tipos de endoço, em branco e em preto.
+                                              <li>
+                                                Em preto: O endossante especifica o nome do endossatário.
+                                              </li>
+                                            </ul>
+                                          </p>
+                                        </li>
 
-                                    <ul>
-                                      <li>
-                                        Em branco: O endossante não especifica o endossatário. O endossante apenas assina seu nome na parte de trás do cheque.
-                                      </li>
+                                        <li>
+                                          <p> 
+                                            1 - Cheque ao portador: É um cheque que não indica o nome do beneficiário, ou seja, não está escrito nele o nome de quem deverá receber o dinheiro. Quem apresentá-lo ao banco conseguirá tirar o dinheiro. Para o cheque ser deste tipo basta escrever "Ao portador" ou deixar o campo de beneficiário em branco.
+                                          </p>
+                                        </li>
+                                        
+                                        <li>
+                                          <p>
+                                           2 - Nominal à ordem : É o tipo de cheque que indica o nome de quem o receberá (beneficiário), para que o banco no momento da apresentação do cheque possa conferí-lo e liberar o dinheiro para o destinatário correto.
+                                          </p>
+                                        </li>
 
-                                      <li>
-                                        Em preto: O endossante especifica o nome do endossatário.
-                                      </li>
-                                    </ul>
-                                  </p>
-                                </li>
+                                        <li>
+                                          <p> 
+                                            3 - Nominal não à ordem: É aquele que não se transmite por endosso. Desta maneira o cheque nominal que apresenta a expressão "não à ordem" só pode ser pago à própria pessoa do beneficiário.
+                                          </p>
+                                        </li>
 
-                                <li>
-                                  <p> 
-                                    1 - Cheque ao portador: É um cheque que não indica o nome do beneficiário, ou seja, não está escrito nele o nome de quem deverá receber o dinheiro. Quem apresentá-lo ao banco conseguirá tirar o dinheiro. Para o cheque ser deste tipo basta escrever "Ao portador" ou deixar o campo de beneficiário em branco.
-                                  </p>
-                                </li>
+                                        <li> 
+                                          <p>
+                                            4 - Cheque cruzado: É aquele atravessado por duas linhas paralelas na face do título. Este só poderá ser pago a um banco, ou seja, só pode ser depositado em conta. Não pode ser retirado o dineiro no caixa  
+                                          </p>
+                                        </li>
+
+                                        <li> 
+                                          <p>
+                                            5 - Cheque visado: É aquele no qual o banco deve colocar seu "visto", certificando que existem fundos disponíveis na conta do emitente. O cheque visado pelo banco representa uma garantia para o portador de que o cheque tem fundos. 
+                                          </p>
+                                        </li>
+
+                                        <li>
+                                          <p>
+                                            6 - Cheque especial: É o cheque que tem seu pagamento garantido, até determinado limite, pelo banco. Quem emite este tipo de cheque tem contrato firmado com o banco que lhe fornece um limite de saque disponível mesmo que não haja saldo disponível para cobrir.
+                                          </p>
+                                        </li>
+
+                                        <div class="row">
+                                          <div class="12u">
+                                              <a href="#"  class="button-big esticar">Administração</a>
+                                          </div>
+                                        </div>
+
+                                      </ul>
+                                    </div>
+                                </li> <!--Final dos cheques -->
                                 
-                                <li>
-                                  <p>
-                                   2 - Nominal à ordem : É o tipo de cheque que indica o nome de quem o receberá (beneficiário), para que o banco no momento da apresentação do cheque possa conferí-lo e liberar o dinheiro para o destinatário correto.
-                                  </p>
+                                <br>
+                                
+                                <li class="active">
+                                  <a class="st-arrow" href="#">Mano<!-- <span class="st-arrow">Open or Close</span> --></a>
+                                    <div class="st-content">
+                                          asasasasa
+                                    </div>
                                 </li>
 
-                                <li>
-                                  <p> 
-                                    3 - Nominal não à ordem: É aquele que não se transmite por endosso. Desta maneira o cheque nominal que apresenta a expressão "não à ordem" só pode ser pago à própria pessoa do beneficiário.
-                                  </p>
-                                </li>
-
-                                <li> 
-                                  <p>
-                                    4 - Cheque cruzado: É aquele atravessado por duas linhas paralelas na face do título. Este só poderá ser pago a um banco, ou seja, só pode ser depositado em conta. Não pode ser retirado o dineiro no caixa  
-                                  </p>
-                                </li>
-
-                                <li> 
-                                  <p>
-                                    5 - Cheque visado: É aquele no qual o banco deve colocar seu "visto", certificando que existem fundos disponíveis na conta do emitente. O cheque visado pelo banco representa uma garantia para o portador de que o cheque tem fundos. 
-                                  </p>
-                                </li>
-
-                                <li>
-                                  <p>
-                                    6 - Cheque especial: É o cheque que tem seu pagamento garantido, até determinado limite, pelo banco. Quem emite este tipo de cheque tem contrato firmado com o banco que lhe fornece um limite de saque disponível mesmo que não haja saldo disponível para cobrir.
-                                  </p>
-                                </li>
                               </ul>
-
-                            </div>
-                        </li> <!--Final dos cheques -->
-                        
-                        <br>
-                        
-                        <li>
-                          <a class="st-arrow" href="#">Mano<!-- <span class="st-arrow">Open or Close</span> --></a>
-                            <div class="st-content">
-                                  asasasasa
-                            </div>
-                        </li>
-                      </ul>
-                </div>
-            </div>
-        
+                        </div>
+                    </div>
                   </section>
               </div>
             </div>
@@ -180,7 +187,6 @@
         </div>
       </div>
 
-    
     <!-- Copyright -->
       <div id="copyright">
         &copy; SocialSoftwares | Design: LHM</a>

@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,300,200);
+
 
 /*
 	Halcyonic by HTML5 UP
@@ -11,6 +11,9 @@
 /*********************************************************************************/
 
 /* Basic */
+/*By lhm*/
+	.esticar { width:100%;}
+
 
 	body
 	{
@@ -33,7 +36,7 @@
 
 	a
 	{
-		text-decoration: underline;
+		text-decoration: none;
 	}
 	
 	a:hover

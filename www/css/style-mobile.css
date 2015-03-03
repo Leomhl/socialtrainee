@@ -151,7 +151,11 @@ body, input, textarea, select
 			color: #fff;
 			margin: 0 0 0.25em 0;
 		}
-
+/*		
+		#content a
+		{
+			color: #ED391B;
+		}*/
 		#features a
 		{
 			color: #e0e8eb;
@@ -188,11 +192,11 @@ body, input, textarea, select
 			color: #96a9b5;
 			font-size: 1em;
 		}
-		
+/*		
 		#content a
 		{
 			color: #ED391B;
-		}
+		}*/
 		
 		#content header
 		{

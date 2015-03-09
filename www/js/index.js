@@ -1,32 +1,29 @@
- function vibrar()
- {
+//################## Nativo ##################
+
+// Vibra o aparelho
+function vibrar()
+{
 	navigator.notification.vibrate(1000);
-  }
-  
- 
-  function sair()
-  { 
-    navigator.app.exitApp();
+} 
 
-  }
-  
-  
-  function chamahome()
-  {	  
- 	  setInterval(function(){window.open('home.html')}, 3000);  
-	  
-  }
+// Sai do aplicativo
+function sair()
+{ 
+  navigator.app.exitApp();
 
-  function splash()
-  {
+}
 
-    navigator.splashscreen.show();
-  }
+//################## Implementadas ##################
+
+// Chama a tela de home logo após o splash screen da index
+function chamahome()
+{	  
+	setInterval(function(){window.open('home.html')}, 3000);  
   
-  
-    function chamatela(tela)
-    {	  
- 		window.open(tela);  
-	  
-  }
-  
+}
+
+// Chama qualquer tela
+function chamatela(tela)
+{	  
+  window.open(tela);   
+}

@@ -20,6 +20,8 @@
 			<link rel="stylesheet" href="css/style-desktop.css" />
 		</noscript>
 
+		<link rel="stylesheet" href="css/bootstrap.css">
+		
 		<script src="js/offlinedatabaseJS.js"></script>
 	</head>
 	<body onload="onInit()">
@@ -36,7 +38,7 @@
 							<!-- Nav -->
 								<nav id="nav">
 									<a href="">Cadastre-se para usar</a>
-<!-- 								<a href="">Início</a>
+							<!--	<a href="">Início</a>
 									<a href="jogos.html">Jogos</a>
 									<a href="instrucoes.html">Instruções</a>
 									<a href="sobre.html">Sobre</a>
@@ -51,9 +53,29 @@
 						<div class="row">
 							<div class="12u">
 							
-								<!-- Div com o status do banco -->
-								<div id="status"></div>
+							<h4>Por favor, cadastre-se para usufruir do Social Trainee!</h4><br>
+							
+							<form name="itemForm">
+								<!--<label for="id">Id:</label >
+								<input type="text" name="id" id="id" size=2/> -->
+								<!-- <label for="nome">Nome:</label> -->
+								<input type="text" name="nome" class="esticar input-block-level" id="nome" size=10 PlaceHolder="Nome" /><br><br>
+								<!-- <label for="email">Email</label> -->
+								<input type="text" name="email" class="esticar input-block-level" id="email" size=3 PlaceHolder="Email" /> <br><br>
+							 
+								<a onClick="onCreate()" class=" estender button-big">Cadastrar</a>	
 								
+<!-- 								<input type="button" name="update" value="Update" onclick="onUpdate()" />
+								<input type="button" name="delete" value="Delete" onclick="onDelete()" />  -->
+
+							</form>
+		
+							<br>
+							<h4>Status:</h4>
+							<div id="status"></div>
+							<br>	
+
+							<ul  id="itemData"></ul>
 
 							</div>
 						</div>
@@ -91,11 +113,11 @@
 			</div> 
 
 		<!-- Javascript do Cordova Phonegap -->
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-              app.initialize();
-        </script>
-        
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript">
+			  app.initialize();
+		</script>
+		
 	</body>
 </html>

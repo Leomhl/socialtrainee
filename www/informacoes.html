@@ -19,10 +19,10 @@
 			<link rel="stylesheet" href="css/style.css" />
 			<link rel="stylesheet" href="css/style-desktop.css" />
 		</noscript>
-		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie9.css" /><![endif]-->
-		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+
+	<script src="js/offlinedatabaseJS.js"></script>
 	</head>
-	<body>
+	<body onload="onInit()">
 
 		<!-- Header -->
 			<div id="header-wrapper">
@@ -31,7 +31,7 @@
 						<div class="12u">
 						
 							<!-- Logo -->
-								<h1><a href="#" id="logo">Início</a></h1>
+								<h1><a href="#" id="logo">Informações</a></h1>
 							
 							<!-- Nav -->
 								<nav id="nav">
@@ -39,8 +39,8 @@
 									<a href="jogos.html">Jogos</a>
 									<a href="instrucoes.html">Instruções</a>
 									<a href="sobre.html">Sobre</a>
-									<a href="informacoes.html">Informações</a>
 									<a href="cadastro.html">Cadastro</a>
+									<a href="">Informações</a>
 									<a href="javascript: sair();">Sair</a>
 									<!-- <a href="onecolumn.html">Sair</a> -->
 								</nav>
@@ -51,11 +51,8 @@
 					<div class="container">
 						<div class="row">
 							<div class="12u">
-							
-								<!-- Banner Copy -->
-									<p>Bem vindo(a) ao Social Trainee, o aplicativo que veio para mudar a sua concepção sobre ensino.</p>
-									<p>Divirta-se, o resto é por nossa conta!</p>
-									<a href="jogos.html" class="button-big">Vamos Jogar!</a>
+								
+
 							</div>
 						</div>
 					</div>

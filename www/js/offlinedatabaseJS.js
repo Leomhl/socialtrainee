@@ -9,8 +9,10 @@ function onInit(){
         }
         else {
             initDB();
+            dropTables();
             createTables();
             queryAndUpdateOverview();
+
         }
     } 
     catch (e) {
@@ -25,9 +27,9 @@ function onInit(){
 }
 
 function initDB(){
-    var shortName = 'SocialTraineeDB';
+    var shortName = 'stuffDB';
     var version = '1.0';
-    var displayName = 'SocialTraineeDataBase';
+    var displayName = 'MyStuffDB';
     var maxSize = 65536; // Em bytes
     localDB = window.openDatabase(shortName, version, displayName, maxSize);
 }
@@ -37,7 +39,7 @@ function createTables(){
     try {
         localDB.transaction(function(transaction){
             transaction.executeSql(query, [], nullDataHandler, errorHandler);
-            updateStatus("Tabela 'usuario' status: OK.");
+            updateStatus("Conexão com o BD: OK!");
         });
     } 
     catch (e) {
@@ -47,7 +49,19 @@ function createTables(){
 }
 
 
-
+function dropTables(){
+    var query = 'drop table usuario;';
+    try {
+        localDB.transaction(function(transaction){
+            transaction.executeSql(query, [], nullDataHandler, errorHandler);
+            updateStatus("Usuário 'dropado' com sucesso!");
+        });
+    } 
+    catch (e) {
+        updateStatus("Erro: Data base 'usuario' não criada " + e + ".");
+        return;
+    }
+}
 
 //2. Query e visualização de Update
 
@@ -83,7 +97,6 @@ function onUpdate(){
 
 function onDelete(){
     var id = document.itemForm.id.value;
-    
     var query = "delete from usuario where id=?;";
     try {
         localDB.transaction(function(transaction){
@@ -135,9 +148,8 @@ function onCreate(){
 }
 
 function onSelect(htmlLIElement){
-	var id = htmlLIElement.getAttribute("id");
-	
-	query = "SELECT * FROM usuario where id=?;";
+    var id = htmlLIElement.getAttribute("id");
+    query = "SELECT * FROM usuario where id=?;";
     try {
         localDB.transaction(function(transaction){
         
@@ -160,15 +172,15 @@ function onSelect(htmlLIElement){
 
 function queryAndUpdateOverview(){
 
-	//Remove as linhas existentes para inserção das novas
+    //Remove as linhas existentes para inserção das novas
     var dataRows = document.getElementById("itemData").getElementsByClassName("data");
-	
+    
     while (dataRows.length > 0) {
         row = dataRows[0];
         document.getElementById("itemData").removeChild(row);
     };
     
-	//Realiza a leitura no banco e cria novas linhas na tabela.
+    //Realiza a leitura no banco e cria novas linhas na tabela.
     var query = "SELECT * FROM usuario;";
     try {
         localDB.transaction(function(transaction){
@@ -178,11 +190,11 @@ function queryAndUpdateOverview(){
                 
                     var row = results.rows.item(i);
                     var li = document.createElement("li");
-					li.setAttribute("id", row['id']);
+                    li.setAttribute("id", row['id']);
                     li.setAttribute("class", "data");
                     li.setAttribute("onclick", "onSelect(this)");
                     
-                    var liText = document.createTextNode(row['nome'] + " x "+ row['email']);
+                    var liText = document.createTextNode(row['nome'] + " x "+ row['email']+ " x " + row['id']);
                     li.appendChild(liText);
                     
                     document.getElementById("itemData").appendChild(li);

@@ -22,15 +22,18 @@
          <!-- Para o menu e afins-->
          <link rel="stylesheet" type="text/css" href="css/estilos.css"> 
 
+          <script type="text/javascript" src="js/index.js"></script>
+          <script src="js/offlinedatabaseJS.js"></script>
           
 </head>
 <!-- Aqui, chamo a página do menu que tem delay de 3 segundos para abrir, assim, gerando o efeito splash screen (vulgo gambiarra) -->
- <body onLoad="chamahome();" style="padding-left: 0;">   
+ <body onLoad="start();" style="padding-left: 0;">   
 
      <div class="container">
         <div>
             <img id="imgbackgroundSplashscreen" src="img/splashBackground.jpg" > 
         </div>  
+        <div id="status" name = "status" hidden="true"></div>
 
         <div class="centralizar splashImg"> 
             <div class="col-md-12">
@@ -42,7 +45,6 @@
         </div> 
             <!-- Javascript do Cordova Phonegap -->
           <script type="text/javascript" src="cordova.js"></script>
-          <script type="text/javascript" src="js/index.js"></script>
           <script type="text/javascript">
                 app.initialize();
           </script>

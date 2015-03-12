@@ -9,9 +9,8 @@ function onInit(){
         }
         else {
             initDB();
-            dropTables();
             createTables();
-            queryAndUpdateOverview();
+            // queryAndUpdateOverview();
 
         }
     } 
@@ -27,6 +26,7 @@ function onInit(){
 }
 
 function initDB(){
+
     var shortName = 'stuffDB';
     var version = '1.0';
     var displayName = 'MyStuffDB';
@@ -35,6 +35,7 @@ function initDB(){
 }
 
 function createTables(){
+
     var query = 'CREATE TABLE IF NOT EXISTS usuario(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, nome VARCHAR NOT NULL, email VARCHAR NOT NULL);';
     try {
         localDB.transaction(function(transaction){
@@ -50,15 +51,20 @@ function createTables(){
 
 
 function dropTables(){
+
     var query = 'drop table usuario;';
     try {
         localDB.transaction(function(transaction){
+
             transaction.executeSql(query, [], nullDataHandler, errorHandler);
-            updateStatus("Usuário 'dropado' com sucesso!");
+            // updateStatus("Usuário 'dropado' com sucesso!");
+            alert("Usuário 'dropado' com sucesso!");
+
         });
     } 
     catch (e) {
-        updateStatus("Erro: Data base 'usuario' não criada " + e + ".");
+        // updateStatus("Erro: drop não feito " + e + ".");
+        alert("Erro: drop não feito " + e + ".");
         return;
     }
 }
@@ -96,7 +102,8 @@ function onUpdate(){
 }
 
 function onDelete(){
-    var id = document.itemForm.id.value;
+    // var id = document.itemForm.id.value;
+    var id=1;
     var query = "delete from usuario where id=?;";
     try {
         localDB.transaction(function(transaction){
@@ -231,4 +238,61 @@ function updateForm(id, nome, email){
 
 function updateStatus(status){
     document.getElementById('status').innerHTML = status;
+}
+
+
+
+
+// Daqui para baixo foi personalizado para as necessidades do projeto
+
+// ### Chama a view home ###
+function chamahome()
+{    
+    setInterval(function(){window.open('home.html')}, 3000);  
+}
+
+
+// ### Testa se o registro do usuário existe, se exitir chama a home ###
+function onTest(){
+    // var id = htmlLIElement.getAttribute("id");
+    // var id= 1;
+    query = "SELECT * FROM usuario where id=1;";
+    
+    try {
+        localDB.transaction(function(transaction){
+        
+            transaction.executeSql(query, [], function(transaction, results){
+                var len = results.rows.length;
+                // var row = results.rows.item(0);
+                // updateForm(row['id'], row['nome'], row['email']);
+               
+               // Caso encontre algum registro
+                if(len == 1)
+                {
+                    chamahome();
+                }
+
+                // Caso não encontre nenhum registro
+                if(len == 0)
+                {
+                    chamatela('cadastro.html');
+                }
+
+                 
+            }, function(transaction, error){
+                 updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
+            });
+        });
+    } 
+    catch (e) {
+        // updateStatus("Error: SELECT não realizado " + e + ".");
+        chamahome();
+    }
+}
+
+function start()
+{
+    onInit();
+     // dropTables();
+    onTest();
 }

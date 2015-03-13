@@ -36,7 +36,7 @@ function initDB(){
 
 function createTables(){
 
-    var query = 'CREATE TABLE IF NOT EXISTS usuario(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, nome VARCHAR NOT NULL, email VARCHAR NOT NULL);';
+    var query = 'CREATE TABLE IF NOT EXISTS usuario(id INTEGER NOT NULL PRIMARY KEY, nome VARCHAR NOT NULL, email VARCHAR NOT NULL);';
     try {
         localDB.transaction(function(transaction){
             transaction.executeSql(query, [], nullDataHandler, errorHandler);
@@ -129,27 +129,37 @@ function onDelete(){
 function onCreate(){
     var nome = document.itemForm.nome.value;
     var email = document.itemForm.email.value;
-    if (nome == "" || email == "") {
-        updateStatus("Erro: 'Nome' e 'Email' são campos obrigatórios!");
+
+    if(nome == 'drop' || nome == 'Drop')
+    {
+        onDelete();
+        dateStatus("O usuário cadastrado foi excluído!");
     }
-    else {
-        var query = "insert into usuario (nome, email) VALUES (?, ?);";
-        try {
-            localDB.transaction(function(transaction){
-                transaction.executeSql(query, [nome, email], function(transaction, results){
-                    if (!results.rowsAffected) {
-                        updateStatus("Erro: Inserção não realizada");
-                    }
-                    else {
-                        updateForm("", "", "");
-                        updateStatus("Inserção realizada, linha id: " + results.insertId);
-                        queryAndUpdateOverview();
-                    }
-                }, errorHandler);
-            });
-        } 
-        catch (e) {
-            updateStatus("Erro: INSERT não realizado " + e + ".");
+    else
+    {
+        if (nome == "" || email == "") {
+            updateStatus("Erro: 'Nome' e 'Email' são campos obrigatórios!");
+        }
+        else {
+            var query = "insert into usuario (id, nome, email) VALUES (1, ?, ?);";
+            try {
+                localDB.transaction(function(transaction){
+                    transaction.executeSql(query, [nome, email], function(transaction, results){
+                        if (!results.rowsAffected) {
+                            updateStatus("Erro: Inserção não realizada");
+                        }
+                        else {
+                            updateForm("", "", "");
+                            updateStatus("Inserção realizada, linha id: " + results.insertId);
+                            chamatela('home.html');
+                            queryAndUpdateOverview();
+                        }
+                    }, errorHandler);
+                });
+            } 
+            catch (e) {
+                updateStatus("Erro: INSERT não realizado " + e + ".");
+            }
         }
     }
 }

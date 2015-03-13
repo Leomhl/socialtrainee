@@ -268,12 +268,6 @@ function updateStatus(status){
 
 // Daqui para baixo foi personalizado para as necessidades do projeto
 
-// ### Chama a view home ###
-function chamahome()
-{    
-    setInterval(function(){window.open('home.html')}, 3000);  
-}
-
 
 // ### Testa se o registro do usuário existe, se exitir chama a home ###
 function onTest(){
@@ -329,9 +323,9 @@ function startInformacoes()
 
 //Exibe na view de informações os dados do banco
 function updateInformations(id, nome, email, adm, segtrab, logistica){
-    document.getElementById('nome').innerHTML = 'Nome: '+nome;
-    document.getElementById('email').innerHTML = 'Email: '+email;
-    document.getElementById('adm').innerHTML = 'Pontos Administração: '+adm;
+    document.getElementById('nome').innerHTML = '<hr>Nome: <br>'+nome;
+    document.getElementById('email').innerHTML = '<hr>Email: <br>'+email;
+    document.getElementById('adm').innerHTML = '<hr>Pontos Administração: '+adm;
     document.getElementById('segtrab').innerHTML = 'Pontos Seg Trabalho: '+segtrab;
     document.getElementById('logistica').innerHTML = 'Pontos Logística: '+logistica;
 }
@@ -376,13 +370,13 @@ function zerarPts()
                     
                     if (!results.rowsAffected)
                     {
-                        updateStatus("Erro: Update não realizado.");
+                        updateStatus("Erro: os pontos não foram zerados!");
                     }
                     else 
                     {
                         
-                        updateStatus("Update realizado:" + results.rowsAffected);
-                        chamatela('informacoes.html');
+                        updateStatus("Pontos zerados!");
+                        onSelection();
                     }
                 }, errorHandler);
             });

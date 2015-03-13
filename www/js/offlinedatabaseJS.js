@@ -134,7 +134,8 @@ function onCreate(){
 
     if(nome == 'drop' || nome == 'Drop')
     {
-        onDelete();
+        dropTables();
+        createTables();
         dateStatus("O usuário cadastrado foi excluído!");
     }
     else

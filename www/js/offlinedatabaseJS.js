@@ -9,7 +9,9 @@ function onInit(){
         }
         else {
             initDB();
+            // dropTables();
             createTables();
+
             // queryAndUpdateOverview();
 
         }
@@ -36,7 +38,7 @@ function initDB(){
 
 function createTables(){
 
-    var query = 'CREATE TABLE IF NOT EXISTS usuario(id INTEGER NOT NULL PRIMARY KEY, nome VARCHAR NOT NULL, email VARCHAR NOT NULL);';
+    var query = 'CREATE TABLE IF NOT EXISTS usuario(id INTEGER NOT NULL PRIMARY KEY, nome VARCHAR NOT NULL, email VARCHAR NOT NULL, adm INTEGER, segtrab INTEGER, logistica INTEGER);';
     try {
         localDB.transaction(function(transaction){
             transaction.executeSql(query, [], nullDataHandler, errorHandler);
@@ -141,7 +143,7 @@ function onCreate(){
             updateStatus("Erro: 'Nome' e 'Email' são campos obrigatórios!");
         }
         else {
-            var query = "insert into usuario (id, nome, email) VALUES (1, ?, ?);";
+            var query = "insert into usuario (id, nome, email, adm, segtrab, logistica) VALUES (1, ?, ?, 0, 0, 0);";
             try {
                 localDB.transaction(function(transaction){
                     transaction.executeSql(query, [nome, email], function(transaction, results){
@@ -244,6 +246,7 @@ function updateForm(id, nome, email){
     document.itemForm.id.value = id;
     document.itemForm.nome.value = nome;
     document.itemForm.email.value = email;
+   
 }
 
 function updateStatus(status){
@@ -300,9 +303,49 @@ function onTest(){
     }
 }
 
-function start()
+function startIndex()
 {
     onInit();
      // dropTables();
     onTest();
+}
+
+function startInformacoes()
+{
+    onInit();
+     // dropTables();
+    onSelection();
+}
+
+//Exibe na view de informações os dados do banco
+function updateInformations(id, nome, email, adm, segtrab, logistica){
+    document.getElementById('nome').innerHTML = 'Nome: '+nome;
+    document.getElementById('email').innerHTML = 'Email: '+email;
+    document.getElementById('adm').innerHTML = 'Pontos Administração: '+adm;
+    document.getElementById('segtrab').innerHTML = 'Pontos Seg Trabalho: '+segtrab;
+    document.getElementById('logistica').innerHTML = 'Pontos Logística: '+logistica;
+}
+
+// Para exibir no informações os dados que estão no banco
+function onSelection(){
+    var id = 1;
+    query = "SELECT * FROM usuario where id=?;";
+    try {
+        localDB.transaction(function(transaction){
+        
+            transaction.executeSql(query, [id], function(transaction, results){
+            
+                var row = results.rows.item(0);
+                
+                updateInformations(row['id'], row['nome'], row['email'], row['adm'], row['segtrab'], row['logistica']);
+                
+            }, function(transaction, error){
+                updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
+            });
+        });
+    } 
+    catch (e) {
+        updateStatus("Error: SELECT não realizado " + e + ".");
+    }
+   
 }

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.phonegap.helloworld" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.phonegap.socialtrainee" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Social Trainee</name>
     <description>
         O Social Trainee é um aplicativo desenolvido de alunos para alunos. Suas funcionalidades são baseadas em treinar e capacitar com jogos.
@@ -15,14 +15,14 @@
     <preference name="webviewbounce" value="true" />
     <preference name="prerendered-icon" value="true" />
     <preference name="stay-in-webview" value="false" />
-    <preference name="ios-statusbarstyle" value="black-opaque" />
+<!--     <preference name="ios-statusbarstyle" value="black-opaque" /> -->
     <preference name="detect-data-types" value="true" />
     <preference name="exit-on-suspend" value="false" />
-    <preference name="show-splash-screen-spinner" value="true" />
-    <preference name="auto-hide-splash-screen" value="true" />
+<!--     <preference name="show-splash-screen-spinner" value="true" /> -->
+ <!--    <preference name="auto-hide-splash-screen" value="true" /> -->
     <preference name="disable-cursor" value="false" />
     <preference name="android-minSdkVersion" value="7" />
-    <preference name="android-installLocation" value="auto" />
+    <!-- <preference name="android-installLocation" value="auto" /> -->
     
     <!-- <gap:plugin name="org.apache.cordova.battery-status" />
     <gap:plugin name="org.apache.cordova.camera" />

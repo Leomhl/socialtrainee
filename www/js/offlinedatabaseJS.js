@@ -39,9 +39,16 @@ function initDB(){
 function createTables(){
 
     var query = 'CREATE TABLE IF NOT EXISTS usuario(id INTEGER NOT NULL PRIMARY KEY, nome VARCHAR NOT NULL, email VARCHAR NOT NULL, adm INTEGER, segtrab INTEGER, logistica INTEGER);';
+    var queryadm = 'CREATE TABLE IF NOT EXISTS adm(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, pergunta VARCHAR NOT NULL, resposta1 VARCHAR NOT NULL, resposta2 VARCHAR NOT NULL, resposta3 VARCHAR NOT NULL, resposta4 VARCHAR NOT NULL, correta VARCHAR NOT NULL);';
+    var querysegtrab = 'CREATE TABLE IF NOT EXISTS segtrab(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, pergunta VARCHAR NOT NULL, resposta1 VARCHAR NOT NULL, resposta2 VARCHAR NOT NULL, resposta3 VARCHAR NOT NULL, resposta4 VARCHAR NOT NULL, correta VARCHAR NOT NULL);';
+    var querylogistica = 'CREATE TABLE IF NOT EXISTS logistica(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, pergunta VARCHAR NOT NULL, resposta1 VARCHAR NOT NULL, resposta2 VARCHAR NOT NULL, resposta3 VARCHAR NOT NULL, resposta4 VARCHAR NOT NULL, correta VARCHAR NOT NULL);';
+    
     try {
         localDB.transaction(function(transaction){
-            transaction.executeSql(query, [], nullDataHandler, errorHandler);
+            transaction.executeSql(query, [], nullDataHandler, errorHandler); 
+            transaction.executeSql(queryadm, [], nullDataHandler, errorHandler);
+            transaction.executeSql(querysegtrab, [], nullDataHandler, errorHandler);
+            transaction.executeSql(querylogistica, [], nullDataHandler, errorHandler);
             updateStatus("Conexão com o BD: OK!");
         });
     } 

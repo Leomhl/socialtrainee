@@ -161,8 +161,10 @@ function onCreate(){
                         else {
                             updateForm("", "", "");
                             updateStatus("Inserção realizada, linha id: " + results.insertId);
+                            alert('Cadastrado com sucesso!');
                             chamatela('home.html');
                             queryAndUpdateOverview();
+
                         }
                     }, errorHandler);
                 });
@@ -356,4 +358,37 @@ function onSelection(){
         updateStatus("Error: SELECT não realizado " + e + ".");
     }
    
+}
+
+function zerarPts()
+{
+    var confirmacao = confirm('Deseja excluir todos os pontos já feitos?');
+
+    if(confirmacao)
+    {
+
+        var query = "update usuario set adm=0, segtrab=0, logistica=0;";
+        
+        try 
+        {
+            localDB.transaction(function(transaction){
+                transaction.executeSql(query, [], function(transaction, results){
+                    
+                    if (!results.rowsAffected)
+                    {
+                        updateStatus("Erro: Update não realizado.");
+                    }
+                    else 
+                    {
+                        
+                        updateStatus("Update realizado:" + results.rowsAffected);
+                        chamatela('informacoes.html');
+                    }
+                }, errorHandler);
+            });
+        } 
+        catch (e) {
+            updateStatus("Erro: UPDATE não realizado " + e + ".");
+        }
+    }
 }

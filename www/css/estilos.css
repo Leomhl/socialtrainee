@@ -1,7 +1,6 @@
 /*Background de fundo das telas*/
 body {
 	background-color: #000F19;
-
 }
 
 
@@ -46,6 +45,8 @@ body {
 	color: #FFF;
 	font-size: 1.5em;
 }
+
+.Esquerda {text-align: left;}
 
 #ContainerHome {
 	margin-top: 10%;

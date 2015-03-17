@@ -62,10 +62,16 @@ function createTables(){
 function dropTables(){
 
     var query = 'drop table usuario;';
+    var queryadm = 'drop table adm;';
+    var querysegtrab = 'drop table segtrab;';
+    var querylogistica = 'drop table logistica;';
     try {
         localDB.transaction(function(transaction){
 
             transaction.executeSql(query, [], nullDataHandler, errorHandler);
+            transaction.executeSql(queryadm, [], nullDataHandler, errorHandler);
+            transaction.executeSql(querysegtrab, [], nullDataHandler, errorHandler);
+            transaction.executeSql(querylogistica, [], nullDataHandler, errorHandler);
             // updateStatus("Usuário 'dropado' com sucesso!");
             alert("Usuário 'dropado' com sucesso!");
 
@@ -143,7 +149,7 @@ function onCreate(){
     {
         dropTables();
         createTables();
-        dateStatus("O usuário cadastrado foi excluído!");
+        updateStatus("O usuário cadastrado foi excluído!");
     }
     else
     {
@@ -385,4 +391,77 @@ function zerarPts()
             updateStatus("Erro: UPDATE não realizado " + e + ".");
         }
     }
+}
+
+function insertResposta()
+{ 
+    
+    var pergunta  = document.itemForm.pergunta.value;
+    var resposta1 = document.itemForm.resposta1.value;
+    var resposta2 = document.itemForm.resposta2.value;
+    var resposta3 = document.itemForm.resposta3.value;
+    var resposta4 = document.itemForm.resposta4.value;
+    var curso     = document.itemForm.jogo.value;
+    var correta   = document.itemForm.mySelect.value;
+    
+    if(pergunta.length < 1)
+        alert('Informe a pergunta!');   
+    else
+    if(resposta1.length < 1)
+        alert('Informe a resposta 1!'); 
+    else
+        if(resposta2.length < 1)
+            alert('Informe a resposta 2!'); 
+    else
+        if(resposta3.length < 1)
+            alert('Informe a resposta 3!');
+    else
+        if(resposta4.length < 1)
+            alert('Informe a resposta 4!');
+    else
+    {   
+        if(curso == 'Administração')
+        {
+            var query = "insert into adm (pergunta, resposta1, resposta2, resposta3, resposta4, correta) VALUES (?, ?, ?, ?, ?, ?);";
+        }
+        else if(curso == 'Segurança do trabalho')
+        {
+            var query = "insert into segtrab (pergunta, resposta1, resposta2, resposta3, resposta4, correta) VALUES (?, ?, ?, ?, ?, ?);";
+        }
+        else if(curso =='Logística')
+        {
+            var query = "insert into logistica (pergunta, resposta1, resposta2, resposta3, resposta4, correta) VALUES (?, ?, ?, ?, ?, ?);";
+        }
+
+        
+        try {
+            localDB.transaction(function(transaction){
+                transaction.executeSql(query, [pergunta,resposta1,resposta2,resposta3,resposta4,correta], function(transaction, results)
+                {
+                    if (!results.rowsAffected)
+                    {
+                        updateStatus("Erro: Inserção não realizada");
+                    }
+                    else
+                    {
+                        updateStatus("Inserção realizada, linha id: " + results.insertId);
+                        alert('Cadastrado com sucesso!');
+                        chamatela('configuracoes.html');
+                        queryAndUpdateOverview();
+
+                    }
+                }, errorHandler);
+            });
+        } 
+        catch (e)
+        {
+            updateStatus("Erro: INSERT não realizado " + e + ".");
+        }
+
+    }    
+}
+
+function loadDelete()
+{
+    
 }

@@ -1,0 +1,191 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		
+		<!-- Meta tags -->
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="telephone=no" />
+		<meta name="keywords" content="" />
+
+		<!-- Javascript do template -->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-desktop.css" />
+			<link rel="stylesheet" href="css/estilos.css" />
+		</noscript>
+
+		<link rel="stylesheet" href="css/bootstrap.css">
+		
+		<script src="js/offlinedatabaseJS.js"></script>
+
+		<noscript>
+		
+			<style>
+				.st-accordion ul li{
+					height:auto;
+				}
+				.st-accordion ul li > a span{
+					visibility:hidden;
+				}
+			</style>
+
+		</noscript>
+
+	</head>
+	<body onload="onInit()">
+
+		<!-- Header -->
+			<div id="header-wrapper">
+				<header id="header" class="container">
+					<div class="row">
+						<div class="12u">
+						
+							<!-- Logo -->
+								<h1><a href="#" id="logo">Configurações</a></h1>
+							
+							<!-- Nav -->
+								<nav id="nav">
+									<a href="home.html">Início</a>
+									<a href="jogos.html">Jogos</a>
+									<a href="instrucoes.html">Instruções</a>
+									<a href="">Configurações</a>
+									<a href="sobre.html">Sobre</a>
+									<a href="">Cadastro</a>
+									<a href="javascript: sair();">Sair</a> 
+								</nav>
+						</div>
+					</div>
+				</header>
+				<div id="banner">
+					<div class="container">
+						<div class="row">
+							<div class="12u">
+
+							<div class="wrapper">
+								<div id="st-accordion" class="st-accordion">
+									<ul class="nav nav-pills nav-stacked">
+										
+										<li class="active">
+											<a href="">Adicionar Questões</a>
+												<div class="st-content">
+													<h4>Aqui vocẽ poderá adicionar questões aos jogos!</h4>
+													
+													<form name="itemForm">
+														<hr>
+														<p>Cadastrar questão</p> 
+														
+														<input type="text" name="pergunta" class="esticar input-block-level" id="pergunta"  PlaceHolder="Pergunta" /><br><br>
+
+														<input type="text" name="resposta1" class="esticar input-block-level" id="resposta1"  PlaceHolder="Resposta 1" /><br><br>
+
+														<input type="text" name="resposta2" class="esticar input-block-level" id="resposta2"  PlaceHolder="Resposta 2" /><br><br>
+
+														<input type="text" name="resposta3" class="esticar input-block-level" id="resposta3"  PlaceHolder="Resposta 3" /><br><br>
+							
+														<input type="text" name="resposta4" id="resposta4" class="esticar input-block-level" id="resposta4" onBlur="insertSelected();" PlaceHolder="Resposta 4" /><br><br>
+
+														<label for="mySelect">Escolha qual é a resposta correta (toque no campo abaixo):</label>
+														<select  id="mySelect" class="esticar ">
+															<option></option>
+														</select>
+
+														<label for="jogo">Escolha a qual jogo a pergunta será adicionada!</label>
+														<select  id="jogo" class="esticar">
+															<option value="Administração">Administração</option>
+															<option value="Segurança do trabalho">Segurança do trabalho</option>
+															<option value="Logística">Logística</option>
+														</select>
+														<br>
+													 
+														<a onClick="insertResposta()" class=" estender button-big">Cadastrar</a>	
+													</form>
+												</div>	
+										</li><br><br>
+										
+										<li class="active">
+											<a href="">Excluir Questão</a>
+												<div class="st-content">
+												
+													<h4>Aqui vocẽ poderá excluir questões dos jogos!</h4>
+														<form>
+															<hr>
+
+															<p>Escolha o jogo que você deseja excluir a pergunta!</p>
+															<select  id="jogo" class="esticar" onChange="loadDelete()">
+																<option>Clique aqui para selecionar</option>
+																<option value = "Administração">Administração</option>
+																<option value = "Segurança do trabalho">Segurança do trabalho</option>
+																<option value = "Logística">Logística</option>
+															</select>
+															<br><br>
+
+															<p>Selecione a pergunta a ser excluída!</p>
+															<select  id="pergunta" class="esticar">
+																<option></option>
+															</select>
+															<br><br>
+															
+
+															<a onClick="onCreate()" class=" estender button-big">Excluir</a>
+															<hr>
+														</form>
+												</div>	
+										</li>
+									</ul>
+								</div>
+							</div>	
+				
+
+							<!-- Por algum motivo o javascript obriga a ter isso aqui então deixei hidden -->
+							<ul  id="itemData" style="cursor:pointer;" hidden="true"></ul>
+
+							
+		
+							<br>
+							<h4>Status:</h4>
+							<div id="status"></div>
+							<br>	
+
+						
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		
+		<!-- Copyright -->
+			<div id="copyright">
+				&copy; SocialSoftwares | Design: LHM</a>
+			</div> 
+
+<!-- Accordion -->
+		<script type="text/javascript" src="js/accordion/jquery.accordion.js"></script>
+		<script type="text/javascript" src="js/accordion/jquery.easing.1.3.js"></script>
+
+			<script type="text/javascript">
+					$(function() {
+						$('#st-accordion').accordion({
+						oneOpenedItem : true
+						 });
+					});
+			</script>
+
+		<!-- Javascript do Cordova Phonegap -->
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+
+		<script type="text/javascript">
+			  app.initialize();
+		</script>
+		
+	</body>
+</html>

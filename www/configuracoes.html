@@ -8,6 +8,8 @@
 		<meta name="description" content="telephone=no" />
 		<meta name="keywords" content="" />
 
+		<link rel="stylesheet" href="css/bootstrap.css">
+
 		<!-- Javascript do template -->
 		<script src="js/jquery.min.js"></script>
 		<script src="js/skel.min.js"></script>
@@ -21,7 +23,6 @@
 			<link rel="stylesheet" href="css/estilos.css" />
 		</noscript>
 
-		<link rel="stylesheet" href="css/bootstrap.css">
 		
 		<script src="js/offlinedatabaseJS.js"></script>
 
@@ -93,18 +94,19 @@
 
 														<label for="mySelect">Escolha qual é a resposta correta (toque no campo abaixo):</label>
 														<select  id="mySelect" class="esticar ">
-															<option></option>
+															<option value="Toque aqui para selecionar">Toque aqui para selecionar</option>
 														</select>
 
 														<label for="jogo">Escolha a qual jogo a pergunta será adicionada!</label>
 														<select  id="jogo" class="esticar">
+															<option value="Toque aqui para selecionar">Toque aqui para selecionar</option>
 															<option value="Administração">Administração</option>
 															<option value="Segurança do trabalho">Segurança do trabalho</option>
 															<option value="Logística">Logística</option>
 														</select>
 														<br>
 													 
-														<a onClick="insertResposta()" class=" estender button-big">Cadastrar</a>	
+														<a onClick="insertQuestionsInDB()" class=" estender button-big">Cadastrar</a>	
 													</form>
 												</div>	
 										</li><br><br>
@@ -119,7 +121,7 @@
 
 															<p>Escolha o jogo que você deseja excluir a pergunta!</p>
 															<select  id="jogoExcluir" class="esticar" onChange="loadDelete()">
-																<option value="Clique aqui para selecionar">Clique aqui para selecionar</option>
+																<option value="Toque aqui para selecionar">Toque aqui para selecionar</option>
 																<option value = "adm">Administração</option>
 																<option value = "segtrab">Segurança do trabalho</option>
 																<option value = "logistica">Logística</option>
@@ -128,7 +130,7 @@
 
 															<p>Selecione a pergunta a ser excluída!</p>
 															<select  id="perguntaExcluir" class="esticar">
-																<option value="Clique aqui para selecionar">Clique aqui para selecionar</option>
+																<option value="Toque aqui para selecionar">Toque aqui para selecionar</option>
 															</select>
 															<br><br>
 															
@@ -171,13 +173,14 @@
 		<script type="text/javascript" src="js/accordion/jquery.accordion.js"></script>
 		<script type="text/javascript" src="js/accordion/jquery.easing.1.3.js"></script>
 
-			<script type="text/javascript">
-					$(function() {
-						$('#st-accordion').accordion({
-						oneOpenedItem : true
-						 });
-					});
-			</script>
+			 <script type="text/javascript">
+			 		$(function() {
+			 			$('#st-accordion').accordion({
+						 oneOpenedItem : true
+					 });
+			 		});
+			 </script>
+
 
 		<!-- Javascript do Cordova Phonegap -->
 		<script type="text/javascript" src="cordova.js"></script>

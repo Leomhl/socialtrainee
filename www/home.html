@@ -21,8 +21,10 @@
 		</noscript>
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+
+		<script src="js/offlinedatabaseJS.js"></script>
 	</head>
-	<body>
+	<body onload="startHome()">
 
 		<!-- Header -->
 			<div id="header-wrapper">
@@ -52,10 +54,12 @@
 						<div class="row">
 							<div class="12u">
 							
-								<!-- Banner Copy -->
-									<p>Bem vindo(a) ao Social Trainee, o aplicativo que veio para mudar a sua concepção sobre ensino.</p>
-									<p>Divirta-se, o resto é por nossa conta!</p>
-									<a href="jogos.html" class="button-big">Vamos Jogar!</a>
+									<form id="home" name="home">
+										<p>Olá <span id="nome"></span> o Social Trainee, o aplicativo que veio para mudar a sua concepção sobre ensino.</p>
+										<p>Divirta-se, o resto é por nossa conta!</p>
+										<a href="jogos.html" class="button-big">Vamos Jogar!</a>
+										<div id="status" hidden></div>
+									</form>
 							</div>
 						</div>
 					</div>

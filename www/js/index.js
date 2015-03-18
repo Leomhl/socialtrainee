@@ -68,7 +68,7 @@ function insertSelected()
 
 			var w=document.createElement('option'); //cria um novo elemento option
 			w.text = resposta2 //seta o texto do elemento option
-			w.value=resposta2; //seta o valor do elemento option
+			w.value = resposta2; //seta o valor do elemento option
 			x.add(w,null); // adiciona um novo option no fim da lista para navegadores complacentes
 
 			var k=document.createElement('option'); //cria um novo elemento option
@@ -86,9 +86,10 @@ function insertSelected()
 	}
 }
 
-function insertDeleteQuestionsSelect(valor)
+// Insere no select as perguntas da disciplina para a exclusão
+function insertQuestionsSelect(valor, idCampo)
 {
-	var x = document.getElementById("perguntaExcluir"); //retorna o objeto select
+	var x = document.getElementById(idCampo); //retorna o objeto select
 	var options = x.getElementsByTagName("option"); //pega a lista de options do select
 
 	var z=document.createElement('option'); //cria um novo elemento option
@@ -96,3 +97,17 @@ function insertDeleteQuestionsSelect(valor)
 	z.value= valor; //seta o valor do elemento option
 	x.add(z,null); // adiciona um novo option no fim da lista para navegadores complacentes
 }
+
+//Limpa o campo select e insere um valor inicial
+ function limparSelect(idCampo){
+    // vamos obter o elemento select
+    var elem = document.getElementById(idCampo);    
+
+    // vamos excluir todas as opções
+    if(elem.options.length > 0)
+	{
+		elem.options.length = 0;
+		 insertQuestionsSelect("Toque aqui para selecionar", idCampo);
+	}
+        
+  }  

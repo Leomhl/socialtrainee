@@ -73,7 +73,7 @@ function dropTables(){
             transaction.executeSql(querysegtrab, [], nullDataHandler, errorHandler);
             transaction.executeSql(querylogistica, [], nullDataHandler, errorHandler);
             // updateStatus("Usuário 'dropado' com sucesso!");
-            alert("Usuário 'dropado' com sucesso!");
+            alert("Tabelas 'dropadas' com sucesso!");
 
         });
     } 
@@ -149,7 +149,7 @@ function onCreate(){
     {
         dropTables();
         createTables();
-        updateStatus("O usuário cadastrado foi excluído!");
+        updateStatus("As tabelas foram excluídas e recriadas!");
     }
     else
     {
@@ -327,6 +327,12 @@ function startInformacoes()
     onSelection();
 }
 
+function startHome()
+{
+    onInit();
+    nome();
+}
+
 //Exibe na view de informações os dados do banco
 function updateInformations(id, nome, email, adm, segtrab, logistica){
     document.getElementById('nome').innerHTML = '<hr>Nome: <br>'+nome;
@@ -360,6 +366,7 @@ function onSelection(){
    
 }
 
+// Zera os pontos de todos os jogos
 function zerarPts()
 {
     var confirmacao = confirm('Deseja excluir todos os pontos já feitos?');
@@ -393,7 +400,7 @@ function zerarPts()
     }
 }
 
-function insertResposta()
+function insertQuestionsInDB()
 { 
     
     var pergunta  = document.itemForm.pergunta.value;
@@ -446,8 +453,18 @@ function insertResposta()
                     {
                         updateStatus("Inserção realizada, linha id: " + results.insertId);
                         alert('Cadastrado com sucesso!');
-                        chamatela('configuracoes.html');
-                        // queryAndUpdateOverview();
+
+                        //Limpa o select de pergunta correta
+                        limparSelect("mySelect");
+
+                        //Limpa todos os campos da tela
+                        document.itemForm.pergunta.value = "";
+                        document.itemForm.resposta1.value = "";
+                        document.itemForm.resposta2.value = "";
+                        document.itemForm.resposta3.value = "";
+                        document.itemForm.resposta4.value = "";
+
+                        document.itemForm.jogo.selectedIndex = 0;
 
                     }
                 }, errorHandler);
@@ -467,7 +484,7 @@ function loadDelete()
 
   if(curso != "Clique aqui para selecionar")
   {
- 
+     limparSelect("perguntaExcluir");
       var query = 'select pergunta from '+curso; 
       
         try {
@@ -479,7 +496,7 @@ function loadDelete()
                     // Carrega no select de questões para excluir as questões do curso (adm, segtrab, logist.)
                     for(i=0;i<results.rows.length;i++)
                     {
-                        insertDeleteQuestionsSelect(results.rows.item(i).pergunta);
+                        insertQuestionsSelect(results.rows.item(i).pergunta, "perguntaExcluir");
                     }
 
                     
@@ -500,25 +517,69 @@ function deleteQuestion()
 var curso = document.deleteForm.jogoExcluir.value;
 var pergunta = document.deleteForm.perguntaExcluir.value;
 
-    var query = "delete from "+curso+" where pergunta=?;";
-    try {
-        localDB.transaction(function(transaction){
-        
-            transaction.executeSql(query, [pergunta], function(transaction, results){
-                if (!results.rowsAffected) {
-                    updateStatus("Erro: Delete não realizado.");
-                }
-                else {
-                    alert('Questão excluída com sucesso!');
-                    updateStatus("Linhas deletadas:" + results.rowsAffected);
-                    chamatela('configuracoes.html');
-                    // queryAndUpdateOverview();
-                }
-            }, errorHandler);
-        });
-    } 
-    catch (e) {
-        updateStatus("Erro: DELETE não realizado " + e + ".");
+    if(curso == "Toque aqui para selecionar")
+    {
+        alert('Selecione qual é o curso!');
     }
+    else
+    if(pergunta == "Toque aqui para selecionar")
+    {
+          alert('Selecione qual é a pergunta a ser excluída!');
+    }
+    else
+    { 
+    
+        var query = "delete from "+curso+" where pergunta=?;";
+        try {
+            localDB.transaction(function(transaction){
+            
+                transaction.executeSql(query, [pergunta], function(transaction, results){
+                    if (!results.rowsAffected) {
+                        updateStatus("Erro: Delete não realizado.");
+                    }
+                    else {
+                        alert('Questão excluída com sucesso!');
+                        updateStatus("Qestão excluída com sucesso!");
+                        limparSelect("perguntaExcluir");
+                        document.deleteForm.jogoExcluir.selectedIndex = 0;
+                    }
+                }, errorHandler);
+            });
+        } 
+        catch (e) {
+            updateStatus("Erro: DELETE não realizado " + e + ".");
+            alert('O campo do jogo ou o  da pergunta não foi selecionado!');
+        }
+    }
+
+}
+
+//Põe o nome da pessoa na tela de home
+function nome()
+{
+
+      var query = 'select nome from usuario'; 
+      
+        try {
+            localDB.transaction(function(transaction){
+            
+                transaction.executeSql(query, [], function(transaction, results){
+
+
+                    // Carrega no select de questões para excluir as questões do curso (adm, segtrab, logist.)
+                   // alert(results.rows.item(0).nome);
+                     
+                  document.getElementById('nome').innerHTML = results.rows.item(0).nome+",";
+
+                    
+                }, function(transaction, error){
+                   document.home.nome.value = ",";
+                });
+            });
+        } 
+        catch (e) {
+            document.home.nome.value = ",";
+        }
+    
 
 }

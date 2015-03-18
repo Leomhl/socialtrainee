@@ -85,3 +85,14 @@ function insertSelected()
 		}
 	}
 }
+
+function insertDeleteQuestionsSelect(valor)
+{
+	var x = document.getElementById("perguntaExcluir"); //retorna o objeto select
+	var options = x.getElementsByTagName("option"); //pega a lista de options do select
+
+	var z=document.createElement('option'); //cria um novo elemento option
+	z.text = valor; //seta o texto do elemento option
+	z.value= valor; //seta o valor do elemento option
+	x.add(z,null); // adiciona um novo option no fim da lista para navegadores complacentes
+}

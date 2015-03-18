@@ -114,26 +114,26 @@
 												<div class="st-content">
 												
 													<h4>Aqui vocẽ poderá excluir questões dos jogos!</h4>
-														<form>
+														<form name="deleteForm">
 															<hr>
 
 															<p>Escolha o jogo que você deseja excluir a pergunta!</p>
-															<select  id="jogo" class="esticar" onChange="loadDelete()">
-																<option>Clique aqui para selecionar</option>
-																<option value = "Administração">Administração</option>
-																<option value = "Segurança do trabalho">Segurança do trabalho</option>
-																<option value = "Logística">Logística</option>
+															<select  id="jogoExcluir" class="esticar" onChange="loadDelete()">
+																<option value="Clique aqui para selecionar">Clique aqui para selecionar</option>
+																<option value = "adm">Administração</option>
+																<option value = "segtrab">Segurança do trabalho</option>
+																<option value = "logistica">Logística</option>
 															</select>
 															<br><br>
 
 															<p>Selecione a pergunta a ser excluída!</p>
-															<select  id="pergunta" class="esticar">
-																<option></option>
+															<select  id="perguntaExcluir" class="esticar">
+																<option value="Clique aqui para selecionar">Clique aqui para selecionar</option>
 															</select>
 															<br><br>
 															
 
-															<a onClick="onCreate()" class=" estender button-big">Excluir</a>
+															<a onClick="deleteQuestion()" class=" estender button-big">Excluir</a>
 															<hr>
 														</form>
 												</div>	

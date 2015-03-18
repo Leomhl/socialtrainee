@@ -105,7 +105,7 @@ function onUpdate(){
                     else {
                         updateForm("", "", "");
                         updateStatus("Update realizado:" + results.rowsAffected);
-                        queryAndUpdateOverview();
+                        // queryAndUpdateOverview();
                     }
                 }, errorHandler);
             });
@@ -447,7 +447,7 @@ function insertResposta()
                         updateStatus("Inserção realizada, linha id: " + results.insertId);
                         alert('Cadastrado com sucesso!');
                         chamatela('configuracoes.html');
-                        queryAndUpdateOverview();
+                        // queryAndUpdateOverview();
 
                     }
                 }, errorHandler);
@@ -463,5 +463,62 @@ function insertResposta()
 
 function loadDelete()
 {
-    
+  var curso = document.deleteForm.jogoExcluir.value;
+
+  if(curso != "Clique aqui para selecionar")
+  {
+ 
+      var query = 'select pergunta from '+curso; 
+      
+        try {
+            localDB.transaction(function(transaction){
+            
+                transaction.executeSql(query, [], function(transaction, results){
+
+
+                    // Carrega no select de questões para excluir as questões do curso (adm, segtrab, logist.)
+                    for(i=0;i<results.rows.length;i++)
+                    {
+                        insertDeleteQuestionsSelect(results.rows.item(i).pergunta);
+                    }
+
+                    
+                }, function(transaction, error){
+                    updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
+                });
+            });
+        } 
+        catch (e) {
+            updateStatus("Error: SELECT não realizado " + e + ".");
+        }
+    }
+}
+
+function deleteQuestion()
+{
+
+var curso = document.deleteForm.jogoExcluir.value;
+var pergunta = document.deleteForm.perguntaExcluir.value;
+
+    var query = "delete from "+curso+" where pergunta=?;";
+    try {
+        localDB.transaction(function(transaction){
+        
+            transaction.executeSql(query, [pergunta], function(transaction, results){
+                if (!results.rowsAffected) {
+                    updateStatus("Erro: Delete não realizado.");
+                }
+                else {
+                    alert('Questão excluída com sucesso!');
+                    updateStatus("Linhas deletadas:" + results.rowsAffected);
+                    chamatela('configuracoes.html');
+                    // queryAndUpdateOverview();
+                }
+            }, errorHandler);
+        });
+    } 
+    catch (e) {
+        updateStatus("Erro: DELETE não realizado " + e + ".");
+    }
+
 }

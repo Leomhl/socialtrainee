@@ -145,39 +145,31 @@ function onCreate(){
     var nome = document.itemForm.nome.value;
     var email = document.itemForm.email.value;
 
-    if(nome == 'drop' || nome == 'Drop')
-    {
-        dropTables();
-        createTables();
-        updateStatus("As tabelas foram excluídas e recriadas!");
-    }
-    else
-    {
-        if (nome == "" || email == "") {
-            updateStatus("Erro: 'Nome' e 'Email' são campos obrigatórios!");
-        }
-        else {
-            var query = "insert into usuario (id, nome, email, adm, segtrab, logistica) VALUES (1, ?, ?, 0, 0, 0);";
-            try {
-                localDB.transaction(function(transaction){
-                    transaction.executeSql(query, [nome, email], function(transaction, results){
-                        if (!results.rowsAffected) {
-                            updateStatus("Erro: Inserção não realizada");
-                        }
-                        else {
-                            updateForm("", "", "");
-                            updateStatus("Inserção realizada, linha id: " + results.insertId);
-                            alert('Cadastrado com sucesso!');
-                            chamatela('home.html');
-                            queryAndUpdateOverview();
 
-                        }
-                    }, errorHandler);
-                });
-            } 
-            catch (e) {
-                updateStatus("Erro: INSERT não realizado " + e + ".");
-            }
+    if (nome == "" || email == "") {
+        updateStatus("Erro: 'Nome' e 'Email' são campos obrigatórios!");
+    }
+    else {
+        var query = "insert into usuario (id, nome, email, adm, segtrab, logistica) VALUES (1, ?, ?, 0, 0, 0);";
+        try {
+            localDB.transaction(function(transaction){
+                transaction.executeSql(query, [nome, email], function(transaction, results){
+                    if (!results.rowsAffected) {
+                        updateStatus("Erro: Inserção não realizada");
+                    }
+                    else {
+                        updateForm("", "", "");
+                        updateStatus("Inserção realizada, linha id: " + results.insertId);
+                        alert('Cadastrado com sucesso!');
+                        chamatela('home.html');
+                        queryAndUpdateOverview();
+
+                    }
+                }, errorHandler);
+            });
+        } 
+        catch (e) {
+            updateStatus("Erro: INSERT não realizado " + e + ".");
         }
     }
 }
@@ -411,70 +403,79 @@ function insertQuestionsInDB()
     var curso     = document.itemForm.jogo.value;
     var correta   = document.itemForm.mySelect.value;
     
-    if(pergunta.length < 1)
-        alert('Informe a pergunta!');   
+    if(pergunta == 'drop' || pergunta == 'Drop')
+    {
+        dropTables();
+        createTables();
+        updateStatus("As tabelas foram excluídas e recriadas!");
+        document.itemForm.pergunta.value = "";
+    }
     else
-    if(resposta1.length < 1)
-        alert('Informe a resposta 1!'); 
-    else
-        if(resposta2.length < 1)
-            alert('Informe a resposta 2!'); 
-    else
-        if(resposta3.length < 1)
-            alert('Informe a resposta 3!');
-    else
-        if(resposta4.length < 1)
-            alert('Informe a resposta 4!');
-    else
-    {   
-        if(curso == 'Administração')
-        {
-            var query = "insert into adm (pergunta, resposta1, resposta2, resposta3, resposta4, correta) VALUES (?, ?, ?, ?, ?, ?);";
-        }
-        else if(curso == 'Segurança do trabalho')
-        {
-            var query = "insert into segtrab (pergunta, resposta1, resposta2, resposta3, resposta4, correta) VALUES (?, ?, ?, ?, ?, ?);";
-        }
-        else if(curso =='Logística')
-        {
-            var query = "insert into logistica (pergunta, resposta1, resposta2, resposta3, resposta4, correta) VALUES (?, ?, ?, ?, ?, ?);";
-        }
+    {
+        if(pergunta.length < 1)
+            alert('Informe a pergunta!');   
+        else
+        if(resposta1.length < 1)
+            alert('Informe a resposta 1!'); 
+        else
+            if(resposta2.length < 1)
+                alert('Informe a resposta 2!'); 
+        else
+            if(resposta3.length < 1)
+                alert('Informe a resposta 3!');
+        else
+            if(resposta4.length < 1)
+                alert('Informe a resposta 4!');
+        else
+        {   
+            if(curso == 'Administração')
+            {
+                var query = "insert into adm (pergunta, resposta1, resposta2, resposta3, resposta4, correta) VALUES (?, ?, ?, ?, ?, ?);";
+            }
+            else if(curso == 'Segurança do trabalho')
+            {
+                var query = "insert into segtrab (pergunta, resposta1, resposta2, resposta3, resposta4, correta) VALUES (?, ?, ?, ?, ?, ?);";
+            }
+            else if(curso =='Logística')
+            {
+                var query = "insert into logistica (pergunta, resposta1, resposta2, resposta3, resposta4, correta) VALUES (?, ?, ?, ?, ?, ?);";
+            }
 
-        
-        try {
-            localDB.transaction(function(transaction){
-                transaction.executeSql(query, [pergunta,resposta1,resposta2,resposta3,resposta4,correta], function(transaction, results)
-                {
-                    if (!results.rowsAffected)
+            
+            try {
+                localDB.transaction(function(transaction){
+                    transaction.executeSql(query, [pergunta,resposta1,resposta2,resposta3,resposta4,correta], function(transaction, results)
                     {
-                        updateStatus("Erro: Inserção não realizada");
-                    }
-                    else
-                    {
-                        updateStatus("Inserção realizada, linha id: " + results.insertId);
-                        alert('Cadastrado com sucesso!');
+                        if (!results.rowsAffected)
+                        {
+                            updateStatus("Erro: Inserção não realizada");
+                        }
+                        else
+                        {
+                            updateStatus("Inserção realizada, linha id: " + results.insertId);
+                            alert('Cadastrado com sucesso!');
 
-                        //Limpa o select de pergunta correta
-                        limparSelect("mySelect");
+                            //Limpa o select de pergunta correta
+                            limparSelect("mySelect");
 
-                        //Limpa todos os campos da tela
-                        document.itemForm.pergunta.value = "";
-                        document.itemForm.resposta1.value = "";
-                        document.itemForm.resposta2.value = "";
-                        document.itemForm.resposta3.value = "";
-                        document.itemForm.resposta4.value = "";
+                            //Limpa todos os campos da tela
+                            document.itemForm.pergunta.value = "";
+                            document.itemForm.resposta1.value = "";
+                            document.itemForm.resposta2.value = "";
+                            document.itemForm.resposta3.value = "";
+                            document.itemForm.resposta4.value = "";
 
-                        document.itemForm.jogo.selectedIndex = 0;
+                            document.itemForm.jogo.selectedIndex = 0;
 
-                    }
-                }, errorHandler);
-            });
-        } 
-        catch (e)
-        {
-            updateStatus("Erro: INSERT não realizado " + e + ".");
+                        }
+                    }, errorHandler);
+                });
+            } 
+            catch (e)
+            {
+                updateStatus("Erro: INSERT não realizado " + e + ".");
+            }
         }
-
     }    
 }
 
@@ -560,26 +561,27 @@ function nome()
 
       var query = 'select nome from usuario'; 
       
-        try {
+        
             localDB.transaction(function(transaction){
             
                 transaction.executeSql(query, [], function(transaction, results){
 
-
-                    // Carrega no select de questões para excluir as questões do curso (adm, segtrab, logist.)
-                   // alert(results.rows.item(0).nome);
-                     
-                  document.getElementById('nome').innerHTML = results.rows.item(0).nome+",";
+            if(results.rows.length > 0)
+            {
+                document.getElementById('nome').innerHTML = results.rows.item(0).nome+", ";   
+            
+            }
+            else
+            {
+                document.getElementById('nome').innerHTML = ", ";
+            }
 
                     
                 }, function(transaction, error){
-                   document.home.nome.value = ",";
+                   updateStatus('Nome do usuário não encontrado no BD!');
                 });
             });
-        } 
-        catch (e) {
-            document.home.nome.value = ",";
-        }
+        
     
 
 }

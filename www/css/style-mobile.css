@@ -112,6 +112,7 @@ body, input, textarea, select
 		#banner .bordered-feature-image
 		{
 			display: none;
+			text-align: center;
 		}
 
 		#banner p
@@ -120,7 +121,16 @@ body, input, textarea, select
 			font-weight: 200;
 			line-height: 1.25em;
 			margin: 0 0 1em 0;
+			text-align: center;
 		}
+
+		#banner img
+		{
+			text-align: center;
+			max-width: 50%;
+		}
+
+
 
 /* Features */
 

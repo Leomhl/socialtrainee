@@ -1,7 +1,11 @@
 //1. Inicialização
 
-var localDB = null;
+// Variáveis globais
+var localDB = null; //Para a conexão com o banco de dados
+var jogo = null; //Para manter setado qual jogo o usuário está
 
+
+//############## Início do código ##############
 function onInit(){
     try {
         if (!window.openDatabase) {

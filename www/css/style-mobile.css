@@ -124,10 +124,10 @@ body, input, textarea, select
 			text-align: center;
 		}
 
-		#banner img
+		#banner span > img 
 		{
 			text-align: center;
-			max-width: 50%;
+			max-width: 80%;
 		}
 
 

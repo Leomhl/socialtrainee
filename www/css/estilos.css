@@ -1,29 +1,34 @@
 /*Background de fundo das telas*/
-body {
+body
+{
 	background-color: #000F19;
 }
 
-
-.botao {
+.botao
+{
 /*Tamanho dos botões*/
 	width: 80%;
 }
 
-.centralizar {
+.centralizar 
+{
 	text-align : center;
 }
 
-.margem {
+.margem
+{
 	margin: 15px;
 	padding: 10px;
 }
 
-.texto {
+.texto
+{
 	color: #FFF;
 	font-family: "Times New Roman", Georgia, Serif;
 }
 
-#imgbackgroundSplashscreen {
+#imgbackgroundSplashscreen 
+{
 	position: absolute;
 	background-repeat: no-repeat;
 	width: 100% ;
@@ -31,7 +36,8 @@ body {
 	text-align: left;
 	background-position: top left;
 }
-.splashImg {
+.splashImg 
+{
 	position: absolute;
 	width: 50%;
 	height: 50%;
@@ -39,75 +45,28 @@ body {
 }
 
 
-.Paragrafo {
+.Paragrafo 
+{
 	font-family: "Arial", Georgia, Serif;
 	text-align: left;
 	color: #FFF;
 	font-size: 1.5em;
 }
 
-.Esquerda {text-align: left;}
+.Esquerda 
+{
+	text-align: left;
+}
 
 #ContainerHome {
 	margin-top: 10%;
 }
 
-
-
-
-/*Copiado*/
-.radio, .checkbox{
-	margin-bottom:0;
-    margin-top:0;
-}
-.radio label {
-	display: inline-block;
-	cursor: pointer;
-	position: relative;
-	padding-left: 25px;
-	margin-right: 15px;
-	font-size: 13px;
-	margin-bottom:6px;
-	color: #777a80;
-}
-
-.radio input[type=radio] {
-	display: none;
-}
-.radio label:before {
-	content: "";
-	display: inline-block;
-	width: 17px;
-	height: 17px;
-	margin-right: 10px;
+/*Para as imagens de erro e acerto da tela do jogo*/
+.status
+{
+	visibility: hidden; /*Por enquanto estão como invisíveis*/
 	position: absolute;
-	left: 0;
-	bottom: 2.5px;
-	background-color: #fff;
-	 border:1px solid #c2c6cb;
-	border-radius: 99px;
+	left: 25%;
 }
 
-
-.radio label:after {
-  font-size: 13px;
-  content: "";
-  text-align: center;
-  display: inline-block;
-  width: 17px;
-  height: 17px;
-  position: absolute;
-  -o-transform: scale(0);
-  -ms-transform: scale(0);
-  -moz-transform: scale(0);
-  -webkit-transform: scale(0);
-  transform: scale(0);
-  border-radius: 99px;
-  left:0px;
-  top:1px;   
-  background-color: #6f7b8a;  
-  border:1px solid #6f7b8a;
-}
-.radio input[type=radio][disabled]+ label{	
-	 opacity: 0.65;
-}

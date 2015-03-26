@@ -2,7 +2,7 @@
 
 // Variáveis globais
 var localDB = null; //Para a conexão com o banco de dados
-var jogo = null; //Para manter setado qual jogo o usuário está
+var materia = null; //Para manter setado qual jogo o usuário está
 
 
 //############## Início do código ##############
@@ -585,7 +585,17 @@ function nome()
                    updateStatus('Nome do usuário não encontrado no BD!');
                 });
             });
-        
-    
+}
 
+//Para o jogo
+
+function jogo(materia_jogo)
+{
+    var materia = materia_jogo;
+    chamatela('jogo.html');
+}
+
+function exibe()
+{
+    alert(materia);
 }

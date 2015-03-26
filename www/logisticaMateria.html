@@ -1,0 +1,174 @@
+
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		
+		<!-- Meta tags -->
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+
+
+		<!-- Javascript do template -->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="js/bootstrap.css">
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-desktop.css" />
+			
+		</noscript>
+		
+
+		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+
+		<!-- Accordion -->
+
+		<noscript>
+
+		</noscript>
+
+
+			<style>
+				.st-accordion ul li{
+					height:auto;
+				}
+				.st-accordion ul li > a span{
+					visibility:hidden;
+				}
+			</style>
+
+		<!-- <link rel="stylesheet" type="text/css" href="css/accordion/demo.css" /> -->
+		 <!-- <link rel="stylesheet" type="text/css" href="css/accordion/styleaccordion.css" />  -->
+
+	</head>
+	<body class="subpage">
+	
+		<!-- Header -->
+			<div id="header-wrapper">
+				<header id="header" class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Logo -->
+								<h1><a href="#" id="logo">Logística</a></h1>
+							
+								<nav id="nav">
+									<a href="home.html">Início</a>
+									<a href="menuJogos.html">Jogos</a>
+									<a href="instrucoes.html">Instruções</a>
+									<a href="informacoes.html">Informações</a>
+									<a href="configuracoes.html">Configurações</a>
+									<a href="sobre.html">Sobre</a>
+									<a href="javascript: sair();">Sair</a>
+								 <!-- <a href="onecolumn.html">Sair</a> -->
+								</nav>
+
+						</div>
+					</div>
+				</header>
+			</div>
+
+		<!-- Content -->
+			<div id="content-wrapper">
+				<div id="content">
+					<div class="container">
+						<div class="row">
+							<div class="12u">
+							
+								<!-- Main Content -->
+									<section>
+										<header>
+											<h2>Logística</h2>
+											<h3>Aulas</h3>
+										</header>
+									
+										<!-- Criar o accordion por aqui... -->
+											<div class="wrapper">
+												<div id="st-accordion" class="st-accordion">
+														<ul class="nav nav-pills nav-stacked">
+
+															<!--Início do O que é segurança do trabalho-->
+															<li class="active">
+																<a class="st-arrow" href="#">O que é logística?</a>
+																	
+																		<div class="st-content">
+																			<p> Escrever aqui a matéria sobre o que é logística</p>
+																		</div>
+
+															</li> <!-- Fim do O que é -->
+
+															<br><br>
+
+																<!-- Início dos equipamentos -->
+																<li class="active">
+																	<a class="st-arrow" href="#">Equipamentos da logística</a>
+
+																		<div class="st-content">
+																			<p>Informar os equipamentos</p>
+																											
+																			<p>Alguns equipamentos são são:
+																				<ul>
+																					<li>Máquina1</li>
+																					<li>Máquina2</li>
+																					<li>Máquina3</li>
+																					<li>Máquina4</li>
+																				</ul>
+																			</p>
+
+																		
+																		</div>
+																</li> <!--Final dos equipamentos-->
+																
+															</ul>
+
+															<!-- Botão para o jogo -->
+															<div class="row">
+																<div class="12u">
+																	<a href="#"  class="button-big esticar" style="font-type:'Yanone Kaffeesatz'; text-align: center;">Vamos jogar!</a>
+																</div>
+															</div> <!-- Final do botão para jogar -->
+												</div> <!-- Fim accordion -->
+										 </div> <!-- Fim wrapper -->
+									</section>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		<!-- Copyright -->
+			<div id="copyright">
+				&copy; SocialSoftwares | Design: LHM</a>
+			</div>
+
+		<!-- Accordion -->
+		<script type="text/javascript" src="js/accordion/jquery.accordion.js"></script>
+		<script type="text/javascript" src="js/accordion/jquery.easing.1.3.js"></script>			
+		
+			<!-- Javascript que aciona o accordion e diz que apena um ítem ficará aberto por vez (não funciona as vezes...) -->
+			<script type="text/javascript">
+					$(function() {
+						$('#st-accordion').accordion({
+						oneOpenedItem : true
+						 });
+					});
+			 </script>
+	
+
+		<!-- Javascript do Cordova Phonegap -->
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript">
+				app.initialize();
+		</script>
+
+	</body>
+</html>

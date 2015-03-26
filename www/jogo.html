@@ -20,11 +20,16 @@
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
 			<link rel="stylesheet" href="css/style-desktop.css" />
-			<link rel="stylesheet" href="css/estilos.css" />
+			
 		</noscript>
 
-		
+		<link rel="stylesheet" href="css/estilos.css" />
 		<script src="js/offlinedatabaseJS.js"></script>
+
+
+	<style>
+		#banner{margin-top: 20px;}
+	</style>
 
 	</head>
 	<body onload="onInit()">
@@ -36,12 +41,12 @@
 						<div class="12u">
 						
 							<!-- Logo -->
-								<h1><a href="#" id="logo">Quiz</a></h1>
+								<h1><a href="#" id="logo">123 pontos</a></h1>
 							
 							<!-- Nav -->
 								<nav id="nav">
-									<a href="home.html">Início</a>	
-									<a href="informacoes.html">Pontos</a>	
+									<a href="">Terminar Jogo</a>	
+									<!-- <a href="informacoes.html">Pontuação geral</a> -->	
 									<a href=""> </a>
 								</nav>
 						</div>
@@ -52,48 +57,41 @@
 						<div class="row">
 							<div class="12u">
 
-		
-							<div class="wrapper">
-								<img src="images/questions.png" id="imgQuestion">
+			
+								<div class="wrapper">
+									<span>
+										<img src="images/questions.png" id="imgQuestion">
+									</span>	
+
+										<img src="images/acerto.png" width="50%" class="status" id="imgAcerto" > 
+										<img src="images/erro.png" width="50%" class="status" id="imgErro">
 								
-									<img src="images/acerto.png" width="50%" id="imgAcerto" > 
-									<img src="images/erro.png" width="50%" id="imgErro">
-								
 
-								<h3>Pergunta:</h3>
-								<h4 style="text-align: left;"> blablabla</h4><br>
+									
+									<select name="respostas" id="respostas" class="esticar">
+										<option value="Toque aqui para selecionar">
+										Toque aqui para selecionar
+										</option>
+									</select>
+								</div>	
 
-								
-								<select name="" id="" class="esticar">
-									<option value="Toque aqui para selecionar">
-									Toque aqui para selecionar
-									</option>
-								</select>
-							</div>	
+								<button onClick="exibe()">Blablabla</button>
 
-						<!-- Botão para o jogo -->
-							<div class="row">
-								<div class="12u">
-									<a href="#"  class="button-big esticar" style="font-type:'Yanone Kaffeesatz'; text-align: center;" onClick="">Confirmar</a>
-								</div>
-							</div> <!-- Final do botão para jogar -->		
+							<!-- Botão para o jogo -->
+								<div class="row">
+									<div class="12u">
+										<a href="#"  class="button-big esticar" style="font-type:'Yanone Kaffeesatz'; text-align: center;" onClick="">Confirmar</a>
+									</div>
+								</div> <!-- Final do botão para jogar -->		
 
+								<!-- O javascript obriga a ter isso aqui, senão terei que mudar as funções que são globais para o sistema, então, deixei hidden -->
+								<ul  id="itemData" style="cursor:pointer;" hidden="true"></ul>
 
 				
-		
+								<!-- Não é necessário exibir a conexão nesta tela -->
+								<h4 hidden>Status:</h4>
+								<div id="status" hidden></div>
 
-
-							<!-- Por algum motivo o javascript obriga a ter isso aqui então deixei hidden -->
-							<ul  id="itemData" style="cursor:pointer;" hidden="true"></ul>
-
-							
-		
-							<br>
-							<h4 hidden>Status:</h4>
-							<div id="status" hidden></div>
-							<br>	
-
-						
 							</div>
 						</div>
 					</div>
@@ -101,7 +99,6 @@
 			</div>
 
 
-		
 		<!-- Copyright -->
 			<div id="copyright">
 				&copy; SocialSoftwares | Design: LHM</a>

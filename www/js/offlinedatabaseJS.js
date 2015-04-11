@@ -1,23 +1,33 @@
 //1. Inicialização
 
 // Variáveis globais
-var localDB = null; //Para a conexão com o banco de dados
-var materia = null; //Para manter setado qual jogo o usuário está
+  var localDB = null; //Para a conexão com o banco de dados
+
+//Para manter setado qual jogo o usuário está
+  var materia = null; //adm, segTrab ou logistica
+
+
+  //Dados da questão
+  var pergunta = null;
+  var resposta1 = null;
+  var resposta2 = null;
+  var resposta3 = null;
+  var resposta4 = null;
+  var correta = null; 
+
+  var ultAcessada = null;
 
 
 //############## Início do código ##############
-function onInit(){
+function onInit()
+{
     try {
         if (!window.openDatabase) {
             updateStatus("Erro: Seu navegador não permite banco de dados.");
         }
         else {
             initDB();
-            // dropTables();
             createTables();
-
-            // queryAndUpdateOverview();
-
         }
     } 
     catch (e) {
@@ -36,16 +46,15 @@ function initDB(){
     var shortName = 'stuffDB';
     var version = '1.0';
     var displayName = 'MyStuffDB';
-    var maxSize = 65536; // Em bytes
+    var maxSize = 131072; // Em bytes
     localDB = window.openDatabase(shortName, version, displayName, maxSize);
 }
-
 function createTables(){
 
-    var query = 'CREATE TABLE IF NOT EXISTS usuario(id INTEGER NOT NULL PRIMARY KEY, nome VARCHAR NOT NULL, email VARCHAR NOT NULL, adm INTEGER, segtrab INTEGER, logistica INTEGER);';
-    var queryadm = 'CREATE TABLE IF NOT EXISTS adm(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, pergunta VARCHAR NOT NULL, resposta1 VARCHAR NOT NULL, resposta2 VARCHAR NOT NULL, resposta3 VARCHAR NOT NULL, resposta4 VARCHAR NOT NULL, correta VARCHAR NOT NULL);';
-    var querysegtrab = 'CREATE TABLE IF NOT EXISTS segtrab(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, pergunta VARCHAR NOT NULL, resposta1 VARCHAR NOT NULL, resposta2 VARCHAR NOT NULL, resposta3 VARCHAR NOT NULL, resposta4 VARCHAR NOT NULL, correta VARCHAR NOT NULL);';
-    var querylogistica = 'CREATE TABLE IF NOT EXISTS logistica(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, pergunta VARCHAR NOT NULL, resposta1 VARCHAR NOT NULL, resposta2 VARCHAR NOT NULL, resposta3 VARCHAR NOT NULL, resposta4 VARCHAR NOT NULL, correta VARCHAR NOT NULL);';
+    var query = 'CREATE TABLE IF NOT EXISTS usuario(id INTEGER NOT NULL PRIMARY KEY, nome VARCHAR NOT NULL, email VARCHAR NOT NULL, adm INTEGER, segtrab INTEGER, logistica INTEGER, pergadm INTEGER, pergsegtrab INTEGER, perglogistica INTEGER)';
+    var queryadm = 'CREATE TABLE IF NOT EXISTS adm(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, pergunta VARCHAR NOT NULL, resposta1 VARCHAR NOT NULL, resposta2 VARCHAR NOT NULL, resposta3 VARCHAR NOT NULL, resposta4 VARCHAR NOT NULL, correta VARCHAR NOT NULL)';
+    var querysegtrab = 'CREATE TABLE IF NOT EXISTS segtrab(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, pergunta VARCHAR NOT NULL, resposta1 VARCHAR NOT NULL, resposta2 VARCHAR NOT NULL, resposta3 VARCHAR NOT NULL, resposta4 VARCHAR NOT NULL, correta VARCHAR NOT NULL)';
+    var querylogistica = 'CREATE TABLE IF NOT EXISTS logistica(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, pergunta VARCHAR NOT NULL, resposta1 VARCHAR NOT NULL, resposta2 VARCHAR NOT NULL, resposta3 VARCHAR NOT NULL, resposta4 VARCHAR NOT NULL, correta VARCHAR NOT NULL)';
     
     try {
         localDB.transaction(function(transaction){
@@ -57,7 +66,7 @@ function createTables(){
         });
     } 
     catch (e) {
-        updateStatus("Erro: Data base 'usuario' não criada " + e + ".");
+        updateStatus("Erro: Tabelas não criadas " + e + ".");
         return;
     }
 }
@@ -65,10 +74,10 @@ function createTables(){
 
 function dropTables(){
 
-    var query = 'drop table usuario;';
-    var queryadm = 'drop table adm;';
-    var querysegtrab = 'drop table segtrab;';
-    var querylogistica = 'drop table logistica;';
+    var query = 'drop table usuario';
+    var queryadm = 'drop table adm';
+    var querysegtrab = 'drop table segtrab';
+    var querylogistica = 'drop table logistica';
     try {
         localDB.transaction(function(transaction){
 
@@ -91,34 +100,34 @@ function dropTables(){
 //2. Query e visualização de Update
 
 
-function onUpdate(){
-    var id = document.itemForm.id.value;
-    var nome = document.itemForm.nome.value;
-    var email = document.itemForm.email.value;
-    if (nome == "" || email == "") {
-        updateStatus("'Nome' e 'Email' são campos obrigatórios!");
-    }
-    else {
-        var query = "update usuario set nome=?, email=? where id=?;";
-        try {
-            localDB.transaction(function(transaction){
-                transaction.executeSql(query, [nome, email, id], function(transaction, results){
-                    if (!results.rowsAffected) {
-                        updateStatus("Erro: Update não realizado.");
-                    }
-                    else {
-                        updateForm("", "", "");
-                        updateStatus("Update realizado:" + results.rowsAffected);
-                        // queryAndUpdateOverview();
-                    }
-                }, errorHandler);
-            });
-        } 
-        catch (e) {
-            updateStatus("Erro: UPDATE não realizado " + e + ".");
-        }
-    }
-}
+// function onUpdate(){
+//     var id = document.itemForm.id.value;
+//     var nome = document.itemForm.nome.value;
+//     var email = document.itemForm.email.value;
+//     if (nome == "" || email == "") {
+//         updateStatus("'Nome' e 'Email' são campos obrigatórios!");
+//     }
+//     else {
+//         var query = "update usuario set nome=?, email=? where id=?;";
+//         try {
+//             localDB.transaction(function(transaction){
+//                 transaction.executeSql(query, [nome, email, id], function(transaction, results){
+//                     if (!results.rowsAffected) {
+//                         updateStatus("Erro: Update não realizado.");
+//                     }
+//                     else {
+//                         updateForm("", "", "");
+//                         updateStatus("Update realizado:" + results.rowsAffected);
+//                         // queryAndUpdateOverview();
+//                     }
+//                 }, errorHandler);
+//             });
+//         } 
+//         catch (e) {
+//             updateStatus("Erro: UPDATE não realizado " + e + ".");
+//         }
+//     }
+// }
 
 function onDelete(){
     // var id = document.itemForm.id.value;
@@ -148,21 +157,20 @@ function onDelete(){
 function onCreate(){
     var nome = document.itemForm.nome.value;
     var email = document.itemForm.email.value;
-
+    
 
     if (nome == "" || email == "") {
         updateStatus("Erro: 'Nome' e 'Email' são campos obrigatórios!");
     }
     else {
-        var query = "insert into usuario (id, nome, email, adm, segtrab, logistica) VALUES (1, ?, ?, 0, 0, 0);";
+        var query = "insert into usuario(id, nome, email, adm, segtrab, logistica, pergadm, pergsegtrab, perglogistica) VALUES (1, "+'"'+nome+'"'+", "+'"'+email+'"'+", 0, 0, 0, 0, 0, 0)";
         try {
             localDB.transaction(function(transaction){
-                transaction.executeSql(query, [nome, email], function(transaction, results){
+                transaction.executeSql(query, [], function(transaction, results){
                     if (!results.rowsAffected) {
                         updateStatus("Erro: Inserção não realizada");
                     }
                     else {
-                        updateForm("", "", "");
                         updateStatus("Inserção realizada, linha id: " + results.insertId);
                         alert('Cadastrado com sucesso!');
                         chamatela('home.html');
@@ -201,44 +209,44 @@ function onSelect(htmlLIElement){
    
 }
 
-function queryAndUpdateOverview(){
+// function queryAndUpdateOverview(){
 
-    //Remove as linhas existentes para inserção das novas
-    var dataRows = document.getElementById("itemData").getElementsByClassName("data");
+//     //Remove as linhas existentes para inserção das novas
+//     var dataRows = document.getElementById("itemData").getElementsByClassName("data");
     
-    while (dataRows.length > 0) {
-        row = dataRows[0];
-        document.getElementById("itemData").removeChild(row);
-    };
+//     while (dataRows.length > 0) {
+//         row = dataRows[0];
+//         document.getElementById("itemData").removeChild(row);
+//     };
     
-    //Realiza a leitura no banco e cria novas linhas na tabela.
-    var query = "SELECT * FROM usuario;";
-    try {
-        localDB.transaction(function(transaction){
+//     //Realiza a leitura no banco e cria novas linhas na tabela.
+//     var query = "SELECT * FROM usuario;";
+//     try {
+//         localDB.transaction(function(transaction){
         
-            transaction.executeSql(query, [], function(transaction, results){
-                for (var i = 0; i < results.rows.length; i++) {
+//             transaction.executeSql(query, [], function(transaction, results){
+//                 for (var i = 0; i < results.rows.length; i++) {
                 
-                    var row = results.rows.item(i);
-                    var li = document.createElement("li");
-                    li.setAttribute("id", row['id']);
-                    li.setAttribute("class", "data");
-                    li.setAttribute("onclick", "onSelect(this)");
+//                     var row = results.rows.item(i);
+//                     var li = document.createElement("li");
+//                     li.setAttribute("id", row['id']);
+//                     li.setAttribute("class", "data");
+//                     li.setAttribute("onclick", "onSelect(this)");
                     
-                    var liText = document.createTextNode(row['nome'] + " x "+ row['email']+ " x " + row['id']);
-                    li.appendChild(liText);
+//                     var liText = document.createTextNode(row['nome'] + " x "+ row['email']+ " x " + row['id']);
+//                     li.appendChild(liText);
                     
-                    document.getElementById("itemData").appendChild(li);
-                }
-            }, function(transaction, error){
-                updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
-            });
-        });
-    } 
-    catch (e) {
-        updateStatus("Error: SELECT não realizado " + e + ".");
-    }
-}
+//                     document.getElementById("itemData").appendChild(li);
+//                 }
+//             }, function(transaction, error){
+//                 updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
+//             });
+//         });
+//     } 
+//     catch (e) {
+//         updateStatus("Error: SELECT não realizado " + e + ".");
+//     }
+// }
 
 // 3. Funções de tratamento e status.
 
@@ -267,23 +275,23 @@ function updateStatus(status){
 
 
 
+//***********#########################****#################********#####*******
+
+
 
 // Daqui para baixo foi personalizado para as necessidades do projeto
 
 
 // ### Testa se o registro do usuário existe, se exitir chama a home ###
 function onTest(){
-    // var id = htmlLIElement.getAttribute("id");
-    // var id= 1;
-    query = "SELECT * FROM usuario where id=1;";
+    
+    var query = "SELECT * FROM usuario where id=1;";
     
     try {
         localDB.transaction(function(transaction){
         
             transaction.executeSql(query, [], function(transaction, results){
                 var len = results.rows.length;
-                // var row = results.rows.item(0);
-                // updateForm(row['id'], row['nome'], row['email']);
                
                // Caso encontre algum registro
                 if(len == 1)
@@ -312,14 +320,12 @@ function onTest(){
 function startIndex()
 {
     onInit();
-     // dropTables();
     onTest();
 }
 
 function startInformacoes()
 {
     onInit();
-     // dropTables();
     onSelection();
 }
 
@@ -328,6 +334,17 @@ function startHome()
     onInit();
     nome();
 }
+
+function startAdmJogo()
+{
+    materia = 'adm';
+    onInit();
+    jogoPontos(); // carrega a pontuação na tela do jogo
+    ultAcessada = uAcessada(); //retorna a última pergunta acessada
+    //exibePerg(); //Insere no select as respostas
+    alert(ultAcessada);
+}
+
 
 //Exibe na view de informações os dados do banco
 function updateInformations(id, nome, email, adm, segtrab, logistica){
@@ -404,7 +421,7 @@ function insertQuestionsInDB()
     var resposta2 = document.itemForm.resposta2.value;
     var resposta3 = document.itemForm.resposta3.value;
     var resposta4 = document.itemForm.resposta4.value;
-    var curso     = document.itemForm.jogo.value;
+    var curso     = document.itemForm.value;//erro aqui
     var correta   = document.itemForm.mySelect.value;
     
     if(pergunta == 'drop' || pergunta == 'Drop')
@@ -469,7 +486,7 @@ function insertQuestionsInDB()
                             document.itemForm.resposta3.value = "";
                             document.itemForm.resposta4.value = "";
 
-                            document.itemForm.jogo.selectedIndex = 0;
+                            document.itemForm.selectedIndex = 0;
 
                         }
                     }, errorHandler);
@@ -562,40 +579,84 @@ var pergunta = document.deleteForm.perguntaExcluir.value;
 //Põe o nome da pessoa na tela de home
 function nome()
 {
+    var query = 'select nome from usuario'; 
+  
+        localDB.transaction(function(transaction){
+            transaction.executeSql(query, [], function(transaction, results){
 
-      var query = 'select nome from usuario'; 
-      
-        
-            localDB.transaction(function(transaction){
-            
-                transaction.executeSql(query, [], function(transaction, results){
-
-            if(results.rows.length > 0)
-            {
-                document.getElementById('nome').innerHTML = results.rows.item(0).nome+", ";   
-            
-            }
-            else
-            {
-                document.getElementById('nome').innerHTML = ", ";
-            }
-
-                    
-                }, function(transaction, error){
-                   updateStatus('Nome do usuário não encontrado no BD!');
-                });
+        if(results.rows.length > 0)
+        {
+            document.getElementById('nome').innerHTML = results.rows.item(0).nome+", ";   
+        }
+        else
+        {
+            document.getElementById('nome').innerHTML = ", ";
+        }
+                
+            }, function(transaction, error){
+               updateStatus('Nome do usuário não encontrado no BD!');
             });
+        });
 }
 
-//Para o jogo
 
-function jogo(materia_jogo)
+function jogoPontos() //Para informar os pontos que estão no DB na view do jogo
 {
-    var materia = materia_jogo;
-    chamatela('jogo.html');
+    
+    var query = 'select '+materia+' from usuario where id = 1';  
+    
+    localDB.transaction(function(transaction){
+        transaction.executeSql(query, [], function(transaction, results){
+          if(results.rows.length > 0)
+          {
+              switch(materia)
+              {
+                  case 'adm':
+                      document.getElementById('pontos').innerHTML = results.rows.item(0).adm+" Pontos";   
+                      break;
+                  case 'segTrab':
+                      document.getElementById('pontos').innerHTML = results.rows.item(0).segTrab+" Pontos";   
+                       break;
+                  case 'logistica': 
+                      document.getElementById('pontos').innerHTML = results.rows.item(0).logistica+" Pontos";   
+                      break;   
+              }
+          }
+          else
+          {
+              document.getElementById('pontos').innerHTML = "0 Pontos";
+          } 
+        }, function(transaction, error){
+           updateStatus('Pontuação do usuário não encontrada!');
+        });
+    });
 }
 
-function exibe()
+
+function uAcessada()
 {
-    alert(materia);
+   var query = 'select '+materia+' from usuario where id=1';
+
+   localDB.transaction(function(transaction){   
+
+        transaction.executeSql(query, [], function(transaction, results){
+          switch(materia)
+          {
+            case 'adm':
+              return results.rows.item(0).adm;  
+              break;
+            case 'segtrab':
+              return results.rows.item(0).segtrab;  
+              break;
+            case 'logistica':
+              return results.rows.item(0).logistica;  
+              break;   
+          }
+          
+                  
+        }, function(transaction, error){
+           updateStatus('Pontuação do usuário não encontrada!');
+        });
+
+    });
 }

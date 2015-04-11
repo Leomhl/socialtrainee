@@ -62,7 +62,7 @@
 										<img src="images/questions.png" id="imgQuestion">
 									</span>	
 
-										<img src="images/acerto.png" width="50%" class="status" id="imgAcerto"> 
+										<img src="images/acerto.png" width="50%" class="status"  id="imgAcerto"> 
 										<img src="images/erro.png" width="50%" class="status" id="imgErro">
 
 									<div id="pergunta"></div>	<!-- Onde o javascript carrega as perguntas -->
@@ -105,6 +105,14 @@
 		<script type="text/javascript" src="cordova.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
 		<script src="js/offlinedatabaseJS.js"></script>
+		<script>
+			$( document ).ready(function() {
+
+    		 $( "#imgAcerto" ).animate({
+			    "left": "25%"
+			  }, 2000 );
+			});
+		</script>
 		<script type="text/javascript">
 			  app.initialize();
 		</script>

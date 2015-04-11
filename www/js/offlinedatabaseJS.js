@@ -15,10 +15,7 @@
   var resposta4 = null;
   var correta = null; 
 
-  var ultAcessada = null;
 
-
-//############## Início do código ##############
 function onInit()
 {
     try {
@@ -46,15 +43,16 @@ function initDB(){
     var shortName = 'stuffDB';
     var version = '1.0';
     var displayName = 'MyStuffDB';
-    var maxSize = 131072; // Em bytes
+    var maxSize = 65536; // Em bytes (64)
     localDB = window.openDatabase(shortName, version, displayName, maxSize);
 }
+
 function createTables(){
 
-    var query = 'CREATE TABLE IF NOT EXISTS usuario(id INTEGER NOT NULL PRIMARY KEY, nome VARCHAR NOT NULL, email VARCHAR NOT NULL, adm INTEGER, segtrab INTEGER, logistica INTEGER, pergadm INTEGER, pergsegtrab INTEGER, perglogistica INTEGER)';
-    var queryadm = 'CREATE TABLE IF NOT EXISTS adm(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, pergunta VARCHAR NOT NULL, resposta1 VARCHAR NOT NULL, resposta2 VARCHAR NOT NULL, resposta3 VARCHAR NOT NULL, resposta4 VARCHAR NOT NULL, correta VARCHAR NOT NULL)';
-    var querysegtrab = 'CREATE TABLE IF NOT EXISTS segtrab(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, pergunta VARCHAR NOT NULL, resposta1 VARCHAR NOT NULL, resposta2 VARCHAR NOT NULL, resposta3 VARCHAR NOT NULL, resposta4 VARCHAR NOT NULL, correta VARCHAR NOT NULL)';
-    var querylogistica = 'CREATE TABLE IF NOT EXISTS logistica(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, pergunta VARCHAR NOT NULL, resposta1 VARCHAR NOT NULL, resposta2 VARCHAR NOT NULL, resposta3 VARCHAR NOT NULL, resposta4 VARCHAR NOT NULL, correta VARCHAR NOT NULL)';
+    var query = 'CREATE TABLE IF NOT EXISTS usuario(id INTEGER NOT NULL, nome VARCHAR NOT NULL, email VARCHAR NOT NULL, adm INTEGER, segtrab INTEGER, logistica INTEGER, pergadm INTEGER, pergsegtrab INTEGER, perglogistica INTEGER)';
+    var queryadm = 'CREATE TABLE IF NOT EXISTS adm(id INTEGER NOT NULL PRIMARY KEY , pergunta VARCHAR NOT NULL, resposta1 VARCHAR NOT NULL, resposta2 VARCHAR NOT NULL, resposta3 VARCHAR NOT NULL, resposta4 VARCHAR NOT NULL, correta VARCHAR NOT NULL)';
+    var querysegtrab = 'CREATE TABLE IF NOT EXISTS segtrab(id INTEGER NOT NULL PRIMARY KEY , pergunta VARCHAR NOT NULL, resposta1 VARCHAR NOT NULL, resposta2 VARCHAR NOT NULL, resposta3 VARCHAR NOT NULL, resposta4 VARCHAR NOT NULL, correta VARCHAR NOT NULL)';
+    var querylogistica = 'CREATE TABLE IF NOT EXISTS logistica(id INTEGER NOT NULL PRIMARY KEY , pergunta VARCHAR NOT NULL, resposta1 VARCHAR NOT NULL, resposta2 VARCHAR NOT NULL, resposta3 VARCHAR NOT NULL, resposta4 VARCHAR NOT NULL, correta VARCHAR NOT NULL)';
     
     try {
         localDB.transaction(function(transaction){
@@ -129,61 +127,25 @@ function dropTables(){
 //     }
 // }
 
-function onDelete(){
-    // var id = document.itemForm.id.value;
-    var id=1;
-    var query = "delete from usuario where id=?;";
-    try {
-        localDB.transaction(function(transaction){
-        
-            transaction.executeSql(query, [id], function(transaction, results){
-                if (!results.rowsAffected) {
-                    updateStatus("Erro: Delete não realizado.");
-                }
-                else {
-                    updateForm("", "", "");
-                    updateStatus("Linhas deletadas:" + results.rowsAffected);
-                    queryAndUpdateOverview();
-                }
-            }, errorHandler);
-        });
-    } 
-    catch (e) {
-        updateStatus("Erro: DELETE não realizado " + e + ".");
-    }
-    
-}
 
 function onCreate(){
     var nome = document.itemForm.nome.value;
     var email = document.itemForm.email.value;
-    
+
 
     if (nome == "" || email == "") {
         updateStatus("Erro: 'Nome' e 'Email' são campos obrigatórios!");
     }
     else {
-        var query = "insert into usuario(id, nome, email, adm, segtrab, logistica, pergadm, pergsegtrab, perglogistica) VALUES (1, "+'"'+nome+'"'+", "+'"'+email+'"'+", 0, 0, 0, 0, 0, 0)";
-        try {
+            var query = "INSERT INTO usuario(id, nome, email, adm, segtrab, logistica, pergadm, pergsegtrab, perglogistica) VALUES(1, ?, ?, 0,0,0,0,0,0)";
+        
             localDB.transaction(function(transaction){
-                transaction.executeSql(query, [], function(transaction, results){
-                    if (!results.rowsAffected) {
-                        updateStatus("Erro: Inserção não realizada");
-                    }
-                    else {
-                        updateStatus("Inserção realizada, linha id: " + results.insertId);
-                        alert('Cadastrado com sucesso!');
-                        chamatela('home.html');
-                        queryAndUpdateOverview();
-
-                    }
-                }, errorHandler);
-            });
-        } 
-        catch (e) {
-            updateStatus("Erro: INSERT não realizado " + e + ".");
-        }
-    }
+              transaction.executeSql(query, [nome,email], nullDataHandler, errorHandler);
+            });      
+              updateStatus("Inserção realizada");
+              alert('Cadastrado com sucesso!');
+              chamatela('home.html');
+          }                  
 }
 
 function onSelect(htmlLIElement){
@@ -266,7 +228,6 @@ function updateForm(id, nome, email){
     document.itemForm.id.value = id;
     document.itemForm.nome.value = nome;
     document.itemForm.email.value = email;
-   
 }
 
 function updateStatus(status){
@@ -340,9 +301,10 @@ function startAdmJogo()
     materia = 'adm';
     onInit();
     jogoPontos(); // carrega a pontuação na tela do jogo
-    ultAcessada = uAcessada(); //retorna a última pergunta acessada
+    uAcessada(); //retorna a última pergunta acessada
     //exibePerg(); //Insere no select as respostas
-    alert(ultAcessada);
+    
+    
 }
 
 
@@ -633,30 +595,35 @@ function jogoPontos() //Para informar os pontos que estão no DB na view do jogo
 }
 
 
-function uAcessada()
+function uAcessada()//Retorna a última pergunta acessada
 {
-   var query = 'select '+materia+' from usuario where id=1';
+
+   switch(materia)
+          {
+            case 'adm':
+              var query = 'select * from usuario where id = 1';  
+              break;
+            case 'segtrab':
+               var query = 'select * from usuario where id = 1';  
+              break;
+            case 'logistica':
+               var query = 'select * from usuario where id = 1';  
+              break;   
+          }
+
 
    localDB.transaction(function(transaction){   
 
-        transaction.executeSql(query, [], function(transaction, results){
-          switch(materia)
-          {
-            case 'adm':
-              return results.rows.item(0).adm;  
-              break;
-            case 'segtrab':
-              return results.rows.item(0).segtrab;  
-              break;
-            case 'logistica':
-              return results.rows.item(0).logistica;  
-              break;   
-          }
-          
-                  
-        }, function(transaction, error){
-           updateStatus('Pontuação do usuário não encontrada!');
-        });
-
+        transaction.executeSql(query, [], function(transaction, results)
+        {
+           if(materia == 'adm')
+              return results.rows.item(0).pergadm; 
+            if(materia == 'segtrab')
+                return results.rows.item(0).pergsegtrab;  
+            if(materia == 'logistica')
+                return results.rows.item(0).perglogistica;    
+        });        
     });
+
+
 }

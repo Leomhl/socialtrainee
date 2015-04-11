@@ -114,14 +114,15 @@ function insertQuestionsSelect(valor, idCampo)
 
 function acertou()
 {
-	
-	$("#imgAcerto").animate({"left": "25%"}, 3000)
-	$("#imgAcerto").delay(2000).animate({"left": "-150%"}, 500);
-	
+	$("#imgAcerto").show();
+	$("#imgAcerto").animate({"left": "25%"}, 3000);
+	$("#imgAcerto").delay(2000).animate({"left": "100%"}, 1500, null, function(){$("#imgAcerto").css("display", "none")});
 }
+
 
 function errou()
 {
-	$("#imgErro").animate({"left": "25%"}, 3000)
-	$("#imgErro").delay(2000).animate({"left": "-150%"}, 500);
+	$("#imgErro").show();
+	$("#imgErro").animate({"left": "25%"}, 3000);
+	$("#imgErro").delay(2000).animate({"left": "100%"}, 1500, null, function(){$("#imgErro").css("display", "none");});
 }

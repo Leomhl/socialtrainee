@@ -67,5 +67,10 @@ body
 {
 	/*visibility: hidden; Por enquanto estão como invisíveis*/
 	position: absolute;
-	left: -150%;
+	left: 100%;
+}
+
+.some
+{
+	visibility: hidden;
 }

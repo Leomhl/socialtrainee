@@ -78,9 +78,22 @@
 							<!-- Botão para o jogo -->
 								<div class="row">
 									<div class="12u">
-										<a class="button-big esticar" style="font-type:'Yanone Kaffeesatz'; text-align: center;"  onClick="corrigeResposta()">Confirmar</a>
+										<a class="button-big esticar" style="font-type:'Yanone Kaffeesatz'; text-align: center;"  onClick="corrigir()">Confirmar</a>
 									</div>
 								</div> <!-- Final do botão para jogar -->		
+
+								<div class="row">
+									<div class="12u">
+										<a class="button-big esticar" style="font-type:'Yanone Kaffeesatz'; text-align: center;"  onClick="acertou()">Acertou</a>
+									</div>
+								</div> <!-- Final do botão para jogar -->		
+
+									<div class="row">
+									<div class="12u">
+										<a class="button-big esticar" style="font-type:'Yanone Kaffeesatz'; text-align: center;"  onClick="errou()">Errou</a>
+									</div>
+								</div> <!-- Final do botão para jogar -->	
+
 
 								<!-- O javascript obriga a ter isso aqui, senão terei que mudar as funções que são globais para o sistema, então, deixei hidden -->
 								<ul  id="itemData" style="cursor:pointer;" hidden="true"></ul>
@@ -105,14 +118,15 @@
 		<script type="text/javascript" src="cordova.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
 		<script src="js/offlinedatabaseJS.js"></script>
+
 		<script>
 			$( document ).ready(function() {
-
-    		 $( "#imgAcerto" ).animate({
-			    "left": "25%"
-			  }, 2000 );
+			    // $('#imgAcerto').hide();
+			    // $('#imgErro').hide();
 			});
+
 		</script>
+
 		<script type="text/javascript">
 			  app.initialize();
 		</script>

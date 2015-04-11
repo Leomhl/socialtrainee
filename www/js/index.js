@@ -111,3 +111,17 @@ function insertQuestionsSelect(valor, idCampo)
 	}
         
   }  
+
+function acertou()
+{
+	
+	$("#imgAcerto").animate({"left": "25%"}, 3000)
+	$("#imgAcerto").delay(2000).animate({"left": "-150%"}, 500);
+	
+}
+
+function errou()
+{
+	$("#imgErro").animate({"left": "25%"}, 3000)
+	$("#imgErro").delay(2000).animate({"left": "-150%"}, 500);
+}

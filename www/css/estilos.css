@@ -65,8 +65,7 @@ body
 /*Para as imagens de erro e acerto da tela do jogo*/
 .status
 {
-	/*visibility: hidden;*/ /*Por enquanto estão como invisíveis*/
+	/*visibility: hidden; Por enquanto estão como invisíveis*/
 	position: absolute;
-	left: -50%;
+	left: -150%;
 }
-

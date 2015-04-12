@@ -80,8 +80,6 @@ function insertSelected()
 			z.text = resposta4; //seta o texto do elemento option
 			z.value=resposta4; //seta o valor do elemento option
 			x.add(z,null); // adiciona um novo option no fim da lista para navegadores complacentes
-		
-			
 		}
 	}
 }
@@ -115,14 +113,14 @@ function insertQuestionsSelect(valor, idCampo)
 function acertou()
 {
 	$("#imgAcerto").show();
-	$("#imgAcerto").animate({"left": "25%"}, 3000);
-	$("#imgAcerto").delay(2000).animate({"left": "100%"}, 1500, null, function(){$("#imgAcerto").css("display", "none")});
+	$("#imgAcerto").animate({"left": "25%"}, 1500);
+	$("#imgAcerto").delay(500).animate({"left": "100%"}, 800, null, function(){$("#imgAcerto").css("display", "none")});
 }
 
 
 function errou()
 {
 	$("#imgErro").show();
-	$("#imgErro").animate({"left": "25%"}, 3000);
-	$("#imgErro").delay(2000).animate({"left": "100%"}, 1500, null, function(){$("#imgErro").css("display", "none");});
+	$("#imgErro").animate({"left": "25%"}, 1500);
+	$("#imgErro").delay(500).animate({"left": "100%"}, 800, null, function(){$("#imgErro").css("display", "none");});
 }

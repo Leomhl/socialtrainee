@@ -171,6 +171,608 @@ function onSelect(htmlLIElement){
    
 }
 
+
+function popularTabelas()
+{
+
+var administracao = 
+[
+  {
+    //Pergunta 1
+    'p':   'Existem alguns tipos de cheque, escolha qual não é um.',
+    'r1': 'Cheque ao portador',
+    'r2': 'Cheque tracejado',
+    'r3': 'Cheque cruzado',
+    'r4':'Cheque visado',
+    'c':  'Cheque tracejado'
+  },
+  {
+    //Pergunta 2
+    'p':   'O endosso permite?',
+    'r1': 'Transferir a posse do documento',
+    'r2': 'Proibir a transferência do documento',
+    'r3': 'Permite o descarte do documento',
+    'r4': 'Nenhuma das anteriores',
+    'c':  'Transferir a posse do documento'
+  },
+  {  
+    //Pergunta 3
+    'p':   'Complete: O cheque nominal não à ordem?',
+    'r1': 'Não pode haver ordem de pagamento',
+    'r2': 'Não se transmite por endosso',
+    'r3': 'Não é transmissível sem endosso',
+    'r4': 'É transmissível parcialmente',
+    'c':  'Não se transmite por endosso'
+  },  
+  { 
+    //Pergunta 4
+    'p':   'Sobre o cheque cruzado',
+    'r1': 'Contém informações cruzadas de usuários',
+    'r2': 'Pode ser sacado apenas em conta',
+    'r3': 'Pode ser sacado livremente',
+    'r4': 'Nenhuma das anteriores',
+    'c':  'Pode ser sacado apenas em conta'
+  },
+  { 
+    //Pergunta 5
+    'p':   'O cheque visado é?',
+    'r1': 'Aquele que poucos têm acesso',
+    'r2': 'Aquele que o banco paga apenas em caixa',
+    'r3': 'Aquele que o banco emite um visto',
+    'r4': 'Aquele que o banco paga sem testar autenticidade',
+    'c':  'Aquele que o banco emite um visto'
+  }, 
+  {
+    //Pergunta 6
+    'p':   'O cheque ao portador tem "problema" de segurança, qual é esse problema?',
+    'r1': 'Não precisar de autenticação do banco',
+    'r2': 'Não ser assinado pelo emitente ',
+    'r3': 'Não ter o nome de quem o recebe',
+    'r4': 'Não poder ser rastreado',
+    'c':  'Não ter o nome de quem o recebe'
+  },
+  {
+    //Pergunta 7
+    'p':   'Sobre a hora extra, marque a alternativa correta.',
+    'r1': 'É um adicional pago após 44h extras trabalhadas',
+    'r2': 'É pago por semestre',
+    'r3': 'De seg à sab cada hora vale 55% a mais e domingo 50%',
+    'r4': 'De seg à sab cada hora vale 50% a mais e domingo 100%',
+    'c':  'De seg à sab cada hora vale 50% a mais e domingo 100%'
+  },
+  { 
+    //Pergunta 8
+    'p':   'O limite de hora extra por dia é de:',
+    'r1': '2h',
+    'r2': '4h',
+    'r3': '1h',
+    'r4': 'Nenhuma das anteriores',
+    'c':  '2h'
+  },
+  {  
+    //Pergunta 9
+    'p':   'A hora extra só é aceita legalmente quando?',
+    'r1': 'A pessoa tem contrato por tempo definido',
+    'r2': 'A pessoa tem carteira temporária',
+    'r3': 'A pessoa tem carteira assinada',
+    'r4': 'A pessoa não tem vínculo empregatício',
+    'c':  'A pessoa tem carteira assinada'
+  },
+  {
+    //Pergunta 10
+    'p':   'Existem quantos tipos de cheque?',
+    'r1': '7',
+    'r2': '5',
+    'r3': '8',
+    'r4': '6',
+    'c':  '6'
+  },
+  {  
+    //Pergunta 11
+    'p':   'O cálculo de hora extra redonda é o mesmo das horas extras quebradas!',
+    'r1': 'Está correto',
+    'r2': 'Está incorreto',
+    'r3': 'Está parcialmente correto',
+    'r4': 'Nenhuma das anteriores',
+    'c':  'Está incorreto'
+  },
+  {  
+    //Pergunta 12
+    'p':   'Sobre a ética, é fundamental que:',
+    'r1': 'As informações devem ser espalhadas',
+    'r2': 'As informações devem ser mantidas por algum tempo',
+    'r3': 'As informações confidenciais devem ser propagadas para toda a empresa',
+    'r4': 'As informações devem ser guardadas por tempo indeterminado',
+    'c':  'As informações devem ser guardadas por tempo indeterminado'
+  },
+  {  
+    //Pergunta 13
+    'p':   'A administração é uma área:',
+    'r1': 'Área peculiar',
+    'r2': 'Área gerencial menos importante',
+    'r3': 'Área de grande importância nas empresas',
+    'r4': 'Área de igual importância aos demais setores',
+    'c':  'Área de igual importância aos demais setores'
+  },
+  {  
+    //Pergunta 14
+    'p':   'Dados de funcionários como telefone, devem ser divulgados quando?',
+    'r1': 'Requisitado por alguém',
+    'r2': 'Autorizado pelo funcionário e gerentes',
+    'r3': 'Autorizado pelo gerente',
+    'r4': 'Nenhuma das anteriores',
+    'c':  'Autorizado pelo funcionário e gerentes'
+  },
+  {  
+    //Pergunta 15
+    'p':   'Projetos da empresa devem ter sigilo desde que:',
+    'r1': 'Seja exigido o mesmo',
+    'r2': 'Éticamente o ideal é que nunca sejam contados',
+    'r3': 'Haja um contrato de sigilo formalizado',
+    'r4': 'Quando a empresa não se preocupa com sigilo',
+    'c':  'Haja um contrato de sigilo formalizado'
+  },
+  {
+    //Pergunta 16
+    'p':   'O endosso dos cheques auxiliam na segurança da transação financeira. A afirmativa está:',
+    'r1': 'Correta',
+    'r2': 'Incorreta',
+    'r3': 'Parcialmente Correta',
+    'r4': 'Nenhuma das anteriores',
+    'c':  'Parcialmente Correta'
+  },
+  {
+    //Pergunta 17
+    'p':   'A ética é:',
+    'r1': 'Uma coisa dispensável',
+    'r2': 'Chave para o profissional de qualquer ramo',
+    'r3': 'Parte de uma empresa',
+    'r4': 'De uma pessoa contratada',
+    'c':  'Chave para o profissional de qualquer ramo'
+  },
+  {  
+    //Pergunta 18
+    'p':   'Os canais de distribuição de uma empresa são:',
+    'r1': 'Modos de distribuição da renda das empresas',
+    'r2': 'Modos que as empresas recebem mercadorias',
+    'r3': 'Modos que as empresas gerenciam internamente mercadorias',
+    'r4': 'Modos que as empresas escoam sua produção',
+    'c':  'Modos que as empresas escoam sua produção'
+  },
+  {  
+    //Pergunta 19
+    'p':   'Para uma empresa de software, qual canal de distribuiçao abaixo é o correto?',
+    'r1': 'Caminhão',
+    'r2': 'Avião',
+    'r3': 'Cloud',
+    'r4': 'Carro',
+    'c':  'Cloud'
+  },
+  {
+    //Pergunta 20
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+  {  
+    //Pergunta 21
+    'p':   '',
+    '1r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+  {  
+    //Pergunta 22
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''    
+  }
+];
+
+
+var segurancaTrabalho = 
+[
+  {
+    //Pergunta 1
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+  {
+    //Pergunta 2
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+  {
+    //Pergunta 3
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 4
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+  {
+    //Pergunta 5 
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 6
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 7
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 8
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 9
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 10
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 11
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 12
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 13
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 14
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 15
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 16
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 17
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 18
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 19
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 20
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  }
+];  
+
+var logistica = 
+[
+  {
+    //Pergunta 1
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+  {
+    //Pergunta 2
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+  {
+    //Pergunta 3
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 4
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+  {
+    //Pergunta 5 
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 6
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 7
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 8
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 9
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 10
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 11
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 12
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 13
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 14
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 15
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 16
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 17
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 18
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 19
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  },
+   {
+    //Pergunta 20
+    'p':   '',
+    'r1': '',
+    'r2': '',
+    'r3': '',
+    'r4': '',
+    'c':  ''
+  }
+];  
+      
+ 
+    try {
+        localDB.transaction(function(transaction){
+           
+          for(i=0; i<=19;i++)
+          {  
+            var queryAdm= "INSERT INTO adm(pergunta, resposta1,resposta2,resposta3,resposta4,correta) VALUES("+"'"+administracao[i].p+"','"+ administracao[i].r1+"','"+ administracao[i].r2+"','"+administracao[i].r3+"','"+administracao[i].r4+"','"+administracao[i].c+"')";
+            transaction.executeSql(queryAdm, [], nullDataHandler, errorHandler); 
+            
+             var querysegtb= "INSERT INTO segtrab(pergunta, resposta1,resposta2,resposta3,resposta4,correta) VALUES("+"'"+segurancaTrabalho[i].p+"','"+ segurancaTrabalho[i].r1+"','"+ segurancaTrabalho[i].r2+"','"+segurancaTrabalho[i].r3+"','"+segurancaTrabalho[i].r4+"','"+segurancaTrabalho[i].c+"')";
+             
+             transaction.executeSql(querysegtb, [], nullDataHandler, errorHandler); 
+            
+             var querylog= "INSERT INTO logistica(pergunta, resposta1,resposta2,resposta3,resposta4,correta) VALUES("+"'"+logistica[i].p+"','"+ logistica[i].r1+"','"+ logistica[i].r2+"','"+logistica[i].r3+"','"+logistica[i].r4+"','"+logistica[i].c+"')";
+             transaction.executeSql(querylog, [], nullDataHandler, errorHandler); 
+            
+            
+          }
+updateStatus("Cadastrado com sucesso!");
+        });
+    } 
+    catch (e) {
+        updateStatus("Erro: Tabelas não criadas " + e + ".");
+        return;
+    }
+
+}
 // function queryAndUpdateOverview(){
 
 //     //Remove as linhas existentes para inserção das novas

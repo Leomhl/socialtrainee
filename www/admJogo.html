@@ -31,7 +31,7 @@
 	</style>
 
 	</head>
-	<body onload="startAdmJogo()">
+	<body onload="startAdmJogo()"> <!--onunload="sairJogo()">-->
 
 		<!-- Header -->
 			<div id="header-wrapper">
@@ -44,7 +44,7 @@
 							
 							<!-- Nav -->
 								<nav id="nav">
-									<a href="">Terminar Jogo</a>	
+									<a href="javascript: sairJogo();" >Terminar Jogo</a>	
 									<a href=""> </a>
 								</nav>
 						</div>
@@ -59,7 +59,7 @@
 							<form id="principal" name="principal">
 								<div class="wrapper">
 									<span>
-										<img src="images/questions.png" id="imgQuestion">
+										<img src="images/questions.png" id="imgQuestion" onClick="popularTabelas()">
 									</span>	
 
 										<img src="images/acerto.png" width="50%" class="status"  id="imgAcerto"> 
@@ -82,19 +82,7 @@
 									</div>
 								</div> <!-- Final do botão para jogar -->		
 
-								<div class="row">
-									<div class="12u">
-										<a class="button-big esticar" style="font-type:'Yanone Kaffeesatz'; text-align: center;"  onClick="acertou()">Acertou</a>
-									</div>
-								</div> <!-- Final do botão para jogar -->		
-
-									<div class="row">
-									<div class="12u">
-										<a class="button-big esticar" style="font-type:'Yanone Kaffeesatz'; text-align: center;"  onClick="errou()">Errou</a>
-									</div>
-								</div> <!-- Final do botão para jogar -->	
-
-
+	
 								<!-- O javascript obriga a ter isso aqui, senão terei que mudar as funções que são globais para o sistema, então, deixei hidden -->
 								<ul  id="itemData" style="cursor:pointer;" hidden="true"></ul>
 			<!--	style="visibility: hidden;" -->

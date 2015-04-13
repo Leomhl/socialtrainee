@@ -124,3 +124,15 @@ function errou()
 	$("#imgErro").animate({"left": "25%"}, 1500);
 	$("#imgErro").delay(500).animate({"left": "100%"}, 800, null, function(){$("#imgErro").css("display", "none");});
 }
+
+
+function sairJogo()//Para sair do jogo
+{
+	var confirmacao = confirm('Deseja sair do jogo?');
+
+	if(confirmacao)
+		chamatela('home.html');
+	else
+		exit;
+
+}

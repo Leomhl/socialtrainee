@@ -95,6 +95,26 @@ function dropTables(){
     }
 }
 
+function dropDatabase(){
+    dropTables();
+    var query = 'drop database stuffDB';
+    try {
+        localDB.transaction(function(transaction){
+
+            transaction.executeSql(query, [], nullDataHandler, errorHandler);
+            alert("Banco 'dropadas' com sucesso!");
+
+        });
+    } 
+    catch (e) {
+        // updateStatus("Erro: drop não feito " + e + ".");
+        alert("Erro: drop no banco não feito " + e + ".");
+        return;
+    }
+
+    initDB();
+}
+
 //2. Query e visualização de Update
 
 
@@ -341,7 +361,7 @@ var administracao =
   },
   {  
     //Pergunta 19
-    'p':   'Para uma empresa de software, qual canal de distribuiçao abaixo é o correto?',
+    'p':  'Para uma empresa de software, qual canal de distribuiçao abaixo é o correto?',
     'r1': 'Caminhão',
     'r2': 'Avião',
     'r3': 'Cloud',
@@ -350,30 +370,102 @@ var administracao =
   },
   {
     //Pergunta 20
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'Quais devem ser os tipos de arquivo?',
+    'r1': 'Ativo, parcial, inativo',
+    'r2': 'Ativo, ativo parcial, inativo',
+    'r3': 'Ativo, inativo, morto',
+    'r4': 'Ativo inicial, ativo parcial, inativo',
+    'c':  'Ativo, inativo, morto'
   },
   {  
     //Pergunta 21
-    'p':   '',
-    '1r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'Quantos são os tipos de suporte?',
+    '1r1':'5',
+    'r2': '6',
+    'r3': '7',
+    'r4': '8',
+    'c':  '7'
   },
   {  
     //Pergunta 22
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''    
+    'p':  'Qual o nome da tabela que controla o tempo que os documentos devem ser guardados?',
+    'r1': 'Tabela documental',
+    'r2': 'Tabela de temporalidade',
+    'r3': 'Tabela administrativa',
+    'r4': 'Tabela insertiva',
+    'c':  'Tabela de temporalidade'    
+  },
+  {  
+    //Pergunta 23
+    'p':  'O suporte textual, proporciona o armazenamento de mensagens de texto vindas de qualquer área , seja digital, cartográfica e etc.',
+    'r1': 'Correto',
+    'r2': 'Incorreto',
+    'r3': 'Parcialmente correto',
+    'r4': 'Nenhuma das anteriores',
+    'c':  'Incorreto'    
+  },
+  {  
+    //Pergunta 24
+    'p':  'Caso o documento tenha sido armazenado em um suporte informático, deve haver uma checagem de dados de quanto em quanto tempo?',
+    'r1': '1 ano',
+    'r2': '8 meses',
+    'r3': '8 anos',
+    'r4': '20 anos',
+    'c':  '8 anos'    
+  },
+  {  
+    //Pergunta 25
+    'p':  'Microfilmático pigmentado é um tipo de suporte?',
+    'r1': 'Sim',
+    'r2': 'Não',
+    'r3': 'Apenas para vídeos',
+    'r4': 'Apeas para fotos',
+    'c':  'Não'    
+  },
+  {  
+    //Pergunta 26
+    'p':  'O contrato por tempo determinado tem duração máxima de 1 ano?',
+    'r1': 'Não, sua duração varia',
+    'r2': 'Sim',
+    'r3': 'Não, deve durar apenas 90 dias',
+    'r4': 'Nenhuma das anteriores',
+    'c':  'Não, sua duração varia'    
+  },
+  {  
+    //Pergunta 27
+    'p':  'O contrato de experiência não pode ultrapassar 90 dias! Esta afirmação está?',
+    'r1': 'Expressamente incorreta',
+    'r2': 'Parcialmente correta',
+    'r3': 'Correta',
+    'r4': 'Nenhuma das anteriores',
+    'c':  'Correta'    
+  },
+  {  
+    //Pergunta 28
+    'p':  'O empregador não precisa pela lei declara na carteira de alguém que está em período de experiência! A afirmativa está?',
+    'r1': 'Incorreta pois a lei não cuida de período experimental',
+    'r2': 'Correta pois só assina-se a carteira quando há contratação',
+    'r3': 'Incorreta pois o empregador não precisa assinar a carteira nunca',
+    'r4': 'Incorreta pois é necessário registrar o período de experiência na carteira de trabalho',
+    'c':  'Incorreta pois é necessário registrar o período de experiência na carteira de trabalho'    
+  },
+  {  
+    //Pergunta 29
+    'p':  'A carga horária integral de um trabalhador pela lei deve ser de?',
+    'r1': '44 horas mensais',
+    'r2': '4 horas diárias',
+    'r3': '44 horas semanais',
+    'r4': '7 horas diárias',
+    'c':  '44 horas semanais'    
+  },
+  {  
+    //Pergunta 30
+    'p':  'A carga horária parcial de um trabalhador pela lei deve ser de?',
+    'r1': '44 horas mensais',
+    'r2': '20 horas mensais até 44 horas mensais',
+    'r3': '20 horas semanais até 25 horas semanais',
+    'r4': '25 horas semanais até 44 horas semanais',
+    'c':  '20 horas semanais até 25 horas semanais'    
   }
 ];
 
@@ -750,17 +842,17 @@ var logistica =
     try {
         localDB.transaction(function(transaction){
            
-          for(i=0; i<=19;i++)
+          for(i=0; i<=29;i++)
           {  
             var queryAdm= "INSERT INTO adm(pergunta, resposta1,resposta2,resposta3,resposta4,correta) VALUES("+"'"+administracao[i].p+"','"+ administracao[i].r1+"','"+ administracao[i].r2+"','"+administracao[i].r3+"','"+administracao[i].r4+"','"+administracao[i].c+"')";
             transaction.executeSql(queryAdm, [], nullDataHandler, errorHandler); 
             
-             var querysegtb= "INSERT INTO segtrab(pergunta, resposta1,resposta2,resposta3,resposta4,correta) VALUES("+"'"+segurancaTrabalho[i].p+"','"+ segurancaTrabalho[i].r1+"','"+ segurancaTrabalho[i].r2+"','"+segurancaTrabalho[i].r3+"','"+segurancaTrabalho[i].r4+"','"+segurancaTrabalho[i].c+"')";
+             // var querysegtb= "INSERT INTO segtrab(pergunta, resposta1,resposta2,resposta3,resposta4,correta) VALUES("+"'"+segurancaTrabalho[i].p+"','"+ segurancaTrabalho[i].r1+"','"+ segurancaTrabalho[i].r2+"','"+segurancaTrabalho[i].r3+"','"+segurancaTrabalho[i].r4+"','"+segurancaTrabalho[i].c+"')";
              
-             transaction.executeSql(querysegtb, [], nullDataHandler, errorHandler); 
+             // transaction.executeSql(querysegtb, [], nullDataHandler, errorHandler); 
             
-             var querylog= "INSERT INTO logistica(pergunta, resposta1,resposta2,resposta3,resposta4,correta) VALUES("+"'"+logistica[i].p+"','"+ logistica[i].r1+"','"+ logistica[i].r2+"','"+logistica[i].r3+"','"+logistica[i].r4+"','"+logistica[i].c+"')";
-             transaction.executeSql(querylog, [], nullDataHandler, errorHandler); 
+             // var querylog= "INSERT INTO logistica(pergunta, resposta1,resposta2,resposta3,resposta4,correta) VALUES("+"'"+logistica[i].p+"','"+ logistica[i].r1+"','"+ logistica[i].r2+"','"+logistica[i].r3+"','"+logistica[i].r4+"','"+logistica[i].c+"')";
+             // transaction.executeSql(querylog, [], nullDataHandler, errorHandler); 
             
             
           }
@@ -994,6 +1086,10 @@ function insertQuestionsInDB()
         createTables();
         updateStatus("As tabelas foram excluídas e recriadas!");
         document.itemForm.pergunta.value = "";
+    }
+    else if(pergunta == 'dropdb' || pergunta == 'Dropdb')
+    {
+      dropDatabase();
     }
     else
     {

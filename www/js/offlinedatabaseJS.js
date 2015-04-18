@@ -1308,20 +1308,25 @@ function uAcessada()//Retorna a última pergunta acessada
                var query = 'select * from usuario where id = 1';  
               break;   
           }
+    
 
 
-   localDB.transaction(function(transaction){   
+   
 
-        transaction.executeSql(query, [], function(transaction, results)
-        {
-           if(materia == 'adm')
-              return results.rows.item(0).pergadm; 
-            if(materia == 'segtrab')
-                return results.rows.item(0).pergsegtrab;  
-            if(materia == 'logistica')
-                return results.rows.item(0).perglogistica;    
-        });        
-    });
+    localDB.transaction(queryDB); 
+    localDB.executeSql('SELECT * FROM DEMO', [], querySuccess);
+    alert(querysucess);
+
+   //      {
+   //         if(materia == 'adm')
+   //            return results.rows.item(0).pergadm; 
+   //          if(materia == 'segtrab')
+   //              return results.rows.item(0).pergsegtrab;  
+   //          if(materia == 'logistica')
+   //              return results.rows.item(0).perglogistica;    
+   //      });        
+   
 
 
 }
+

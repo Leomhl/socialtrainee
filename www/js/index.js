@@ -111,18 +111,27 @@ function insertQuestionsSelect(valor, idCampo)
   }  
 
 //Gera a animação agráfica para as imagens de erro e acerto da tela de jogo
-function acertou()
+function efeitosAcertou()
 {
-	$("#imgAcerto").show();
-	$("#imgAcerto").animate({"left": "25%"}, 1500);
-	$("#imgAcerto").delay(500).animate({"left": "100%"}, 800, null, function(){$("#imgAcerto").css("display", "none")});
+	playMP3(1);
+	var acertou = $("#imgAcerto");
+	acertou.show();
+	acertou.animate({"left": "25%"}, 1500);
+	acertou.delay(500).animate({"left": "100%"}, 800, null, function(){$("#imgAcerto").css("display", "none")});
+	pontos(1);
 }
 
-function errou()
+
+function efeitosErrou()
 {
-	$("#imgErro").show();
-	$("#imgErro").animate({"left": "25%"}, 1500);
-	$("#imgErro").delay(500).animate({"left": "100%"}, 800, null, function(){$("#imgErro").css("display", "none");});
+	playMP3(0);
+
+	var errou = $("#imgErro");
+	errou.show();
+	errou.animate({"left": "25%"}, 1500);
+	vibrar();
+	errou.delay(500).animate({"left": "100%"}, 800, null, function(){$("#imgErro").css("display", "none");});
+	pontos(0);
 }
 
 
@@ -136,3 +145,13 @@ function sairJogo()//Para sair do jogo
 		exit;
 
 }
+
+
+function playMP3(op)
+{ 
+	if(op)
+		document.getElementById("acerto").play();
+
+	else
+		document.getElementById("erro").play();
+} 

@@ -58,8 +58,9 @@
 							<form id="principal" name="principal">
 								<div class="wrapper">
 									<span>
-										<img src="images/questions.png" id="imgQuestion" onClick="errou()">
+										<img src="images/questions.png" id="imgQuestion" onClick="efeitosAcertou()">
 									</span>	
+
 
 										<img src="images/acerto.png" width="50%" class="status"  id="imgAcerto"> 
 										<img src="images/erro.png" width="50%" class="status" id="imgErro">
@@ -79,9 +80,12 @@
 									<div class="12u">
 										<a class="button-big esticar" style="font-type:'Yanone Kaffeesatz'; text-align: center;"  onClick="corrigir()">Confirmar</a>
 									</div>
-								</div> <!-- Final do botão para jogar -->		
+								</div> <!-- Final do botão para jogar -->
 
-	
+								<!--Para os efeitos de áudio-->		
+								<audio src="js/sound/acerto.mp3" id="acerto" preload="auto"></audio>
+								<audio src="js/sound/erro.mp3" id="erro" preload="auto"></audio>
+									
 								<!-- O javascript obriga a ter isso aqui, senão terei que mudar as funções que são globais para o sistema, então, deixei hidden -->
 								<ul  id="itemData" style="cursor:pointer;" hidden="true"></ul>
 			<!--	style="visibility: hidden;" -->
@@ -104,6 +108,7 @@
 		<!-- Javascript do Cordova Phonegap -->
 		<script type="text/javascript" src="cordova.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/ion.sound.min.js"></script>
 		<script src="js/offlinedatabaseJS.js"></script>
 
 		<!-- Para ocultar as imagens de acerto e erro-->

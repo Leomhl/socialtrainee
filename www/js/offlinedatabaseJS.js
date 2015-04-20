@@ -1297,36 +1297,88 @@ function uAcessada()//Retorna a última pergunta acessada
 {
 
    switch(materia)
-          {
-            case 'adm':
-              var query = 'select * from usuario where id = 1';  
-              break;
-            case 'segtrab':
-               var query = 'select * from usuario where id = 1';  
-              break;
-            case 'logistica':
-               var query = 'select * from usuario where id = 1';  
-              break;   
-          }
+        {
+          case 'adm':
+            var query = 'select pregunta from adm where id = 1';  
+            break;
+          case 'segtrab':
+             var query = 'select * from usuario where id = 1';  
+            break;
+          case 'logistica':
+             var query = 'select * from usuario where id = 1';  
+            break;   
+        } 
     
+    var dfr = new $.Deferred();
+    
+    localDB.transaction(function (transaction) {
+        transaction.executeSql(query, [], dfr.resolve, dfr.fail);
+    }, dfr.fail); 
+
+//     dfr.done(function (data) { //registramos um callback para casos de sucesso
+//     console.log(data.executeSql.arguments);
+// });
 
 
-   
+ 
 
-    localDB.transaction(queryDB); 
-    localDB.executeSql('SELECT * FROM DEMO', [], querySuccess);
-    alert(querysucess);
-
-   //      {
-   //         if(materia == 'adm')
-   //            return results.rows.item(0).pergadm; 
-   //          if(materia == 'segtrab')
-   //              return results.rows.item(0).pergsegtrab;  
-   //          if(materia == 'logistica')
-   //              return results.rows.item(0).perglogistica;    
-   //      });        
-   
-
+// getSqlResultSet().then(function (response) {
+//     // Your code here
+// });
 
 }
 
+
+//para controlar a pontuação do jogo
+function pontos(flag)
+{
+    
+    if(flag)
+    {
+        var arrayPts = document.getElementById('pontos').innerHTML;//Pego na tela os pontos
+        arrayPts = arrayPts.split(' ');//separo os números da paravra 'Pontos'
+        var pontos = parseInt(arrayPts[0]);
+        var pts = (pontos + 10) + ' Pontos';//Adiciono mais pontos
+    }
+    else
+    {
+        var arrayPts = document.getElementById('pontos').innerHTML;
+        arrayPts = arrayPts.split(' ');
+        var pontos = parseInt(arrayPts[0]);
+
+        if(pontos < 15)
+        {
+           var pts = 0 + ' Pontos';
+        }
+        else
+        {
+          var  pts = (pontos - 15) + ' Pontos';
+            
+        }
+        
+    }
+
+        var arrayPts = pts;
+        arrayPts = arrayPts.split(' ');
+        pontos = arrayPts[0];
+   
+        localDB.transaction(function(transaction){
+           
+         switch(materia)
+              {
+                  case 'adm':
+                      var query = 'update usuario set adm = ? where id = 1';
+                      break;
+                  case 'segTrab':
+                      var query = 'update usuario set segtrab = ? where id = 1';   
+                      break;
+                  case 'logistica': 
+                      var query = 'update usuario set logistica = ? where id = 1';      
+                      break;   
+              }
+
+            transaction.executeSql(query, [pontos], nullDataHandler, errorHandler); 
+            document.getElementById('pontos').innerHTML = pts;//Exibo na tela
+        });
+   
+}

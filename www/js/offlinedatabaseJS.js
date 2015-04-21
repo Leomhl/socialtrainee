@@ -15,6 +15,9 @@
   var resposta4 = null;
   var correta = null; 
 
+  var uacc = null; //Última acessada
+  var ucad = null; //Última cadastrada
+
 
 function onInit()
 {
@@ -60,7 +63,7 @@ function createTables(){
             transaction.executeSql(queryadm, [], nullDataHandler, errorHandler);
             transaction.executeSql(querysegtrab, [], nullDataHandler, errorHandler);
             transaction.executeSql(querylogistica, [], nullDataHandler, errorHandler);
-            updateStatus("Conexão com o BD: OK!");
+            // // updateStatus("Conexão com o BD: OK!");
         });
     } 
     catch (e) {
@@ -164,7 +167,7 @@ function onCreate(){
             });      
               updateStatus("Inserção realizada");
               alert('Cadastrado com sucesso!');
-              chamatela('home.html');
+              popularTabelas();   
           }                  
 }
 
@@ -860,10 +863,10 @@ updateStatus("Cadastrado com sucesso!");
         });
     } 
     catch (e) {
-        updateStatus("Erro: Tabelas não criadas " + e + ".");
+        updateStatus("Erro: População não criada " + e + ".");
         return;
     }
-
+    chamatela('home.html');
 }
 // function queryAndUpdateOverview(){
 
@@ -990,18 +993,36 @@ function startHome()
     nome();
 }
 
-function startAdmJogo()
+function startJogo(mat)
 {
-    materia = 'adm';
+     switch(mat)
+      {
+          case 'adm':
+               materia = 'adm';
+              break;
+          case 'segTrab':
+               materia = 'segtrab';   
+               break;
+          case 'logistica': 
+               materia = 'logistica';
+              break;   
+      }
+   
     onInit();
     jogoPontos(); // carrega a pontuação na tela do jogo
-    uAcessada(); //retorna a última pergunta acessada
-    //exibePerg(); //Insere no select as respostas
+    uAcessadauCadastrada(); //retorna a última pergunta acessada
+
+    //Para conseguir carregar as perguntas
+    var pausa = setInterval(function(){ carregaPerg(); clearInterval(pausa); }, 250);
+    
     
     
 }
 
-
+function ppp()
+{
+    alert(pergunta);
+}
 //Exibe na view de informações os dados do banco
 function updateInformations(id, nome, email, adm, segtrab, logistica){
     document.getElementById('nome').innerHTML = '<hr>Nome: <br>'+nome;
@@ -1293,39 +1314,108 @@ function jogoPontos() //Para informar os pontos que estão no DB na view do jogo
 }
 
 
-function uAcessada()//Retorna a última pergunta acessada
+function uAcessadauCadastrada()//Retorna a última pergunta acessada
 {
 
    switch(materia)
         {
           case 'adm':
-            var query = 'select pregunta from adm where id = 1';  
+            var query1 = 'select pergadm from usuario where id = 1';  
+            var query2 = 'select id from adm order by id desc limit 1';
             break;
           case 'segtrab':
-             var query = 'select * from usuario where id = 1';  
+             var query1 = 'select pergsegtrab from usuario where id = 1';  
+             var query2 = 'select id from segtrab order by id desc limit 1';
             break;
           case 'logistica':
-             var query = 'select * from usuario where id = 1';  
+             var query1 = 'select perglogistica from usuario where id = 1';
+             var query2 = 'select id from logistica order by id desc limit 1';  
             break;   
         } 
+
     
-    var dfr = new $.Deferred();
-    
-    localDB.transaction(function (transaction) {
-        transaction.executeSql(query, [], dfr.resolve, dfr.fail);
-    }, dfr.fail); 
+        localDB.transaction(function(transaction){
 
-//     dfr.done(function (data) { //registramos um callback para casos de sucesso
-//     console.log(data.executeSql.arguments);
-// });
+            transaction.executeSql(query1, [], function(transaction, results)
+            {
+               var len = results.rows.length;
+               
+               // Caso encontre algum registro
+                if(len == 1)
+                {
+                     switch(materia)
+                    {
+                      case 'adm':
+                        var valor = results.rows.item(0).pergadm;
+                         //Infelizmente a linha abaixo é uma gambiarra que precisei fazer para receber dados assíncronos
+                         // do sqlite por não ter conseguido ajuda com as requisições assíncronas a tempo. 
+                        var pausa = setInterval(function(){uacc = valor; clearInterval(pausa); }, 100);
+                    
+                        break;
+                      case 'segtrab':
+                         var valor = results.rows.item(0).pergsegtrab;  
+                         //Infelizmente a linha abaixo é uma gambiarra que precisei fazer para receber dados assíncronos
+                         // do sqlite por não ter conseguido ajuda com as requisições assíncronas a tempo. 
+                         var pausa = setInterval(function(){uacc = valor; clearInterval(pausa); }, 100);
+
+                        break;
+                      case 'logistica':
+                         var valor = results.rows.item(0).perglogistica; 
+                          //Infelizmente a linha abaixo é uma gambiarra que precisei fazer para receber dados assíncronos
+                         // do sqlite por não ter conseguido ajuda com as requisições assíncronas a tempo. 
+                         var pausa = setInterval(function(){uacc = valor; clearInterval(pausa); }, 100);
+
+                        break;   
+                    } 
+                }
+
+                 
+            }, function(transaction, error){
+                 updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
+            
+            });
 
 
- 
+        //Transação para a última acessada
+        transaction.executeSql(query2, [], function(transaction, results)
+            {
+               var len = results.rows.length;
+               
+               // Caso encontre algum registro
+                if(len == 1)
+                {
+                     switch(materia)
+                    {
+                      case 'adm':
+                        var vl = results.rows.item(0).id;
+                         //Infelizmente a linha abaixo é uma gambiarra que precisei fazer para receber dados assíncronos
+                         // do sqlite por não ter conseguido ajuda com as requisições assíncronas a tempo. 
+                        var pausa = setInterval(function(){ucad = vl;  clearInterval(pausa); }, 100);
+                    
+                        break;
+                      case 'segtrab':
+                         var vl = results.rows.item(0).id;  
+                         //Infelizmente a linha abaixo é uma gambiarra que precisei fazer para receber dados assíncronos
+                         // do sqlite por não ter conseguido ajuda com as requisições assíncronas a tempo. 
+                         var pausa = setInterval(function(){ucad = vl; clearInterval(pausa); }, 100);
 
-// getSqlResultSet().then(function (response) {
-//     // Your code here
-// });
+                        break;
+                      case 'logistica':
+                         var vl = results.rows.item(0).id; 
+                          //Infelizmente a linha abaixo é uma gambiarra que precisei fazer para receber dados assíncronos
+                         // do sqlite por não ter conseguido ajuda com as requisições assíncronas a tempo. 
+                         var pausa = setInterval(function(){ucad = vl; clearInterval(pausa); }, 100);
 
+                        break;   
+                    } 
+                }
+
+                 
+            }, function(transaction, error){
+                 updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
+            
+            });
+        });
 }
 
 
@@ -1379,6 +1469,108 @@ function pontos(flag)
 
             transaction.executeSql(query, [pontos], nullDataHandler, errorHandler); 
             document.getElementById('pontos').innerHTML = pts;//Exibo na tela
+            
         });
-   
+}
+
+function carregaPerg()
+{
+    if(uacc <= ucad)
+    {
+         switch(materia)
+            {
+              case 'adm':
+                var query = 'select * from adm where id = '+(parseInt(uacc)+1);  
+                break;
+              case 'segtrab':
+                 var query = 'select * from segtrab where id = '+(parseInt(uacc)+1);  
+                break;
+              case 'logistica':
+                 var query = 'select * from logistica where id = '+(parseInt(uacc)+1);
+                break;   
+            } 
+
+        
+            localDB.transaction(function(transaction){
+
+                transaction.executeSql(query, [], function(transaction, results)
+                {
+            
+                    var p = results.rows.item(0).pergunta;
+                    var r1 = results.rows.item(0).resposta1;
+                    var r2 = results.rows.item(0).resposta2;
+                    var r3 = results.rows.item(0).resposta3;
+                    var r4 = results.rows.item(0).resposta4;
+                    var c = results.rows.item(0).correta;
+
+                     //Infelizmente a linha abaixo é uma gambiarra que precisei fazer para receber dados assíncronos
+                     // do sqlite por não ter conseguido ajuda com as requisições assíncronas a tempo. 
+                    var pausa = setInterval(function(){
+                       document.getElementById('pergunta').innerHTML = p; 
+                       insertQuestionsSelect(r1,'respostas');
+                       insertQuestionsSelect(r2,'respostas');
+                       insertQuestionsSelect(r3,'respostas');
+                       insertQuestionsSelect(r4,'respostas');
+                     
+                       correta = c;
+
+                        
+                        clearInterval(pausa); 
+                            }, 350);   
+
+                }, function(transaction, error){
+                     updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
+                
+               });
+              
+              
+              var pausa = setInterval(function(){
+               uacc = parseInt(uacc) + 1;
+                      localDB.transaction(function(transaction){
+                        switch(materia)
+                        {
+                          case 'adm':
+                            transaction.executeSql('update usuario set pergadm = ?', [uacc], nullDataHandler, errorHandler);
+                            break;
+                          case 'segtrab':
+                            transaction.executeSql('update usuario set pergsegtrab = ? ', [uacc], nullDataHandler, errorHandler);  
+                            break;
+                          case 'logistica':
+                             transaction.executeSql('update usuario set perglogistica = ? ', [uacc], nullDataHandler, errorHandler);
+                            break;   
+                        }
+                      });  
+                clearInterval(pausa); 
+              }, 400);  
+                    
+            
+
+        
+
+            });
+    }else if(uacc > ucad)
+    {
+        alert('O jogo terminou! Aproveite para jogar as outras modalidades ou pessa para alguém cadastrar mais perguntas (: .');
+        chamatela('informacoes.html');
+    }
+}
+
+function corrigir()
+{
+    var resposta = document.principal.respostas.value;
+
+    if(resposta == 'Toque aqui para selecionar')
+        alert('Selecione uma resposta!');
+    else
+    if(resposta == correta)
+    {
+       pontos(1);
+       efeitosAcertou();
+    }else
+    {
+       pontos(0);
+       efeitosErrou();  
+    }
+    limparSelect('respostas');
+    carregaPerg();
 }

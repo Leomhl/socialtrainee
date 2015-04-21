@@ -30,7 +30,7 @@
 	</style>
 
 	</head>
-	<body onload="startAdmJogo()"> <!--onunload="sairJogo()">-->
+	<body onload="startJogo('adm')"> <!--onunload="sairJogo()">-->
 
 		<!-- Header -->
 			<div id="header-wrapper">
@@ -58,7 +58,7 @@
 							<form id="principal" name="principal">
 								<div class="wrapper">
 									<span>
-										<img src="images/questions.png" id="imgQuestion" onClick="efeitosAcertou()">
+										<img src="images/questions.png" id="imgQuestion" onClick="ppp()">
 									</span>	
 
 
@@ -88,7 +88,7 @@
 								<br>
 								<h4 hidden>Status:</h4>
 								<div id="status"></div>
-<a href="javascript: efeitosErrou()">Errou kkfjkadfdjsfjls</a>
+
 							</div>
 						</div>
 					</div>
@@ -104,7 +104,6 @@
 		<!-- Javascript do Cordova Phonegap -->
 		<script type="text/javascript" src="cordova.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
-		<script type="text/javascript" src="js/ion.sound.min.js"></script>
 		<script src="js/offlinedatabaseJS.js"></script>
 
 		<!-- Para ocultar as imagens de acerto e erro-->

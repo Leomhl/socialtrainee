@@ -113,11 +113,12 @@ function insertQuestionsSelect(valor, idCampo)
 //Gera a animação agráfica para as imagens de erro e acerto da tela de jogo
 function efeitosAcertou()
 {
-	playMP3(1);
+
 	var acertou = $("#imgAcerto");
 	acertou.show();
 	acertou.animate({"left": "25%"}, 1500);
 	acertou.delay(500).animate({"left": "100%"}, 800, null, function(){$("#imgAcerto").css("display", "none")});
+
 }
 
 
@@ -126,9 +127,9 @@ function efeitosErrou()
 	var errou = $("#imgErro");
 	errou.show();
 	errou.animate({"left": "25%"}, 1500);
-	vibrar();
+	// vibrar();
 	errou.delay(500).animate({"left": "100%"}, 800, null, function(){$("#imgErro").css("display", "none");});
-	pontos(0);
+	
 }
 
 

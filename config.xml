@@ -19,7 +19,7 @@
     <preference name="disable-cursor" value="false" />
     <preference name="android-minSdkVersion" value="7" />
     <preference name="android-installLocation" value="auto"/>
-    <gap:plugin name="org.apache.cordova.vibration" />
+    <gap:plugin name="org.apache.phonegap.vibration" />
     
     <icon src="icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="www/res/icon/android/drawable-ldpi.png" />

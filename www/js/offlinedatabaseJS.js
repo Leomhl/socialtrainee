@@ -1077,7 +1077,7 @@ function insertQuestionsInDB()
     var resposta2 = document.itemForm.resposta2.value;
     var resposta3 = document.itemForm.resposta3.value;
     var resposta4 = document.itemForm.resposta4.value;
-    var curso     = document.itemForm.value;//erro aqui
+    var curso     = document.itemForm.jogo.value;
     var correta   = document.itemForm.mySelect.value;
     
     if(pergunta == 'drop' || pergunta == 'Drop')

@@ -118,14 +118,11 @@ function efeitosAcertou()
 	acertou.show();
 	acertou.animate({"left": "25%"}, 1500);
 	acertou.delay(500).animate({"left": "100%"}, 800, null, function(){$("#imgAcerto").css("display", "none")});
-	pontos(1);
 }
 
 
 function efeitosErrou()
 {
-	playMP3(0);
-
 	var errou = $("#imgErro");
 	errou.show();
 	errou.animate({"left": "25%"}, 1500);
@@ -143,15 +140,4 @@ function sairJogo()//Para sair do jogo
 		chamatela('home.html');
 	else
 		exit;
-
 }
-
-
-function playMP3(op)
-{ 
-	if(op)
-		document.getElementById("acerto").play();
-
-	else
-		document.getElementById("erro").play();
-} 

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.phonegap.socialtrainee" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.phonegap.socialtrainee" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/3.5.0">
     <name>Social Trainee</name>
     <description>
         O Social Trainee é um aplicativo desenolvido de alunos para alunos. Suas funcionalidades são baseadas em treinar e capacitar com jogos.
@@ -21,7 +21,7 @@
     <preference name="android-installLocation" value="auto"/>
     <gap:plugin name="org.apache.cordova.vibration" />
     
-    <icon src="www/img/icon.png" />
+    <icon src="icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="www/res/icon/android/drawable-ldpi.png" />
     <icon gap:platform="android" gap:qualifier="mdpi" src="www/res/icon/android/drawable-mdpi.png" />
     <icon gap:platform="android" gap:qualifier="hdpi" src="www/res/icon/android/drawable-hdpi.png" />

@@ -1,8 +1,8 @@
 /*Background de fundo das telas*/
-body
+/*body
 {
 	background-color: #000F19;
-}
+}*/
 
 .botao
 {
@@ -39,9 +39,9 @@ body
 .splashImg 
 {
 	position: absolute;
-	width: 50%;
-	height: 50%;
-	padding: 25%;
+	width: 70%;
+	height: 70%;
+	padding: 15%;
 }
 
 

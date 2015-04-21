@@ -7,7 +7,7 @@
     <author email="leonardomarinho.nf@gmail.com">
         Leonardo Herdy Marinho | LHM
     </author>
-    <content src="index.html" />
+    <content src="index.html"/>
     <preference name="permissions" value="none" />
     <preference name="orientation" value="portrait" />
     <preference name="target-device" value="universal" />
@@ -18,16 +18,14 @@
     <preference name="exit-on-suspend" value="false" />
     <preference name="disable-cursor" value="false" />
     <preference name="android-minSdkVersion" value="7" />
-     <preference name="android-installLocation" value="auto"/>
-
+    <preference name="android-installLocation" value="auto"/>
     <gap:plugin name="org.apache.cordova.vibration" />
     
-    <icon src="icon.png" />
+    <icon src="www/img/icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="www/res/icon/android/drawable-ldpi.png" />
     <icon gap:platform="android" gap:qualifier="mdpi" src="www/res/icon/android/drawable-mdpi.png" />
     <icon gap:platform="android" gap:qualifier="hdpi" src="www/res/icon/android/drawable-hdpi.png" />
     <icon gap:platform="android" gap:qualifier="xhdpi" src="www/res/icon/android/drawable-xhdpi.png" />
-
 
     <access/>
 </widget>

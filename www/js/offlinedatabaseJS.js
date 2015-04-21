@@ -383,7 +383,7 @@ var administracao =
   {  
     //Pergunta 21
     'p':  'Quantos são os tipos de suporte?',
-    '1r1':'5',
+    'r1':'5',
     'r2': '6',
     'r3': '7',
     'r4': '8',
@@ -844,7 +844,7 @@ var logistica =
  
     try {
         localDB.transaction(function(transaction){
-           
+           var i = 0;
           for(i=0; i<=29;i++)
           {  
             var queryAdm= "INSERT INTO adm(pergunta, resposta1,resposta2,resposta3,resposta4,correta) VALUES("+"'"+administracao[i].p+"','"+ administracao[i].r1+"','"+ administracao[i].r2+"','"+administracao[i].r3+"','"+administracao[i].r4+"','"+administracao[i].c+"')";
@@ -859,14 +859,16 @@ var logistica =
             
             
           }
-updateStatus("Cadastrado com sucesso!");
+            updateStatus("Cadastrado com sucesso!");
+            alert('aqui');
+            chamatela('home.html');
         });
     } 
     catch (e) {
         updateStatus("Erro: População não criada " + e + ".");
         return;
     }
-    chamatela('home.html');
+    
 }
 // function queryAndUpdateOverview(){
 
@@ -1013,16 +1015,12 @@ function startJogo(mat)
     uAcessadauCadastrada(); //retorna a última pergunta acessada
 
     //Para conseguir carregar as perguntas
-    var pausa = setInterval(function(){ carregaPerg(); clearInterval(pausa); }, 250);
+    var pausa = setInterval(function(){ carregaPerg(); clearInterval(pausa); }, 500);
     
     
     
 }
 
-function ppp()
-{
-    alert(pergunta);
-}
 //Exibe na view de informações os dados do banco
 function updateInformations(id, nome, email, adm, segtrab, logistica){
     document.getElementById('nome').innerHTML = '<hr>Nome: <br>'+nome;
@@ -1064,7 +1062,7 @@ function zerarPts()
     if(confirmacao)
     {
 
-        var query = "update usuario set adm=0, segtrab=0, logistica=0;";
+        var query = "update usuario set adm=0, segtrab=0, logistica=0, pergadm=0, pergsegtrab=0, perglogistica=0;";
         
         try 
         {
@@ -1349,21 +1347,21 @@ function uAcessadauCadastrada()//Retorna a última pergunta acessada
                         var valor = results.rows.item(0).pergadm;
                          //Infelizmente a linha abaixo é uma gambiarra que precisei fazer para receber dados assíncronos
                          // do sqlite por não ter conseguido ajuda com as requisições assíncronas a tempo. 
-                        var pausa = setInterval(function(){uacc = valor; clearInterval(pausa); }, 100);
+                        var pausa = setInterval(function(){uacc = valor; clearInterval(pausa); }, 200);
                     
                         break;
                       case 'segtrab':
                          var valor = results.rows.item(0).pergsegtrab;  
                          //Infelizmente a linha abaixo é uma gambiarra que precisei fazer para receber dados assíncronos
                          // do sqlite por não ter conseguido ajuda com as requisições assíncronas a tempo. 
-                         var pausa = setInterval(function(){uacc = valor; clearInterval(pausa); }, 100);
+                         var pausa = setInterval(function(){uacc = valor; clearInterval(pausa); }, 200);
 
                         break;
                       case 'logistica':
                          var valor = results.rows.item(0).perglogistica; 
                           //Infelizmente a linha abaixo é uma gambiarra que precisei fazer para receber dados assíncronos
                          // do sqlite por não ter conseguido ajuda com as requisições assíncronas a tempo. 
-                         var pausa = setInterval(function(){uacc = valor; clearInterval(pausa); }, 100);
+                         var pausa = setInterval(function(){uacc = valor; clearInterval(pausa); }, 200);
 
                         break;   
                     } 
@@ -1390,21 +1388,21 @@ function uAcessadauCadastrada()//Retorna a última pergunta acessada
                         var vl = results.rows.item(0).id;
                          //Infelizmente a linha abaixo é uma gambiarra que precisei fazer para receber dados assíncronos
                          // do sqlite por não ter conseguido ajuda com as requisições assíncronas a tempo. 
-                        var pausa = setInterval(function(){ucad = vl;  clearInterval(pausa); }, 100);
+                        var pausa = setInterval(function(){ucad = vl;  clearInterval(pausa); }, 200);
                     
                         break;
                       case 'segtrab':
                          var vl = results.rows.item(0).id;  
                          //Infelizmente a linha abaixo é uma gambiarra que precisei fazer para receber dados assíncronos
                          // do sqlite por não ter conseguido ajuda com as requisições assíncronas a tempo. 
-                         var pausa = setInterval(function(){ucad = vl; clearInterval(pausa); }, 100);
+                         var pausa = setInterval(function(){ucad = vl; clearInterval(pausa); }, 200);
 
                         break;
                       case 'logistica':
                          var vl = results.rows.item(0).id; 
                           //Infelizmente a linha abaixo é uma gambiarra que precisei fazer para receber dados assíncronos
                          // do sqlite por não ter conseguido ajuda com as requisições assíncronas a tempo. 
-                         var pausa = setInterval(function(){ucad = vl; clearInterval(pausa); }, 100);
+                         var pausa = setInterval(function(){ucad = vl; clearInterval(pausa); }, 200);
 
                         break;   
                     } 
@@ -1516,7 +1514,7 @@ function carregaPerg()
 
                         
                         clearInterval(pausa); 
-                            }, 350);   
+                            }, 700);   
 
                 }, function(transaction, error){
                      updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
@@ -1539,13 +1537,15 @@ function carregaPerg()
                              transaction.executeSql('update usuario set perglogistica = ? ', [uacc], nullDataHandler, errorHandler);
                             break;   
                         }
-                      });  
-                clearInterval(pausa); 
-              }, 400);  
-                    
-            
+                      });
 
-        
+              if(uacc > ucad)
+                {
+                    alert('O jogo terminou! Aproveite para jogar as outras modalidades ou pessa para alguém cadastrar mais perguntas (: .');
+                    chamatela('informacoes.html');
+                }  
+                clearInterval(pausa); 
+              }, 800);      
 
             });
     }else if(uacc > ucad)
@@ -1572,5 +1572,12 @@ function corrigir()
        efeitosErrou();  
     }
     limparSelect('respostas');
-    carregaPerg();
+    document.getElementById('pergunta').innerHTML = "";
+
+    if(uacc > ucad)
+    {
+        alert('O jogo terminou! Aproveite para jogar as outras modalidades ou pessa para alguém cadastrar mais perguntas (: .');
+        chamatela('informacoes.html');
+    }else
+      carregaPerg();
 }

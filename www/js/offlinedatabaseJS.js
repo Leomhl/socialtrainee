@@ -4,7 +4,7 @@
   var localDB = null; //Para a conexão com o banco de dados
 
 //Para manter setado qual jogo o usuário está
-  var materia = null; //adm, segTrab ou logistica
+  var materia = null; //adm, segtrab ou logistica
 
 
   //Dados da questão
@@ -477,33 +477,204 @@ var segurancaTrabalho =
 [
   {
     //Pergunta 1
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'Não é considerado objetivo da CIPA:',
+    'r1': 'Observar e relatar condições de risco.',
+    'r2': 'Solicitar medidas para redução dos acidentes.',
+    'r3': 'Expedir advertência aos trabalhadores.',
+    'r4': 'Eliminar e/ou neutralizar os riscos existentes.',
+    'c':  'Expedir advertência aos trabalhadores.'
   },
   {
     //Pergunta 2
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'Assinale a alternativa incorreta:',
+    'r1': 'PCMSO: Programa de Controle Médico de Saúde Ocupacional.',
+    'r2': 'CAT: Comunicação de Acidente de Trabalho.',
+    'r3': 'PPRA: Programa de Prevenção de Riscos Ambulatoriais.',
+    'r4': 'EPC: Equipamento de Proteção Coletiva.',
+    'c':  'PPRA: Programa de Prevenção de Riscos Ambulatoriais.'
   },
   {
     //Pergunta 3
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'Quais são as principais causas dos acidentes de trabalho?',
+    'r1': 'Atos inseguros e condições inseguras.',
+    'r2': 'Inexistência da CIPA e do PPRA.',
+    'r3': 'Atos inseguros e inexistência do Técnico de Segurança.',
+    'r4': 'Atos inseguros e inexistência do Engenheiro de Segurança.',
+    'c':  'Atos inseguros e condições inseguras.'
   },
    {
     //Pergunta 4
+    'p': 'Analise os seguintes  instrumentos para a prevenção dos acidentes de trabalho: I-Processos educativos para o trabalhador. II-Campanhas de segurança e CIPA atuante. III-Análise dos acidentes. IV-Inspeção de segurança.',
+    'r1': 'Somente I e II.',
+    'r2': 'Somente II e III.',
+    'r3': 'Somente II, III e IV.',
+    'r4': 'I, II, III e IV.',
+    'c':  'I, II, III e IV.'
+  },
+  {
+    //Pergunta 5 
+    'p':  'Quanto aos Equipamentos de Proteção Individual, cabe ao empregador: I-Ditar as normas para sua confecção. II-Exigir o seu uso. III-Adquirir o equipamento adequado para cada atividade. IV-Responsabilizar-se pela higienização e manutenção periódica. V-Orientar e treinar o trabalhador sobre o uso adequado, guarda e conservação. Assinale a alternativa correta:',
+    'r1': 'I e II são verdadeiras.',
+    'r2': 'II, III e IV são verdadeiras.',
+    'r3': 'lI, III, IV e V são verdadeiras.',
+    'r4': 'I, ll e V são verdadeiras.',
+    'c':  'lI, III, IV e V são verdadeiras.'
+  },
+   {
+    //Pergunta 6
+    'p':  'LER significa:',
+    'r1': 'Lesão por Esforço Repetido.',
+    'r2': 'Lesão por Esforço Repetitivo.',
+    'r3': 'Lesão por Estres Repetido.',
+    'r4': 'Lesão por Estres Repetitivo.',
+    'c':  'Lesão por Esforço Repetitivo.'
+  },
+   {
+    //Pergunta 7
+    'p':  'Se o trabalhador estiver fazendo por vontade própria algum favor para a empresa, como forma de lhe proporcionar proveito, e se acidentar. É considerado acidente de trabalho?',
+    'r1': 'Sim.',
+    'r2': 'Não.',
+    'r3': 'Nunca.',
+    'r4': 'Talvez.',
+    'c':  'Sim.'
+  },
+   {
+    //Pergunta 8
+    'p':  'Estando o trabalhador em viagem para treinamento custeado pela empresa. Se acontecer um acidente, é considerado acidente de trabalho?',
+    'r1': 'Sim.',
+    'r2': 'Não.',
+    'r3': 'Talvez.',
+    'r4': 'Acidente de trabalho só acontece no trabalho ou no trajeto.',
+    'c':  'Sim.'
+  },
+   {
+    //Pergunta 9
+    'p':  'Qual desses é conciderados acidente de trabalho?',
+    'r1': 'Quando está se pensando na Empresa e ocorre um acidente.',
+    'r2': 'Quando o horário expediente termina e ao voltar para casa ocorre um acidente.',
+    'r3': 'Quando você está no horário de almoço e morre por intoxicação alimentar em casa.',
+    'r4': 'Nenhum esta correto.',
+    'c':  'Quando o horário expediente termina e ao voltar para casa ocorre um acidente.'
+  },
+   {
+    //Pergunta 10
+    'p':  'Para que se aplica o adicional de periculosidade?',
+    'r1': 'Radiação, explosivos, inflamáveis e eletricidade.',
+    'r2': 'Eletricidade de alta tensão, ambiente confinado e altura.',
+    'r3': 'Explosivos, altura, pressão e ambiente poluído.',
+    'r4': 'Qualquer trabalho com risco a vida e a saúde.',
+    'c':  'Radiação, explosivos, inflamáveis e eletricidade.'
+  },
+   {
+    //Pergunta 11
+    'p':  'Respeqtivamente de quanto é o adcional de periculosidade no grau maximo medio e minimo:',
+    'r1': '40% 30% 20%.',
+    'r2': '40% 20% 10%.',
+    'r3': '50% 30% 10%.',
+    'r4': 'Nenhuma das anteriores.',
+    'c':  '40% 20% 10%.'
+  },
+   {
+    //Pergunta 12
+    'p':  'Qual o significado da sigla CIPA?',
+    'r1': 'Conselho Interno de Prevenção de Acidentes.',
+    'r2': 'Comissão Interna de Prevenção de Acidentes.',
+    'r3': 'Convenção Interna de Proteção Contra Acidentes.',
+    'r4': 'Confederação Internacional de Profissionais Acidentados.',
+    'c':  'Comissão Interna de Prevenção de Acidentes.'
+  },
+   {
+    //Pergunta 13
+    'p':   'O que significa a sigla EPI?',
+    'r1': 'Equipamento para Uso Interno.',
+    'r2': 'Equipamento para Uso Imediato.',
+    'r3': 'Equipamento de Proteção Interno.',
+    'r4': 'Equipamento de Proteção Individual.',
+    'c':  'Equipamento de Proteção Individual.'
+  },
+   {
+    //Pergunta 14
+    'p':  'Para trabalhos que possam causar irritações nos olhos, desbaste em materiais que geram fagulhas, cavacos e outras lesões decorrentes da ação de radiações perigosas, devemos usar sempre:',
+    'r1': 'Protetor Auricular.',
+    'r2': 'Bota de borracha.',
+    'r3': 'Luvas.',
+    'r4': 'Óculos de Segurança.',
+    'c':  'Óculos de Segurança.'
+  },
+   {
+    //Pergunta 15
+    'p':  'O que é EPC?',
+    'r1': 'Estoque de Peças de Composição.',
+    'r2': 'Equipamento de Proteção Composto.',
+    'r3': 'Equipamento de Proteção Coletiva.',
+    'r4': 'Equipamento de Proteção de Conservação.',
+    'c':  'Equipamento de Proteção Coletiva.'
+  },
+   {
+    //Pergunta 16
+    'p':  'A quem cabe treinar o trabalhador sobre o uso adequado do EPI:',
+    'r1': 'O Empregado.',
+    'r2': 'O Empregador.',
+    'r3': 'A Cipa.',
+    'r4': 'A Sipat.',
+    'c':  'O Empregado.'
+  },
+   {
+    //Pergunta 17
+    'p':  'A quem cabe a guarda e conservação do EPI:',
+    'r1': 'O Empregado.',
+    'r2': 'O Empregador.',
+    'r3': 'A Cipa.',
+    'r4': 'A Sipat.',
+    'c':  'O Empregado.'
+  },
+   {
+    //Pergunta 18
+    'p':  'O objetivo do PCMSO é o de promover e preservar à saúde do conjunto dos seus trabalhadores. Qual o significado da sigla PMCO:',
+    'r1': 'Participação no Controle Médico de Saúde Ocupacional.',
+    'r2': 'Presença no Controle Médico de Saúde Ocupacional.',
+    'r3': 'Programa de Controle Médico de Saúde Ocupacional.',
+    'r4': 'Programa de Casos Médico de Saúde Ocupacional.',
+    'c':  'Programa de Controle Médico de Saúde Ocupacional.'
+  },
+   {
+    //Pergunta 19
+    'p':  'Quais são os exames médicos que obrigatoriamente são incluídos no PCMSO:',
+    'r1': 'Admissional; Periódico; Retorno ao trabalho; Mudança de função; Mudança de Cidade;Demissional.',
+    'r2': 'Admissional; Periódico; Retorno ao trabalho; Mudança de função; Mudança de Cidade.',
+    'r3': 'Admissional; Periódico; Retorno ao trabalho; Mudança de função; Demissional.',
+    'r4': 'Admissional; Periódico; Retorno ao trabalho; Mudança de função;Mudança de Setor; Demissional.',
+    'c':  'Admissional; Periódico; Retorno ao trabalho; Mudança de função; Demissional.'
+  },
+   {
+    //Pergunta 20
+    'p':  'Serão consideradas atividades ou operações insalubres aquelas que: ',
+    'r1': 'Por sua natureza, condições ou métodos de trabalho, exponham os empregados a agentes nocivos à saúde, acima dos limites de pessoais fixados em razão da natureza e da intensidade do agente e do tempo de exposição aos seus efeitos.',
+    'r2': 'Por sua condição ou métodos de trabalho, exponham os empregados a agentes nocivos à saúde, acima dos limites de tolerância fixados em razão da natureza e da intensidade do agente e do tempo de exposição aos seus efeitos.',
+    'r3': 'Todas as respostas estão corretas.',
+    'r4': 'Por sua natureza, condições ou métodos de trabalho, exponham os empregados a agentes nocivos à saúde, acima dos limites de tolerância fixados em razão da natureza e da intensidade do agente e do tempo de exposição aos seus efeitos.',
+    'c':  'Por sua natureza, condições ou métodos de trabalho, exponham os empregados a agentes nocivos à saúde, acima dos limites de tolerância fixados em razão da natureza e da intensidade do agente e do tempo de exposição aos seus efeitos.'
+  },
+  {
+    //Pergunta 21
+    'p':  'Cabe às empresas:',
+    'r1': 'Facilitar o exercício da fiscalização pela autoridade competente;',
+    'r2': 'Cumprir e fazer cumprir as disposições legais e regulamentares sobre segurança e medicina do trabalho.',
+    'r3': 'ornecer aos empregados, gratuitamente, EPI adequado ao risco, em perfeito estado de conservação e funcionamento.',
+    'r4': 'Fornecer EPI ao trabalhador compatível ao risco da atividade gratuitamente.',
+    'c':  'Facilitar o exercício da fiscalização pela autoridade competente;'
+  },
+  {
+    //Pergunta 22
+    'p':  'O trabalho em condições de periculosidade assegura ao empregado um adicional de:',
+    'r1': '30% (trinta por cento) sobre o salário sem os acréscimos resultantes de gratificações, prêmios ou participações nos lucros da empresa.',
+    'r2': '40% (quarenta por cento) sobre o salário sem os acréscimos resultantes de gratificações, prêmios ou participações nos lucros da empresa.',
+    'r3': '20% (vinte por cento) sobre o salário sem os acréscimos resultantes de gratificações, prêmios ou participações nos lucros da empresa.',
+    'r4': '50% (cinquenta por cento) sobre o salário sem os acréscimos resultantes de gratificações, prêmios ou participações nos lucros da empresa.',
+    'c':  '30% (trinta por cento) sobre o salário sem os acréscimos resultantes de gratificações, prêmios ou participações nos lucros da empresa.'
+  },
+  {
+    //Pergunta 23
     'p':   '',
     'r1': '',
     'r2': '',
@@ -512,7 +683,7 @@ var segurancaTrabalho =
     'c':  ''
   },
   {
-    //Pergunta 5 
+    //Pergunta 24
     'p':   '',
     'r1': '',
     'r2': '',
@@ -520,8 +691,8 @@ var segurancaTrabalho =
     'r4': '',
     'c':  ''
   },
-   {
-    //Pergunta 6
+  {
+    //Pergunta 25
     'p':   '',
     'r1': '',
     'r2': '',
@@ -529,8 +700,8 @@ var segurancaTrabalho =
     'r4': '',
     'c':  ''
   },
-   {
-    //Pergunta 7
+  {
+    //Pergunta 26
     'p':   '',
     'r1': '',
     'r2': '',
@@ -538,8 +709,8 @@ var segurancaTrabalho =
     'r4': '',
     'c':  ''
   },
-   {
-    //Pergunta 8
+  {
+    //Pergunta 27
     'p':   '',
     'r1': '',
     'r2': '',
@@ -547,8 +718,8 @@ var segurancaTrabalho =
     'r4': '',
     'c':  ''
   },
-   {
-    //Pergunta 9
+  {
+    //Pergunta 28
     'p':   '',
     'r1': '',
     'r2': '',
@@ -556,8 +727,8 @@ var segurancaTrabalho =
     'r4': '',
     'c':  ''
   },
-   {
-    //Pergunta 10
+  {
+    //Pergunta 29
     'p':   '',
     'r1': '',
     'r2': '',
@@ -565,89 +736,8 @@ var segurancaTrabalho =
     'r4': '',
     'c':  ''
   },
-   {
-    //Pergunta 11
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
-  },
-   {
-    //Pergunta 12
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
-  },
-   {
-    //Pergunta 13
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
-  },
-   {
-    //Pergunta 14
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
-  },
-   {
-    //Pergunta 15
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
-  },
-   {
-    //Pergunta 16
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
-  },
-   {
-    //Pergunta 17
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
-  },
-   {
-    //Pergunta 18
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
-  },
-   {
-    //Pergunta 19
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
-  },
-   {
-    //Pergunta 20
+  {
+    //Pergunta 30
     'p':   '',
     'r1': '',
     'r2': '',
@@ -850,9 +940,8 @@ var logistica =
             var queryAdm= "INSERT INTO adm(pergunta, resposta1,resposta2,resposta3,resposta4,correta) VALUES("+"'"+administracao[i].p+"','"+ administracao[i].r1+"','"+ administracao[i].r2+"','"+administracao[i].r3+"','"+administracao[i].r4+"','"+administracao[i].c+"')";
             transaction.executeSql(queryAdm, [], nullDataHandler, errorHandler); 
             
-             // var querysegtb= "INSERT INTO segtrab(pergunta, resposta1,resposta2,resposta3,resposta4,correta) VALUES("+"'"+segurancaTrabalho[i].p+"','"+ segurancaTrabalho[i].r1+"','"+ segurancaTrabalho[i].r2+"','"+segurancaTrabalho[i].r3+"','"+segurancaTrabalho[i].r4+"','"+segurancaTrabalho[i].c+"')";
-             
-             // transaction.executeSql(querysegtb, [], nullDataHandler, errorHandler); 
+              var querysegtb= "INSERT INTO segtrab(pergunta, resposta1,resposta2,resposta3,resposta4,correta) VALUES("+"'"+segurancaTrabalho[i].p+"','"+ segurancaTrabalho[i].r1+"','"+ segurancaTrabalho[i].r2+"','"+segurancaTrabalho[i].r3+"','"+segurancaTrabalho[i].r4+"','"+segurancaTrabalho[i].c+"')";
+              transaction.executeSql(querysegtb, [], nullDataHandler, errorHandler); 
             
              // var querylog= "INSERT INTO logistica(pergunta, resposta1,resposta2,resposta3,resposta4,correta) VALUES("+"'"+logistica[i].p+"','"+ logistica[i].r1+"','"+ logistica[i].r2+"','"+logistica[i].r3+"','"+logistica[i].r4+"','"+logistica[i].c+"')";
              // transaction.executeSql(querylog, [], nullDataHandler, errorHandler); 
@@ -860,7 +949,6 @@ var logistica =
             
           }
             updateStatus("Cadastrado com sucesso!");
-            alert('aqui');
             chamatela('home.html');
         });
     } 
@@ -1002,8 +1090,8 @@ function startJogo(mat)
           case 'adm':
                materia = 'adm';
               break;
-          case 'segTrab':
-               materia = 'segtrab';   
+          case 'segtrab': 
+               materia = 'segtrab';
                break;
           case 'logistica': 
                materia = 'logistica';
@@ -1293,8 +1381,8 @@ function jogoPontos() //Para informar os pontos que estão no DB na view do jogo
                   case 'adm':
                       document.getElementById('pontos').innerHTML = results.rows.item(0).adm+" Pontos";   
                       break;
-                  case 'segTrab':
-                      document.getElementById('pontos').innerHTML = results.rows.item(0).segTrab+" Pontos";   
+                  case 'segtrab':
+                      document.getElementById('pontos').innerHTML = results.rows.item(0).segtrab+" Pontos";   
                        break;
                   case 'logistica': 
                       document.getElementById('pontos').innerHTML = results.rows.item(0).logistica+" Pontos";   
@@ -1457,7 +1545,7 @@ function pontos(flag)
                   case 'adm':
                       var query = 'update usuario set adm = ? where id = 1';
                       break;
-                  case 'segTrab':
+                  case 'segtrab':
                       var query = 'update usuario set segtrab = ? where id = 1';   
                       break;
                   case 'logistica': 
@@ -1520,9 +1608,47 @@ function carregaPerg()
                      updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
                 
                });
+            });  
               
-              
-              var pausa = setInterval(function(){
+            
+    }else if(uacc > ucad)
+    {
+        alert('O jogo terminou! Aproveite para jogar as outras modalidades ou pessa para alguém cadastrar mais perguntas (: .');
+        chamatela('informacoes.html');
+    }
+}
+
+function corrigir()
+{
+    var resposta = document.principal.respostas.value;
+
+    if(resposta == 'Toque aqui para selecionar')
+        alert('Selecione uma resposta!');
+    else
+    if(resposta == correta)
+    {
+       pontos(1);
+       efeitosAcertou();
+
+    }else
+    {
+       pontos(0);
+       efeitosErrou();  
+    }
+    limparSelect('respostas');
+    document.getElementById('pergunta').innerHTML = "";
+    atualizaUltAcessada();
+    if(uacc > ucad)
+    {
+        alert('O jogo terminou! Aproveite para jogar as outras modalidades ou pessa para alguém cadastrar mais perguntas (: .');
+        chamatela('informacoes.html');
+    }else
+      carregaPerg();
+}
+
+function atualizaUltAcessada()
+{
+    var pausa = setInterval(function(){
                uacc = parseInt(uacc) + 1;
                       localDB.transaction(function(transaction){
                         switch(materia)
@@ -1546,38 +1672,4 @@ function carregaPerg()
                 }  
                 clearInterval(pausa); 
               }, 800);      
-
-            });
-    }else if(uacc > ucad)
-    {
-        alert('O jogo terminou! Aproveite para jogar as outras modalidades ou pessa para alguém cadastrar mais perguntas (: .');
-        chamatela('informacoes.html');
-    }
-}
-
-function corrigir()
-{
-    var resposta = document.principal.respostas.value;
-
-    if(resposta == 'Toque aqui para selecionar')
-        alert('Selecione uma resposta!');
-    else
-    if(resposta == correta)
-    {
-       pontos(1);
-       efeitosAcertou();
-    }else
-    {
-       pontos(0);
-       efeitosErrou();  
-    }
-    limparSelect('respostas');
-    document.getElementById('pergunta').innerHTML = "";
-
-    if(uacc > ucad)
-    {
-        alert('O jogo terminou! Aproveite para jogar as outras modalidades ou pessa para alguém cadastrar mais perguntas (: .');
-        chamatela('informacoes.html');
-    }else
-      carregaPerg();
 }

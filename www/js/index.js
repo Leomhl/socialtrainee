@@ -127,7 +127,7 @@ function efeitosErrou()
 	var errou = $("#imgErro");
 	errou.show();
 	errou.animate({"left": "25%"}, 1500);
-	// vibrar();
+	vibrar();
 	errou.delay(500).animate({"left": "100%"}, 800, null, function(){$("#imgErro").css("display", "none");});
 	
 }

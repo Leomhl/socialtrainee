@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		
+		<!-- Meta tags -->
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="telephone=no" />
+		<meta name="keywords" content="" />
+
+		<link rel="stylesheet" href="css/bootstrap.css">
+
+		<!-- Javascript do template -->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-desktop.css" />
+		</noscript>
+
+		<link rel="stylesheet" href="css/estilos.css" />
+		
+
+	<style>
+		#banner{margin-top: 20px;}
+	</style>
+
+	</head>
+	<body onload="startJogo('logistica')"> <!--onunload="sairJogo()">-->
+
+		<!-- Header -->
+			<div id="header-wrapper">
+				<header id="header" class="container">
+					<div class="row">
+						<div class="12u">
+						
+							<!-- Logo -->
+								<h1><a href="#" id="logo">Logística Quiz</a></h1>
+							
+							<!-- Nav -->
+								<nav id="nav">
+									<a href="javascript: sairJogo();" >Terminar Jogo</a>	
+									<a href=""> </a>
+								</nav>
+						</div>
+					</div>
+				</header>
+				<div id="banner">
+					<div class="container">
+						<div class="row">
+							<div class="12u">
+
+							<div id="pontos"></div>
+							<form id="principal" name="principal">
+								<div class="wrapper">
+									<span>
+										<img src="images/questions.png" id="imgQuestion">
+									</span>	
+
+
+										<img src="images/acerto.png" width="50%" class="status"  id="imgAcerto"> 
+										<img src="images/erro.png" width="50%" class="status" id="imgErro">
+
+									<div id="pergunta"></div>	<!-- Onde o javascript carrega as perguntas -->
+									
+									<select name="respostas" id="respostas" class="esticar"> <!-- Select com as respostas -->
+										<option value="Toque aqui para selecionar">
+											Toque aqui para selecionar
+										</option>
+									</select>
+								</div>	
+
+
+							<!-- Botão para o jogo -->
+								<div class="row">
+									<div class="12u">
+										<a class="button-big esticar" style="font-type:'Yanone Kaffeesatz'; text-align: center;"  onClick="corrigir()">Confirmar</a>
+									</div>
+								</div> <!-- Final do botão para jogar -->
+									
+								<!-- O javascript obriga a ter isso aqui, senão terei que mudar as funções que são globais para o sistema, então, deixei hidden -->
+								<ul  id="itemData" style="cursor:pointer;" hidden="true"></ul>
+			<!--	style="visibility: hidden;" -->
+								<br>
+								<h4 hidden>Status:</h4>
+								<div id="status"></div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</form>
+
+		<!-- Copyright -->
+			<div id="copyright">
+				&copy; SocialSoftwares | Design: LHM</a>
+			</div> 
+
+		<!-- Javascript do Cordova Phonegap -->
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		<script src="js/offlinedatabaseJS.js"></script>
+
+		<!-- Para ocultar as imagens de acerto e erro-->
+		<script>
+			$( document ).ready(function() {			    
+			    $("#imgAcerto").css("display", "none");
+			    $("#imgErro").css("display", "none");
+			});
+		</script>
+
+		<script type="text/javascript">
+			  app.initialize();
+		</script>
+		
+	</body>
+</html>

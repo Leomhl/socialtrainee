@@ -15,8 +15,8 @@
   var resposta4 = null;
   var correta = null; 
 
-  var uacc = null; //Última acessada
-  var ucad = null; //Última cadastrada
+  var uacc = 1; //Última acessada
+  var ucad = 0; //Última cadastrada
 
 
 function onInit()
@@ -934,7 +934,7 @@ var logistica =
  
     try {
         localDB.transaction(function(transaction){
-           var i = 0;
+          var i = 0;
           for(i=0; i<=29;i++)
           {  
             var queryAdm= "INSERT INTO adm(pergunta, resposta1,resposta2,resposta3,resposta4,correta) VALUES("+"'"+administracao[i].p+"','"+ administracao[i].r1+"','"+ administracao[i].r2+"','"+administracao[i].r3+"','"+administracao[i].r4+"','"+administracao[i].c+"')";
@@ -943,7 +943,7 @@ var logistica =
               var querysegtb= "INSERT INTO segtrab(pergunta, resposta1,resposta2,resposta3,resposta4,correta) VALUES("+"'"+segurancaTrabalho[i].p+"','"+ segurancaTrabalho[i].r1+"','"+ segurancaTrabalho[i].r2+"','"+segurancaTrabalho[i].r3+"','"+segurancaTrabalho[i].r4+"','"+segurancaTrabalho[i].c+"')";
               transaction.executeSql(querysegtb, [], nullDataHandler, errorHandler); 
             
-             // var querylog= "INSERT INTO logistica(pergunta, resposta1,resposta2,resposta3,resposta4,correta) VALUES("+"'"+logistica[i].p+"','"+ logistica[i].r1+"','"+ logistica[i].r2+"','"+logistica[i].r3+"','"+logistica[i].r4+"','"+logistica[i].c+"')";
+            // var querylog= "INSERT INTO logistica(pergunta, resposta1,resposta2,resposta3,resposta4,correta) VALUES("+"'"+logistica[i].p+"','"+ logistica[i].r1+"','"+ logistica[i].r2+"','"+logistica[i].r3+"','"+logistica[i].r4+"','"+logistica[i].c+"')";
              // transaction.executeSql(querylog, [], nullDataHandler, errorHandler); 
             
             
@@ -1566,13 +1566,13 @@ function carregaPerg()
          switch(materia)
             {
               case 'adm':
-                var query = 'select * from adm where id = '+(parseInt(uacc)+1);  
+                var query = 'select * from adm where id = '+uacc;  
                 break;
               case 'segtrab':
-                 var query = 'select * from segtrab where id = '+(parseInt(uacc)+1);  
+                 var query = 'select * from segtrab where id = '+uacc;  
                 break;
               case 'logistica':
-                 var query = 'select * from logistica where id = '+(parseInt(uacc)+1);
+                 var query = 'select * from logistica where id = '+uacc;
                 break;   
             } 
 
@@ -1581,7 +1581,6 @@ function carregaPerg()
 
                 transaction.executeSql(query, [], function(transaction, results)
                 {
-            
                     var p = results.rows.item(0).pergunta;
                     var r1 = results.rows.item(0).resposta1;
                     var r2 = results.rows.item(0).resposta2;
@@ -1597,9 +1596,8 @@ function carregaPerg()
                        insertQuestionsSelect(r2,'respostas');
                        insertQuestionsSelect(r3,'respostas');
                        insertQuestionsSelect(r4,'respostas');
-                     
+                   
                        correta = c;
-
                         
                         clearInterval(pausa); 
                             }, 700);   
@@ -1625,51 +1623,56 @@ function corrigir()
     if(resposta == 'Toque aqui para selecionar')
         alert('Selecione uma resposta!');
     else
-    if(resposta == correta)
-    {
-       pontos(1);
-       efeitosAcertou();
+      if(resposta == correta)
+      {
+         pontos(1);
+         efeitosAcertou();
 
-    }else
-    {
-       pontos(0);
-       efeitosErrou();  
-    }
+      }else
+      {
+         pontos(0);
+         efeitosErrou();  
+      }
+
     limparSelect('respostas');
     document.getElementById('pergunta').innerHTML = "";
-    atualizaUltAcessada();
+
+
     if(uacc > ucad)
     {
         alert('O jogo terminou! Aproveite para jogar as outras modalidades ou pessa para alguém cadastrar mais perguntas (: .');
         chamatela('informacoes.html');
     }else
-      carregaPerg();
+      
+
+    atualizaUltAcessada();
+    carregaPerg();
+    
 }
 
 function atualizaUltAcessada()
 {
-    var pausa = setInterval(function(){
-               uacc = parseInt(uacc) + 1;
-                      localDB.transaction(function(transaction){
-                        switch(materia)
-                        {
-                          case 'adm':
-                            transaction.executeSql('update usuario set pergadm = ?', [uacc], nullDataHandler, errorHandler);
-                            break;
-                          case 'segtrab':
-                            transaction.executeSql('update usuario set pergsegtrab = ? ', [uacc], nullDataHandler, errorHandler);  
-                            break;
-                          case 'logistica':
-                             transaction.executeSql('update usuario set perglogistica = ? ', [uacc], nullDataHandler, errorHandler);
-                            break;   
-                        }
-                      });
+   if(uacc == 0)
+    uacc = uacc + 2;
+  else
+    uacc = uacc +1;
 
-              if(uacc > ucad)
-                {
-                    alert('O jogo terminou! Aproveite para jogar as outras modalidades ou pessa para alguém cadastrar mais perguntas (: .');
-                    chamatela('informacoes.html');
-                }  
-                clearInterval(pausa); 
-              }, 800);      
+    var pausa = setInterval(function(){
+               
+        localDB.transaction(function(transaction){
+          switch(materia)
+          {
+            case 'adm':
+              transaction.executeSql('update usuario set pergadm = ?', [uacc], nullDataHandler, errorHandler);
+              break;
+            case 'segtrab':
+              transaction.executeSql('update usuario set pergsegtrab = ? ', [uacc], nullDataHandler, errorHandler);  
+              break;
+            case 'logistica':
+               transaction.executeSql('update usuario set perglogistica = ? ', [uacc], nullDataHandler, errorHandler);
+              break;   
+          }
+        });
+    clearInterval(pausa); 
+    }, 800);      
 }

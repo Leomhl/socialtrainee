@@ -913,9 +913,8 @@ var logistica =
              // transaction.executeSql(querylog, [], nullDataHandler, errorHandler); 
             
           
-          
-            updateStatus("Cadastrado com sucesso!");
-            chamatela('home.html');
+          var pausa = setInterval(function(){ updateStatus("Cadastrado com sucesso!"); chamatela('home.html'); clearInterval(pausa); }, 1000);
+            
         });
     } 
     catch (e) {

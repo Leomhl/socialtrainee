@@ -898,7 +898,7 @@ var logistica =
     'c':  ''
   }
 ];  
-      
+      alert(segurancaTrabalho[0].p);
  
     try {
         localDB.transaction(function(transaction){

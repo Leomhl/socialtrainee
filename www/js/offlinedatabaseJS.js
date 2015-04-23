@@ -906,7 +906,7 @@ var logistica =
           var i = 0;
           while(i>30)
           {  
-            
+
 
             var queryAdm= "INSERT INTO adm(pergunta, resposta1,resposta2,resposta3,resposta4,correta) VALUES("+"'"+administracao[i].p+"','"+ administracao[i].r1+"','"+ administracao[i].r2+"','"+administracao[i].r3+"','"+administracao[i].r4+"','"+administracao[i].c+"')";
             transaction.executeSql(queryAdm, [], nullDataHandler, errorHandler); 
@@ -916,7 +916,7 @@ var logistica =
             
             // var querylog= "INSERT INTO logistica(pergunta, resposta1,resposta2,resposta3,resposta4,correta) VALUES("+"'"+logistica[i].p+"','"+ logistica[i].r1+"','"+ logistica[i].r2+"','"+logistica[i].r3+"','"+logistica[i].r4+"','"+logistica[i].c+"')";
              // transaction.executeSql(querylog, [], nullDataHandler, errorHandler); 
-            
+            alert(i);
             i = i+1;
           }
             updateStatus("Cadastrado com sucesso!");

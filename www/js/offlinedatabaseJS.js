@@ -903,21 +903,16 @@ var logistica =
     try {
         localDB.transaction(function(transaction){
 
-          var i = 0;
-          for(i; i<30; i++)
-          {
-
-
             var queryAdm= "INSERT INTO adm(pergunta, resposta1,resposta2,resposta3,resposta4,correta) VALUES(?,?,?,?,?)";
             transaction.executeSql(queryAdm, [administracao[0].p,administracao[0].r1,administracao[0].r2,administracao[0].r3,administracao[0].r4,administracao[0].c], nullDataHandler, errorHandler); 
             
-              var querysegtb= "INSERT INTO segtrab(pergunta, resposta1,resposta2,resposta3,resposta4,correta) VALUES("+"'"+segurancaTrabalho[i].p+"','"+ segurancaTrabalho[i].r1+"','"+ segurancaTrabalho[i].r2+"','"+segurancaTrabalho[i].r3+"','"+segurancaTrabalho[i].r4+"','"+segurancaTrabalho[i].c+"')";
-              transaction.executeSql(querysegtb, [], nullDataHandler, errorHandler); 
+            var querysegtb= "INSERT INTO segtrab(pergunta, resposta1,resposta2,resposta3,resposta4,correta) VALUES(?,?,?,?,?)";
+            transaction.executeSql(querysegtb, [segurancaTrabalho[0].p,segurancaTrabalho[0].r1,segurancaTrabalho[0].r2,segurancaTrabalho[0].r3,segurancaTrabalho[0].r4,segurancaTrabalho[0].c], nullDataHandler, errorHandler); 
             
             // var querylog= "INSERT INTO logistica(pergunta, resposta1,resposta2,resposta3,resposta4,correta) VALUES("+"'"+logistica[i].p+"','"+ logistica[i].r1+"','"+ logistica[i].r2+"','"+logistica[i].r3+"','"+logistica[i].r4+"','"+logistica[i].c+"')";
              // transaction.executeSql(querylog, [], nullDataHandler, errorHandler); 
             
-          }  
+          
           
             updateStatus("Cadastrado com sucesso!");
             chamatela('home.html');

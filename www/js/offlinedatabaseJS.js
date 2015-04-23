@@ -118,38 +118,6 @@ function dropDatabase(){
     initDB();
 }
 
-//2. Query e visualização de Update
-
-
-// function onUpdate(){
-//     var id = document.itemForm.id.value;
-//     var nome = document.itemForm.nome.value;
-//     var email = document.itemForm.email.value;
-//     if (nome == "" || email == "") {
-//         updateStatus("'Nome' e 'Email' são campos obrigatórios!");
-//     }
-//     else {
-//         var query = "update usuario set nome=?, email=? where id=?;";
-//         try {
-//             localDB.transaction(function(transaction){
-//                 transaction.executeSql(query, [nome, email, id], function(transaction, results){
-//                     if (!results.rowsAffected) {
-//                         updateStatus("Erro: Update não realizado.");
-//                     }
-//                     else {
-//                         updateForm("", "", "");
-//                         updateStatus("Update realizado:" + results.rowsAffected);
-//                         // queryAndUpdateOverview();
-//                     }
-//                 }, errorHandler);
-//             });
-//         } 
-//         catch (e) {
-//             updateStatus("Erro: UPDATE não realizado " + e + ".");
-//         }
-//     }
-// }
-
 
 function onCreate(){
     var nome = document.itemForm.nome.value;
@@ -934,6 +902,7 @@ var logistica =
  
     try {
         localDB.transaction(function(transaction){
+
           var i = 0;
           for(i=0; i<=29;i++)
           {  
@@ -1103,10 +1072,7 @@ function startJogo(mat)
     uAcessadauCadastrada(); //retorna a última pergunta acessada
 
     //Para conseguir carregar as perguntas
-    var pausa = setInterval(function(){ carregaPerg(); clearInterval(pausa); }, 500);
-    
-    
-    
+    var pausa = setInterval(function(){ carregaPerg(); clearInterval(pausa); }, 600);    
 }
 
 //Exibe na view de informações os dados do banco
@@ -1163,7 +1129,6 @@ function zerarPts()
                     }
                     else 
                     {
-                        
                         updateStatus("Pontos zerados!");
                         onSelection();
                     }
@@ -1176,6 +1141,8 @@ function zerarPts()
     }
 }
 
+
+//Insere asquestões criadas na tela de configurações no banco de dados
 function insertQuestionsInDB()
 { 
     
@@ -1267,6 +1234,7 @@ function insertQuestionsInDB()
     }    
 }
 
+//Encarregada de carregar as questões para a exclusão na tela de configurãções
 function loadDelete()
 {
   var curso = document.deleteForm.jogoExcluir.value;
@@ -1300,6 +1268,8 @@ function loadDelete()
     }
 }
 
+
+//Exclui a questão selecionada na tela de configurações
 function deleteQuestion()
 {
 
@@ -1366,8 +1336,8 @@ function nome()
         });
 }
 
-
-function jogoPontos() //Para informar os pontos que estão no DB na view do jogo
+//Para informar os pontos que estão no DB na view do jogo
+function jogoPontos() 
 {
     
     var query = 'select '+materia+' from usuario where id = 1';  
@@ -1399,8 +1369,8 @@ function jogoPontos() //Para informar os pontos que estão no DB na view do jogo
     });
 }
 
-
-function uAcessadauCadastrada()//Retorna a última pergunta acessada
+//Retorna a última pergunta acessada pelo usuário gravada no banco
+function uAcessadauCadastrada()
 {
 
    switch(materia)
@@ -1508,7 +1478,6 @@ function uAcessadauCadastrada()//Retorna a última pergunta acessada
 //para controlar a pontuação do jogo
 function pontos(flag)
 {
-    
     if(flag)
     {
         var arrayPts = document.getElementById('pontos').innerHTML;//Pego na tela os pontos
@@ -1559,6 +1528,10 @@ function pontos(flag)
         });
 }
 
+
+//Busca a pergunta no banco, usa a seguinte regra:
+//checa no cadastro do usuário qual foi a última questão respondida e retorna
+//a próxima questão. Sempre quando a questão for corrigida é gravado no banco a id daquela questão
 function carregaPerg()
 {
     if(uacc <= ucad)
@@ -1616,6 +1589,7 @@ function carregaPerg()
     }
 }
 
+//Corrige se a resposta informada está correta
 function corrigir()
 {
     var resposta = document.principal.respostas.value;
@@ -1650,6 +1624,8 @@ function corrigir()
     
 }
 
+
+//Grava no banco a última questão acessada
 function atualizaUltAcessada()
 {
    if(uacc == 0)

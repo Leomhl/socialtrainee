@@ -8,10 +8,6 @@
           <meta name="format-detection" content="telephone=no" />
           
           <meta name="viewport" content="user-scalable=no, width=device-width, height=device-height, target-densitydpi=device-dpi" />  
-          
-        <!--Chama os documentos CSS-->
-        <!-- <link rel="stylesheet" type="text/css" href="css/retrato.css" />  -->
-        <!--<link rel="stylesheet" type="text/css" href="css/paisagem.css" />-->
 
           <!-- Bootstrap -->
           <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
@@ -26,23 +22,14 @@
           <script src="js/offlinedatabaseJS.js"></script>
           
 </head>
+
 <!-- Aqui, chamo a página do menu que tem delay de 3 segundos para abrir, assim, gerando o efeito splash screen (vulgo gambiarra) -->
  <body onLoad="startIndex();" style="padding-left: 0;">   
-
-     <div class="container">
-        <!-- <div>
-            <img id="imgbackgroundSplashscreen" src="img/splashBackground.jpg" > 
-        </div> -->  
+         
         <div id="status" name = "status" hidden="true"></div>
-
-        <div class="centralizar splashImg"> 
-            <div class="col-md-12">
-                <br><br><br><br><br> 
-                <img id="imgsplashscreen" src="img/splash.png" > 
-                <br><br>
-            </div>  
-        </div> 
-        </div> 
+        
+        <img class="splashImg" src="img/splash.png" >   
+        
             <!-- Javascript do Cordova Phonegap -->
           <script type="text/javascript" src="cordova.js"></script>
           <script type="text/javascript">

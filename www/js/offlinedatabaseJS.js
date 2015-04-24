@@ -719,210 +719,302 @@ var logistica =
 [
   {
     //Pergunta 1
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'O que é palete?',
+    'r1': 'Um equipamento logístico.',
+    'r2': 'Um aparato exclusivo para caminhões.',
+    'r3': 'Um equipamento usado exclusivamente para guardar a carga em local estático.',
+    'r4': 'Uma máquina responsável pelos cálculos logísticos.',
+    'c':  'Um equipamento logístico.'
   },
   {
     //Pergunta 2
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'O que  é logística reversa?',
+    'r1': 'Cuida da parte sustentável visando apenas a poluição da água e ar.',
+    'r2': 'Cuida de reverter procedimentos incorretos.',
+    'r3': 'Cuida da parte sustentável de todo o processo.',
+    'r4': 'Cuida quando a encomenda é entregue errada e precisa retornar.',
+    'c':  'Cuida da parte sustentável de todo o processo.'
   },
   {
     //Pergunta 3
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'Os especialistas logísticos são prestadores de serviços que proveem soluções logísticas completas, abrangendo diversidade de serviços planejados e gerenciados de forma integrada. A sentença está?',
+    'r1': 'Correta.',
+    'r2': 'Incorreta.',
+    'r3': 'Parcialmente correta.',
+    'r4': 'Inconsistente.',
+    'c':  'Correta.'
   },
    {
     //Pergunta 4
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'Os depósitos de distribuição são espaços em que os produtos são armazenados por longos períodos, com o objetivo de proteger as mercadorias até que sejam solicitadas, sendo reduzido o manuseio. A sentença está?',
+    'r1': 'Incorreta.',
+    'r2': 'Incoerente com o assunto.',
+    'r3': 'Correta',
+    'r4': 'Parcialmente correta.',
+    'c':  'Correta.'
   },
   {
     //Pergunta 5 
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'O que é just in time?',
+    'r1': 'Ter um estoque justo e equilibrado.',
+    'r2': 'Ter um vasto estoque',
+    'r3': 'Ter uma reserva além do necessário',
+    'r4': 'Ter apenas o necessário.',
+    'c':  'Ter apenas o necessário.'
   },
    {
     //Pergunta 6
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'Código de barras, sistemas de posicionamento global e identificação por meio de radiofrequência são tecnologias que podem ser utilizadas para o rastreamento de mercadorias.',
+    'r1': 'Incorreto.',
+    'r2': 'Correto.',
+    'r3': 'Parcialmente correto.',
+    'r4': 'Nenhuma das anteriores.',
+    'c':  'Correto.'
   },
    {
     //Pergunta 7
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'São cinco os modais de transporte de carga: aéreo, rodoviário, ferroviário, aquaviário e intermodal.',
+    'r1': 'Correto.',
+    'r2': 'Incorreto.',
+    'r3': 'Parcialmente correto.',
+    'r4': 'Nenhuma das anteriores.',
+    'c':  'Correto.'
   },
    {
     //Pergunta 8
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'A taxa cobrada por uma transportadora depende de certas características do item transportado, como seu valor financeiro, sua densidade e(ou) peso, sua embalagem e o risco de sua deterioração.',
+    'r1': 'Correto.',
+    'r2': 'Incorreto.',
+    'r3': 'Parcialmente correto.',
+    'r4': 'Nenhuma das anteriores.',
+    'c':  'Correto.'
   },
    {
     //Pergunta 9
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'O programa 5S teve o intuito de?',
+    'r1': 'Melhorar a qualidade dos produtos e produtividade.',
+    'r2': 'Melhorar a qualidade de vida dos funcionários apenas.',
+    'r3': 'Melhorar a qualidade de vida dos funcionários e aumentar a produtividade.',
+    'r4': 'Melhorar a produtividade sem preocupar-se com limpeza.',
+    'c':  'Melhorar a qualidade de vida dos funcionários e aumentar a produtividade.'
   },
    {
     //Pergunta 10
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'Sobre o computador:',
+    'r1': 'É um aparato pouco utilizado.',
+    'r2': 'É parte essencial porém quase nunca usada no processo logístico.',
+    'r3': 'É parte essencial do processo de logística do século XXI.',
+    'r4': 'Nenhuma das anteriores.',
+    'c':  'É parte essencial do processo de logística do século XXI.'
   },
    {
     //Pergunta 11
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'O container?',
+    'r1': 'Abriga carga a ser transportada e é essencial para a logística.',
+    'r2': 'Abriga apenas alguns tipos de carga e são usados em larga escala apenas maritimamente.',
+    'r3': 'Abriga todo tipo de carga mesmo perecível sem conter refrigeração.',
+    'r4': 'Nenhuma das anteriores.',
+    'c':  'Abriga carga a ser transportada e é essencial para a logística.'
   },
    {
     //Pergunta 12
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'Sobre a logística integrada, responda:',
+    'r1': 'Não deve preocupar-se com efieiência e sim com custos.',
+    'r2': 'Deve preocupar-se com custos, eficiência e melhora de resultados.',
+    'r3': 'Deve preocupar-se com custos, ineficiência e reução de resultados.',
+    'r4': 'Deve preocupar-se com prazos, eficiência e melhora gradativa de resultados.',
+    'c':  'Deve preocupar-se com custos, eficiência e melhora de resultados.'
   },
    {
     //Pergunta 13
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'O modal de transporte aeroviário é o:',
+    'r1': 'Mais indicado por baixo custo e facilidades.',
+    'r2': 'Menos indicado pela demora no transporte.',
+    'r3': 'Mais indicado em situações emergenciais ou de curto prazo para entrega.',
+    'r4': 'Nenhuma das anteriores.',
+    'c':  'Mais indicado em situações emergenciais ou de curto prazo para entrega.'
   },
    {
     //Pergunta 14
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'O modal de transporte rodoviário no Brasil é:',
+    'r1': 'Pouco utilizado por sua ineficiência e altos custos.',
+    'r2': 'Altamente utilizado e hoje é um dos mais baratos no país.',
+    'r3': 'Usado porém apenas para transporte de cargas específicas.',
+    'r4': 'Muito utilizado apesar do alto custo de manutenção.',
+    'c':  'Altamente utilizado e hoje é um dos mais baratos no país.'
   },
    {
     //Pergunta 15
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'Sobre o modal de transporte dutoviário:',
+    'r1': 'É o mais rápido para transporte de pessoas.',
+    'r2': 'É o mais rápido par transporte de fluidos.',
+    'r3': 'É o mais rápido para o transporte de outros dutos.',
+    'r4': 'É o mais rápido para o transporte de mercadorias refrigeradas.',
+    'c':  'É o mais rápido par transporte de fluidos.'
   },
    {
     //Pergunta 16
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'Apesar do modal ferroviário não estar em alta no Brasil, ele:',
+    'r1': 'É um modal excelente indiscutivelmente para transporte de carga em massa.',
+    'r2': 'É um modal bom para tranporte porém um dos mais caros.',
+    'r3': 'É um modal de transporte ruim e barato.',
+    'r4': 'Nenhuma das anteriores.',
+    'c':  'É um modal excelente indiscutivelmente para transporte de carga em massa.'
   },
    {
     //Pergunta 17
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'No quesito frequência de funcionamento, qual é o modal mais eficiente?',
+    'r1': 'Aeroviário.',
+    'r2': 'Ferroviário.',
+    'r3': 'Rodoviário.',
+    'r4': 'Dutoviário.',
+    'c':  'Dutoviário.'
   },
    {
     //Pergunta 18
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'Em média, qual é o custo do transporte de cargas na logística?',
+    'r1': '50%',
+    'r2': '20%',
+    'r3': '37%',
+    'r4': '60%',
+    'c':  '60%'
   },
    {
     //Pergunta 19
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'Sobre a empilhadeira:',
+    'r1': 'Carrega qualquer tipo de carga sem palete.',
+    'r2': 'Necessita que a mercadoria esteja em palete.',
+    'r3': 'Não é mais utilizada.',
+    'r4': 'Nenhuma das anteriores.',
+    'c':  'Necessita que a mercadoria esteja em palete.'
   },
    {
     //Pergunta 20
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'A logística abrange:',
+    'r1': 'Transportar, organizar, empacotar e entregar.',
+    'r2': 'Cuidar, avaliar, transportar, entregar.',
+    'r3': 'Cuidar, transportar, assegurar e entregar.',
+    'r4': 'Assegurar, transportar, entregar.',
+    'c':  'Assegurar, transportar, entregar.'
+  },
+  {
+    //Pergunta 21
+    'p':  'Sobre o armazém, responda:',
+    'r1': 'A rua é o local que o caminhão descarrega as cargas no armazém.',
+    'r2': 'As ruas são os corredores do armazém.',
+    'r3': 'Os vãos são similares às docas.',
+    'r4': 'Docas não são conceitos contidos no armazém.',
+    'c':  'As ruas são os corredores do armazém.'
+  },
+  {
+    //Pergunta 22
+    'p':  'As esteiras são fundamentais para o processo logístico. A afirmação está?',
+    'r1': 'Correta.',
+    'r2': 'Incorreta.',
+    'r3': 'Parcialmente correta.',
+    'r4': 'Nenhuma das anteriores.',
+    'c':  'Correta.'
+  },
+  {
+    //Pergunta 23
+    'p':  'O programa 5S contém no seu escopo a limpeza do ambiente alegando gerar produtividade. Essa afirmativa é correta?',
+    'r1': 'Correta.',
+    'r2': 'Incorreta.',
+    'r3': 'Parcialmente correta.',
+    'r4': 'Nenhuma das anteriores.',
+    'c':  'Correta.'
+  },
+  {
+    //Pergunta 23
+    'p':  'O S5 do programa 5S fala sobre disciplina, para isso deve-se:',
+    'r1': 'Treinar funcionários.',
+    'r2': 'Obrigar que haja obediência.',
+    'r3': 'Treinar gerando compreensão do bem coletivo.',
+    'r4': 'Nenhuma das anteriores.',
+    'c':  'Treinar gerando compreensão do bem coletivo.'
+  },
+  {
+    //Pergunta 24
+    'p':  'A embarcação do tipo Reefer serve para?',
+    'r1': 'Carga viva.',
+    'r2': 'Carga seca.',
+    'r3': 'Carga refrigerada.',
+    'r4': 'Carga automotiva.',
+    'c':  'Carga refrigerada.'
+  },
+  {
+    //Pergunta 25
+    'p':  'O Bulk Carrier é especializado em carregar cargas?',
+    'r1': 'Refrigeradas.',
+    'r2': 'Líquidas.',
+    'r3': 'Sólidas.',
+    'r4': 'Vivas.',
+    'c':  'Sólidas.'
+  },
+  {
+    //Pergunta 26
+    'p':  'Full container é especializado em carga de?',
+    'r1': 'Containers.',
+    'r2': 'Metal para containers.',
+    'r3': 'Cargas em geral.',
+    'r4': 'Carga automotiva.',
+    'c':  'Containers.'
+  },
+  {
+    //Pergunta 27
+    'p':  'A embarcação Tanker é especializada em?',
+    'r1': 'Carga sólida a granel.',
+    'r2': 'Carga líquida a granel.',
+    'r3': 'Carga refrigerada em geral.',
+    'r4': 'Carga de tanques de guerra.',
+    'c':  'Carga líquida a granel.'
+  },
+  {
+    //Pergunta 28
+    'p':  'A embarcação Ro-Ro é especializada em que tipo de carga?',
+    'r1': 'Automotiva com locomoção própria.',
+    'r2': 'Automotiva sem locomoção própria.',
+    'r3': 'Carga necessitada de transporte por guindaste.',
+    'r4': 'Carga automotiva como peças e acessórios.',
+    'c':  'Automotiva com locomoção própria.'
+  },
+  {
+    //Pergunta 29
+    'p':  'O módulo de um armazém é?',
+    'r1': 'Um corredor.',
+    'r2': 'Um planejamento.',
+    'r3': 'O sistema do computador.',
+    'r4': 'Estante.',
+    'c':  'Estante.'
+  },
+  {
+    //Pergunta 30
+    'p':  'O nível quando se trata de organização de armazéns é?',
+    'r1': 'A altura dos módulos.',
+    'r2': 'Altura de entrada das docas.',
+    'r3': 'Prateleira dos módulos.',
+    'r4': 'Andar gerencial.',
+    'c':  'Prateleira dos módulos.'
   }
-];  
-      alert(segurancaTrabalho[0].p);
- 
-    try {
+];       
+     
+        alert('Aguarde alguns segundos enquanto o aplicativo configura o ambiente para o seu funcionamento.');
         localDB.transaction(function(transaction){
+          var i = 0;
+          for(i; i<30; i++){
+              transaction.executeSql('INSERT INTO adm (pergunta, resposta1, resposta2, resposta3, resposta4, correta) VALUES (?, ?, ? ,?, ?, ?)', [administracao[i].p, administracao[i].r1, administracao[i].r2, administracao[i].r3, administracao[i].r4, administracao[i].c], nullDataHandler, errorHandler);
+              
+              transaction.executeSql('INSERT INTO segtrab (pergunta, resposta1, resposta2, resposta3, resposta4, correta) VALUES (?, ?, ? ,?, ?, ?)', [segurancaTrabalho[i].p, segurancaTrabalho[i].r1, segurancaTrabalho[i].r2, segurancaTrabalho[i].r3, segurancaTrabalho[i].r4, segurancaTrabalho[i].c], nullDataHandler, errorHandler);  
+              
+              transaction.executeSql('INSERT INTO logistica (pergunta, resposta1, resposta2, resposta3, resposta4, correta) VALUES (?, ?, ? ,?, ?, ?)', [logistica[i].p, logistica[i].r1, logistica[i].r2, logistica[i].r3, logistica[i].r4, logistica[i].c], nullDataHandler, errorHandler);                                 
+          }
+        });             
+      
+     
+    var pausa = setInterval(function(){updateStatus("Cadastrado com sucesso!"); chamatela('home.html'); clearInterval(pausa); }, 10000);  
 
-            var queryAdm= "INSERT INTO adm(pergunta, resposta1,resposta2,resposta3,resposta4,correta) VALUES(?,?,?,?,?)";
-            transaction.executeSql(queryAdm, [administracao[0].p,administracao[0].r1,administracao[0].r2,administracao[0].r3,administracao[0].r4,administracao[0].c], nullDataHandler, errorHandler); 
-            
-            var querysegtb= "INSERT INTO segtrab(pergunta, resposta1,resposta2,resposta3,resposta4,correta) VALUES(?,?,?,?,?)";
-            transaction.executeSql(querysegtb, [segurancaTrabalho[0].p,segurancaTrabalho[0].r1,segurancaTrabalho[0].r2,segurancaTrabalho[0].r3,segurancaTrabalho[0].r4,segurancaTrabalho[0].c], nullDataHandler, errorHandler); 
-            
-            // var querylog= "INSERT INTO logistica(pergunta, resposta1,resposta2,resposta3,resposta4,correta) VALUES("+"'"+logistica[i].p+"','"+ logistica[i].r1+"','"+ logistica[i].r2+"','"+logistica[i].r3+"','"+logistica[i].r4+"','"+logistica[i].c+"')";
-             // transaction.executeSql(querylog, [], nullDataHandler, errorHandler); 
-            
-          
-          var pausa = setInterval(function(){ updateStatus("Cadastrado com sucesso!"); chamatela('home.html'); clearInterval(pausa); }, 1000);
-            
-        });
-    } 
-    catch (e) {
-        updateStatus("Erro: População não criada " + e + ".");
-        return;
-    }
-    
 }
+
 // function queryAndUpdateOverview(){
 
 //     //Remove as linhas existentes para inserção das novas
@@ -1401,21 +1493,21 @@ function uAcessadauCadastrada()
                         var valor = results.rows.item(0).pergadm;
                          //Infelizmente a linha abaixo é uma gambiarra que precisei fazer para receber dados assíncronos
                          // do sqlite por não ter conseguido ajuda com as requisições assíncronas a tempo. 
-                        var pausa = setInterval(function(){uacc = valor; clearInterval(pausa); }, 200);
+                        var pausa = setInterval(function(){if(uacc == 0)uacc = valor+1;else uacc=valor; clearInterval(pausa); }, 200);
                     
                         break;
                       case 'segtrab':
                          var valor = results.rows.item(0).pergsegtrab;  
                          //Infelizmente a linha abaixo é uma gambiarra que precisei fazer para receber dados assíncronos
                          // do sqlite por não ter conseguido ajuda com as requisições assíncronas a tempo. 
-                         var pausa = setInterval(function(){uacc = valor; clearInterval(pausa); }, 200);
+                         var pausa = setInterval(function(){if(uacc == 0)uacc = valor+1;else uacc=valor; clearInterval(pausa); }, 200);
 
                         break;
                       case 'logistica':
                          var valor = results.rows.item(0).perglogistica; 
                           //Infelizmente a linha abaixo é uma gambiarra que precisei fazer para receber dados assíncronos
                          // do sqlite por não ter conseguido ajuda com as requisições assíncronas a tempo. 
-                         var pausa = setInterval(function(){uacc = valor; clearInterval(pausa); }, 200);
+                         var pausa = setInterval(function(){if(uacc == 0)uacc = valor+1;else uacc=valor; clearInterval(pausa); }, 200);
 
                         break;   
                     } 

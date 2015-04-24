@@ -128,7 +128,7 @@ function onCreate(){
         updateStatus("Erro: 'Nome' e 'Email' são campos obrigatórios!");
     }
     else {
-            var query = "INSERT INTO usuario(id, nome, email, adm, segtrab, logistica, pergadm, pergsegtrab, perglogistica) VALUES(1, ?, ?, 0,0,0,0,0,0)";
+            var query = "INSERT INTO usuario(id, nome, email, adm, segtrab, logistica, pergadm, pergsegtrab, perglogistica) VALUES(1, ?, ?, 0,0,0,1,1,1)";
         
             localDB.transaction(function(transaction){
               transaction.executeSql(query, [nome,email], nullDataHandler, errorHandler);
@@ -138,7 +138,7 @@ function onCreate(){
               popularTabelas();   
           }  
                       
-    document.getElementById('tt2').innerHTML = "Só um minuto... Já já estarei funcionando, estou agora carregando as perguntas no seu celular (:.";
+    document.getElementById('tt2').innerHTML = "Só um minuto... Já já estarei funcionando, estou agora carregando as perguntas no seu celular (:";
     $("#cadastro").css("display", "none");
     // $("#email").css("display", "none");
     // $("#cadastrar").css("display", "none");
@@ -1213,7 +1213,7 @@ function zerarPts()
     if(confirmacao)
     {
 
-        var query = "update usuario set adm=0, segtrab=0, logistica=0, pergadm=0, pergsegtrab=0, perglogistica=0;";
+        var query = "update usuario set adm=0, segtrab=0, logistica=0, pergadm=1, pergsegtrab=1, perglogistica=1;";
         
         try 
         {
@@ -1502,21 +1502,21 @@ function uAcessadauCadastrada()
                         var valor = results.rows.item(0).pergadm;
                          //Infelizmente a linha abaixo é uma gambiarra que precisei fazer para receber dados assíncronos
                          // do sqlite por não ter conseguido ajuda com as requisições assíncronas a tempo. 
-                        var pausa = setInterval(function(){if(uacc == 0)uacc = valor+1;else uacc=valor; clearInterval(pausa); }, 200);
+                        var pausa = setInterval(function(){uacc = valor; clearInterval(pausa); }, 200);
                     
                         break;
                       case 'segtrab':
                          var valor = results.rows.item(0).pergsegtrab;  
                          //Infelizmente a linha abaixo é uma gambiarra que precisei fazer para receber dados assíncronos
                          // do sqlite por não ter conseguido ajuda com as requisições assíncronas a tempo. 
-                         var pausa = setInterval(function(){if(uacc == 0)uacc = valor+1;else uacc=valor; clearInterval(pausa); }, 200);
+                         var pausa = setInterval(function(){uacc = valor; clearInterval(pausa); }, 200);
 
                         break;
                       case 'logistica':
                          var valor = results.rows.item(0).perglogistica; 
                           //Infelizmente a linha abaixo é uma gambiarra que precisei fazer para receber dados assíncronos
                          // do sqlite por não ter conseguido ajuda com as requisições assíncronas a tempo. 
-                         var pausa = setInterval(function(){if(uacc == 0)uacc = valor+1;else uacc=valor; clearInterval(pausa); }, 200);
+                         var pausa = setInterval(function(){uacc = valor; clearInterval(pausa); }, 200);
 
                         break;   
                     } 
@@ -1662,6 +1662,7 @@ function carregaPerg()
                      // do sqlite por não ter conseguido ajuda com as requisições assíncronas a tempo. 
                     var pausa = setInterval(function(){
                        document.getElementById('pergunta').innerHTML = p; 
+                       limparSelect('respostas');
                        insertQuestionsSelect(r1,'respostas');
                        insertQuestionsSelect(r2,'respostas');
                        insertQuestionsSelect(r3,'respostas');

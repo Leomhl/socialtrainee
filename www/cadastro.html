@@ -55,18 +55,23 @@
 						<div class="row">
 							<div class="12u">
 							
-							<h4>Por favor, cadastre-se para usufruir do Social Trainee!</h4><br>
-							<p>O cadastro não poderá ser alterado, cheque se todos os dados estão de acordo!</p>
+							<h4 id="tt1">Por favor, cadastre-se para usufruir do Social Trainee!</h4><br>
+							<p id="tt2">O cadastro não poderá ser alterado, cheque se todos os dados estão de acordo!</p>
 							
 							<form name="itemForm">
-								<!--<label for="id">Id:</label >
-								<input type="text" name="id" id="id" size=2/> -->
-								<!-- <label for="nome">Nome:</label> -->
-								<input type="text" name="nome" class="esticar input-block-level" id="nome" size=10 PlaceHolder="Nome" /><br><br>
-								<!-- <label for="email">Email</label> -->
-								<input type="text" name="email" class="esticar input-block-level" id="email" size=3 PlaceHolder="Email" /> <br><br>
+								<div id="cadastro">
+									<input type="text" name="nome" class="esticar input-block-level" id="nome" size=10 PlaceHolder="Nome" /><br><br>
+									<!-- <label for="email">Email</label> -->
+									<input type="text" name="email" class="esticar input-block-level" id="email" size=3 PlaceHolder="Email" /> <br><br>
 
-								<a onClick="onCreate()" class=" estender button-big">Cadastrar</a>	
+									<a onClick="onCreate()" id="cadastrar" class=" estender button-big">Cadastrar</a>	
+
+									<h4 id="h4status">Status:</h4>
+									<div id="status"></div>
+							<br>
+								</div>
+
+								<img src="img/loader.gif" id="loading" class="centralizar" height="26" width="26">
 								
 									<!--<input type="button" name="update" value="Update" onclick="onUpdate()" />-->
 									<!--<input type="button" name="delete" value="Delete" onclick="onDelete()" />  --> 
@@ -77,9 +82,7 @@
 							</form>
 		
 							
-							<h4>Status:</h4>
-							<div id="status"></div>
-							<br>	
+								
 
 							
 
@@ -99,6 +102,11 @@
 		<!-- Javascript do Cordova Phonegap -->
 		<script type="text/javascript" src="cordova.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
+		<script>
+			$( document ).ready(function() {			    
+			    $("#loading").css("display", "none");
+			});
+		</script>	    
 		<script type="text/javascript">
 			  app.initialize();
 		</script>

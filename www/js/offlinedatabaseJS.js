@@ -136,7 +136,17 @@ function onCreate(){
               updateStatus("Inserção realizada");
               alert('Cadastrado com sucesso!');
               popularTabelas();   
-          }                  
+          }  
+                      
+    document.getElementById('tt2').innerHTML = "Só um minuto... Já já estarei funcionando, estou agora carregando as perguntas no seu celular (:.";
+    $("#cadastro").css("display", "none");
+    // $("#email").css("display", "none");
+    // $("#cadastrar").css("display", "none");
+    $("#tt1").css("display", "none");
+    // $("#h4status").css("display", "none");
+    // $("#status").css("display", "none");
+    $("#loading").show();
+
 }
 
 function onSelect(htmlLIElement){
@@ -1046,7 +1056,6 @@ var logistica =
 //                 }
 //             }, function(transaction, error){
 //                 updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
-//             });
 //         });
 //     } 
 //     catch (e) {

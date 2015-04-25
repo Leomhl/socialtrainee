@@ -1612,11 +1612,14 @@ function carregaPerg()
         });  
               
             
-    }else if(uacc > ucad)
+    }else if(uacc > ucad && ucad != 0)
     {
         alert('O jogo terminou! Aproveite para jogar as outras modalidades ou pessa para alguém cadastrar mais perguntas (: .');
         chamatela('informacoes.html');
     }
+
+    if (ucad == 0)
+      alert('Provavelmente houve um erro na instalação do aplicativo. Tente reinstalá-lo para corrigir o problema ou saia e volte ao aplicativo.');
 }
 
 //Corrige se a resposta informada está correta

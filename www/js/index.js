@@ -136,6 +136,4 @@ function sairJogo()//Para sair do jogo
 
 	if(confirmacao)
 		chamatela('home.html');
-	else
-		exit;
-}
+}	

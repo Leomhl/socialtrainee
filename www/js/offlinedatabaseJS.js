@@ -6,7 +6,6 @@
 //Para manter setado qual jogo o usuário está
   var materia = null; //adm, segtrab ou logistica
 
-
   //Dados da questão
   var pergunta = null;
   var resposta1 = null;
@@ -15,6 +14,7 @@
   var resposta4 = null;
   var correta = null; 
 
+  //Para controle das questões do banco
   var uacc = 1; //Última acessada
   var ucad = 0; //Última cadastrada
 
@@ -41,17 +41,19 @@ function onInit()
     }
 }
 
-function initDB(){
-
+//Cria o banco
+function initDB()
+{
     var shortName = 'stuffDB';
     var version = '1.0';
     var displayName = 'MyStuffDB';
-    var maxSize = 65536; // Em bytes (64)
+    var maxSize = 1048576; // Em bytes (1MB)
     localDB = window.openDatabase(shortName, version, displayName, maxSize);
 }
 
-function createTables(){
-
+//Cria as tabelas que o projeto usará
+function createTables()
+{
     var query = 'CREATE TABLE IF NOT EXISTS usuario(id INTEGER NOT NULL, nome VARCHAR NOT NULL, email VARCHAR NOT NULL, adm INTEGER, segtrab INTEGER, logistica INTEGER, pergadm INTEGER, pergsegtrab INTEGER, perglogistica INTEGER)';
     var queryadm = 'CREATE TABLE IF NOT EXISTS adm(id INTEGER NOT NULL PRIMARY KEY , pergunta VARCHAR NOT NULL, resposta1 VARCHAR NOT NULL, resposta2 VARCHAR NOT NULL, resposta3 VARCHAR NOT NULL, resposta4 VARCHAR NOT NULL, correta VARCHAR NOT NULL)';
     var querysegtrab = 'CREATE TABLE IF NOT EXISTS segtrab(id INTEGER NOT NULL PRIMARY KEY , pergunta VARCHAR NOT NULL, resposta1 VARCHAR NOT NULL, resposta2 VARCHAR NOT NULL, resposta3 VARCHAR NOT NULL, resposta4 VARCHAR NOT NULL, correta VARCHAR NOT NULL)';
@@ -63,7 +65,6 @@ function createTables(){
             transaction.executeSql(queryadm, [], nullDataHandler, errorHandler);
             transaction.executeSql(querysegtrab, [], nullDataHandler, errorHandler);
             transaction.executeSql(querylogistica, [], nullDataHandler, errorHandler);
-            // // updateStatus("Conexão com o BD: OK!");
         });
     } 
     catch (e) {
@@ -72,9 +73,9 @@ function createTables(){
     }
 }
 
-
-function dropTables(){
-
+//Detona as tabelas
+function dropTables()
+{
     var query = 'drop table usuario';
     var queryadm = 'drop table adm';
     var querysegtrab = 'drop table segtrab';
@@ -86,19 +87,19 @@ function dropTables(){
             transaction.executeSql(queryadm, [], nullDataHandler, errorHandler);
             transaction.executeSql(querysegtrab, [], nullDataHandler, errorHandler);
             transaction.executeSql(querylogistica, [], nullDataHandler, errorHandler);
-            // updateStatus("Usuário 'dropado' com sucesso!");
             alert("Tabelas 'dropadas' com sucesso!");
 
         });
     } 
     catch (e) {
-        // updateStatus("Erro: drop não feito " + e + ".");
         alert("Erro: drop não feito " + e + ".");
         return;
     }
 }
 
-function dropDatabase(){
+//Detona o banco de dados
+function dropDatabase()
+{
     dropTables();
     var query = 'drop database stuffDB';
     try {
@@ -114,62 +115,33 @@ function dropDatabase(){
         alert("Erro: drop no banco não feito " + e + ".");
         return;
     }
-
     initDB();
 }
 
-
-function onCreate(){
+function onCreate()
+{
     var nome = document.itemForm.nome.value;
     var email = document.itemForm.email.value;
-
 
     if (nome == "" || email == "") {
         updateStatus("Erro: 'Nome' e 'Email' são campos obrigatórios!");
     }
-    else {
-            var query = "INSERT INTO usuario(id, nome, email, adm, segtrab, logistica, pergadm, pergsegtrab, perglogistica) VALUES(1, ?, ?, 0,0,0,1,1,1)";
-        
-            localDB.transaction(function(transaction){
-              transaction.executeSql(query, [nome,email], nullDataHandler, errorHandler);
-            });      
-              updateStatus("Inserção realizada");
-              alert('Cadastrado com sucesso!');
-              popularTabelas();   
-          }  
+    else
+    {
+        var query = "INSERT INTO usuario(id, nome, email, adm, segtrab, logistica, pergadm, pergsegtrab, perglogistica) VALUES(1, ?, ?, 0,0,0,1,1,1)";
+    
+        localDB.transaction(function(transaction){
+          transaction.executeSql(query, [nome,email], nullDataHandler, errorHandler);
+        });      
+          updateStatus("Inserção realizada");
+          alert('Cadastrado com sucesso!');
+          popularTabelas();   
+    }  
                       
     document.getElementById('tt2').innerHTML = "Só um minuto... Já já estarei funcionando, estou agora carregando as perguntas no seu celular (:";
     $("#cadastro").css("display", "none");
-    // $("#email").css("display", "none");
-    // $("#cadastrar").css("display", "none");
     $("#tt1").css("display", "none");
-    // $("#h4status").css("display", "none");
-    // $("#status").css("display", "none");
     $("#loading").show();
-
-}
-
-function onSelect(htmlLIElement){
-    var id = htmlLIElement.getAttribute("id");
-    query = "SELECT * FROM usuario where id=?;";
-    try {
-        localDB.transaction(function(transaction){
-        
-            transaction.executeSql(query, [id], function(transaction, results){
-            
-                var row = results.rows.item(0);
-                
-                updateForm(row['id'], row['nome'], row['email']);
-                
-            }, function(transaction, error){
-                updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
-            });
-        });
-    } 
-    catch (e) {
-        updateStatus("Error: SELECT não realizado " + e + ".");
-    }
-   
 }
 
 
@@ -1007,83 +979,44 @@ var logistica =
     'c':  'Prateleira dos módulos.'
   }
 ];       
-     
         alert('Aguarde alguns segundos enquanto o aplicativo configura o ambiente para o seu funcionamento.');
         localDB.transaction(function(transaction){
           var i = 0;
           for(i; i<30; i++){
-              transaction.executeSql('INSERT INTO adm (pergunta, resposta1, resposta2, resposta3, resposta4, correta) VALUES (?, ?, ? ,?, ?, ?)', [administracao[i].p, administracao[i].r1, administracao[i].r2, administracao[i].r3, administracao[i].r4, administracao[i].c], nullDataHandler, errorHandler);
-              
-              transaction.executeSql('INSERT INTO segtrab (pergunta, resposta1, resposta2, resposta3, resposta4, correta) VALUES (?, ?, ? ,?, ?, ?)', [segurancaTrabalho[i].p, segurancaTrabalho[i].r1, segurancaTrabalho[i].r2, segurancaTrabalho[i].r3, segurancaTrabalho[i].r4, segurancaTrabalho[i].c], nullDataHandler, errorHandler);  
-              
+              transaction.executeSql('INSERT INTO adm (pergunta, resposta1, resposta2, resposta3, resposta4, correta) VALUES (?, ?, ? ,?, ?, ?)', [administracao[i].p, administracao[i].r1, administracao[i].r2, administracao[i].r3, administracao[i].r4, administracao[i].c], nullDataHandler, errorHandler); 
+              transaction.executeSql('INSERT INTO segtrab (pergunta, resposta1, resposta2, resposta3, resposta4, correta) VALUES (?, ?, ? ,?, ?, ?)', [segurancaTrabalho[i].p, segurancaTrabalho[i].r1, segurancaTrabalho[i].r2, segurancaTrabalho[i].r3, segurancaTrabalho[i].r4, segurancaTrabalho[i].c], nullDataHandler, errorHandler);              
               transaction.executeSql('INSERT INTO logistica (pergunta, resposta1, resposta2, resposta3, resposta4, correta) VALUES (?, ?, ? ,?, ?, ?)', [logistica[i].p, logistica[i].r1, logistica[i].r2, logistica[i].r3, logistica[i].r4, logistica[i].c], nullDataHandler, errorHandler);                                 
           }
         });             
       
-     
-    var pausa = setInterval(function(){updateStatus("Cadastrado com sucesso!"); chamatela('home.html'); clearInterval(pausa); }, 10000);  
-
-}
-
-// function queryAndUpdateOverview(){
-
-//     //Remove as linhas existentes para inserção das novas
-//     var dataRows = document.getElementById("itemData").getElementsByClassName("data");
-    
-//     while (dataRows.length > 0) {
-//         row = dataRows[0];
-//         document.getElementById("itemData").removeChild(row);
-//     };
-    
-//     //Realiza a leitura no banco e cria novas linhas na tabela.
-//     var query = "SELECT * FROM usuario;";
-//     try {
-//         localDB.transaction(function(transaction){
-        
-//             transaction.executeSql(query, [], function(transaction, results){
-//                 for (var i = 0; i < results.rows.length; i++) {
-                
-//                     var row = results.rows.item(i);
-//                     var li = document.createElement("li");
-//                     li.setAttribute("id", row['id']);
-//                     li.setAttribute("class", "data");
-//                     li.setAttribute("onclick", "onSelect(this)");
-                    
-//                     var liText = document.createTextNode(row['nome'] + " x "+ row['email']+ " x " + row['id']);
-//                     li.appendChild(liText);
-                    
-//                     document.getElementById("itemData").appendChild(li);
-//                 }
-//             }, function(transaction, error){
-//                 updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
-//         });
-//     } 
-//     catch (e) {
-//         updateStatus("Error: SELECT não realizado " + e + ".");
-//     }
-// }
+    //Tempo para que dê tempo de popular as tabelas e só depois trocar de tela
+    var pausa = setInterval(function(){chamatela('home.html'); clearInterval(pausa); }, 6000);  
+} 
 
 // 3. Funções de tratamento e status.
-
 // Tratando erros
 
-errorHandler = function(transaction, error){
+errorHandler = function(transaction, error)
+{
     updateStatus("Erro: " + error.message);
     return true;
 }
 
-nullDataHandler = function(transaction, results){
+nullDataHandler = function(transaction, results)
+{
 }
 
 // Funções de update
 
-function updateForm(id, nome, email){
+function updateForm(id, nome, email)
+{
     document.itemForm.id.value = id;
     document.itemForm.nome.value = nome;
     document.itemForm.email.value = email;
 }
 
-function updateStatus(status){
+function updateStatus(status)
+{
     document.getElementById('status').innerHTML = status;
 }
 
@@ -1131,24 +1064,28 @@ function onTest(){
     }
 }
 
+//Para iniciar a tela de splash
 function startIndex()
 {
     onInit();
     onTest();
 }
 
+//Cara iniciar a tela de informações
 function startInformacoes()
 {
     onInit();
     onSelection();
 }
 
+//Para iniciar a tela home
 function startHome()
 {
     onInit();
     nome();
 }
 
+//Inicia o jogo
 function startJogo(mat)
 {
      switch(mat)
@@ -1173,7 +1110,8 @@ function startJogo(mat)
 }
 
 //Exibe na view de informações os dados do banco
-function updateInformations(id, nome, email, adm, segtrab, logistica){
+function updateInformations(id, nome, email, adm, segtrab, logistica)
+{
     document.getElementById('nome').innerHTML = '<hr>Nome: <br>'+nome;
     document.getElementById('email').innerHTML = '<hr>Email: <br>'+email;
     document.getElementById('adm').innerHTML = '<hr>Pontos Administração: '+adm;
@@ -1182,7 +1120,8 @@ function updateInformations(id, nome, email, adm, segtrab, logistica){
 }
 
 // Para exibir no informações os dados que estão no banco
-function onSelection(){
+function onSelection()
+{
     var id = 1;
     query = "SELECT * FROM usuario where id=?;";
     try {
@@ -1201,8 +1140,7 @@ function onSelection(){
     } 
     catch (e) {
         updateStatus("Error: SELECT não realizado " + e + ".");
-    }
-   
+    }   
 }
 
 // Zera os pontos de todos os jogos
@@ -1237,7 +1175,6 @@ function zerarPts()
         }
     }
 }
-
 
 //Insere asquestões criadas na tela de configurações no banco de dados
 function insertQuestionsInDB()
@@ -1365,7 +1302,6 @@ function loadDelete()
     }
 }
 
-
 //Exclui a questão selecionada na tela de configurações
 function deleteQuestion()
 {
@@ -1407,7 +1343,6 @@ var pergunta = document.deleteForm.perguntaExcluir.value;
             alert('O campo do jogo ou o  da pergunta não foi selecionado!');
         }
     }
-
 }
 
 //Põe o nome da pessoa na tela de home
@@ -1571,7 +1506,6 @@ function uAcessadauCadastrada()
         });
 }
 
-
 //para controlar a pontuação do jogo
 function pontos(flag)
 {
@@ -1625,7 +1559,6 @@ function pontos(flag)
         });
 }
 
-
 //Busca a pergunta no banco, usa a seguinte regra:
 //checa no cadastro do usuário qual foi a última questão respondida e retorna
 //a próxima questão. Sempre quando a questão for corrigida é gravado no banco a id daquela questão
@@ -1633,51 +1566,50 @@ function carregaPerg()
 {
     if(uacc <= ucad)
     {
-         switch(materia)
+        switch(materia)
             {
-              case 'adm':
-                var query = 'select * from adm where id = '+uacc;  
-                break;
-              case 'segtrab':
-                 var query = 'select * from segtrab where id = '+uacc;  
-                break;
-              case 'logistica':
-                 var query = 'select * from logistica where id = '+uacc;
-                break;   
+                case 'adm':
+                    var query = 'select * from adm where id = '+uacc;  
+                    break;
+                case 'segtrab':
+                    var query = 'select * from segtrab where id = '+uacc;  
+                    break;
+                case 'logistica':
+                    var query = 'select * from logistica where id = '+uacc;
+                    break;   
             } 
 
-        
-            localDB.transaction(function(transaction){
+        localDB.transaction(function(transaction){
 
-                transaction.executeSql(query, [], function(transaction, results)
-                {
-                    var p = results.rows.item(0).pergunta;
-                    var r1 = results.rows.item(0).resposta1;
-                    var r2 = results.rows.item(0).resposta2;
-                    var r3 = results.rows.item(0).resposta3;
-                    var r4 = results.rows.item(0).resposta4;
-                    var c = results.rows.item(0).correta;
+            transaction.executeSql(query, [], function(transaction, results)
+            {
+                var p = results.rows.item(0).pergunta;
+                var r1 = results.rows.item(0).resposta1;
+                var r2 = results.rows.item(0).resposta2;
+                var r3 = results.rows.item(0).resposta3;
+                var r4 = results.rows.item(0).resposta4;
+                var c = results.rows.item(0).correta;
 
-                     //Infelizmente a linha abaixo é uma gambiarra que precisei fazer para receber dados assíncronos
-                     // do sqlite por não ter conseguido ajuda com as requisições assíncronas a tempo. 
-                    var pausa = setInterval(function(){
-                       document.getElementById('pergunta').innerHTML = p; 
-                       limparSelect('respostas');
-                       insertQuestionsSelect(r1,'respostas');
-                       insertQuestionsSelect(r2,'respostas');
-                       insertQuestionsSelect(r3,'respostas');
-                       insertQuestionsSelect(r4,'respostas');
-                   
-                       correta = c;
-                        
-                        clearInterval(pausa); 
-                            }, 700);   
+                //Infelizmente a linha abaixo é uma gambiarra que precisei fazer para receber dados assíncronos
+                // do sqlite por não ter conseguido ajuda com as requisições assíncronas a tempo. 
+                var pausa = setInterval(function(){
+                   document.getElementById('pergunta').innerHTML = p; 
+                   limparSelect('respostas');
 
-                }, function(transaction, error){
-                     updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
-                
-               });
-            });  
+                   insertQuestionsSelect(r1,'respostas');
+                   insertQuestionsSelect(r2,'respostas');
+                   insertQuestionsSelect(r3,'respostas');
+                   insertQuestionsSelect(r4,'respostas');
+                   correta = c;
+                    
+                    clearInterval(pausa); 
+                        }, 700);   
+
+            }, function(transaction, error){
+                 updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
+            
+           });
+        });  
               
             
     }else if(uacc > ucad)
@@ -1699,7 +1631,6 @@ function corrigir()
       {
          pontos(1);
          efeitosAcertou();
-
       }else
       {
          pontos(0);
@@ -1719,9 +1650,7 @@ function corrigir()
 
     atualizaUltAcessada();
     carregaPerg();
-    
 }
-
 
 //Grava no banco a última questão acessada
 function atualizaUltAcessada()

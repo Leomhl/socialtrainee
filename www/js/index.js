@@ -1,10 +1,10 @@
 //################## Nativo ##################
 
 // Vibra o aparelho
-function vibrar()
-{
-	navigator.notification.vibrate(1000);
-} 
+// function vibrar()
+// {
+// 	navigator.notification.vibrate(1000);
+// } 
 
 // Sai do aplicativo
 function sair()
@@ -19,7 +19,6 @@ function sair()
 function chamahome()
 {	  
 	setInterval(function(){window.open('home.html')}, 3000);  
-  
 }
 
 // Chama qualquer tela
@@ -118,7 +117,6 @@ function efeitosAcertou()
 	acertou.show();
 	acertou.animate({"left": "25%"}, 1500);
 	acertou.delay(500).animate({"left": "100%"}, 800, null, function(){$("#imgAcerto").css("display", "none")});
-
 }
 
 
@@ -127,9 +125,8 @@ function efeitosErrou()
 	var errou = $("#imgErro");
 	errou.show();
 	errou.animate({"left": "25%"}, 1500);
-	vibrar();
-	errou.delay(500).animate({"left": "100%"}, 800, null, function(){$("#imgErro").css("display", "none");});
-	
+	//vibrar();
+	errou.delay(500).animate({"left": "100%"}, 800, null, function(){$("#imgErro").css("display", "none");});	
 }
 
 

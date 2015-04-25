@@ -71,7 +71,7 @@
 
     <!-- android -->
     <platform name="android">
-        <config-file target="res/xml/config.xml" parent="/*">
+        <config-file target="config.xml" parent="/*">
             <feature name="Vibration">
                 <param name="android-package" value="org.apache.cordova.vibration.Vibration"/>
             </feature>

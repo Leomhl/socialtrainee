@@ -1,14 +1,10 @@
 //################## Nativo ##################
 
 // Vibra o aparelho
-function vibrar()
-{
-	document.addEventListener("deviceready", onDeviceReady, false);
-	function onDeviceReady() {
-    	navigator.notification.vibrate(1000);
-	}
-	
-} 
+// function vibrar()
+// {
+//     navigator.notification.vibrate(1000);	
+// } 
 
 // Sai do aplicativo
 function sair()

@@ -109,7 +109,7 @@ function insertQuestionsSelect(valor, idCampo)
         
   }  
 
-//Gera a animação agráfica para as imagens de erro e acerto da tela de jogo
+//Gera a animação agráfica para as imagens de acerto da tela de jogo
 function efeitosAcertou()
 {
 
@@ -119,7 +119,7 @@ function efeitosAcertou()
 	acertou.delay(500).animate({"left": "100%"}, 800, null, function(){$("#imgAcerto").css("display", "none")});
 }
 
-
+//Gera a animação agráfica para as imagens de erro da tela de jogo
 function efeitosErrou()
 {
 	var errou = $("#imgErro");

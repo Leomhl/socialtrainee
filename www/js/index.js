@@ -3,7 +3,11 @@
 // Vibra o aparelho
 function vibrar()
 {
-	navigator.vibrate(1000);
+	document.addEventListener("deviceready", onDeviceReady, false);
+	function onDeviceReady() {
+    	navigator.notification.vibrate(1000);
+	}
+	
 } 
 
 // Sai do aplicativo

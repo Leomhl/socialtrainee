@@ -96,25 +96,18 @@ function insertQuestionsSelect(valor, idCampo)
 }
 
 //Limpa o campo select e insere um valor inicial
- function limparSelect(idCampo, flag)
+ function limparSelect(idCampo)
  {
     // vamos obter o elemento select
     var elem = document.getElementById(idCampo);  
 
 
     // Para excluir todas as opções e inserir o "Toque aqui para selecionar"
-    if(elem.options.length > 0 && flag == true)
+    if(elem.options.length > 0 )
 	{
 		elem.options.length = 0;
 		insertQuestionsSelect("Toque aqui para selecionar", idCampo);
-	}else//Exclui apenas o "Toque aqui para selecionar", usado na tela dos jogos
-	{
-		var sel = $('#respostas').get(0);
-		var txt = sel.options[sel.selectedIndex].text;
-
-		if(txt == "Toque aqui para selecionar")
-			elem.remove(0);
-	}  
+	}
  }  
 	
 

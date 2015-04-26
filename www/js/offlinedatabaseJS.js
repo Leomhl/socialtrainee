@@ -1231,7 +1231,7 @@ function insertQuestionsInDB()
                             alert('Cadastrado com sucesso!');
 
                             //Limpa o select de pergunta correta
-                            limparSelect("mySelect", true);
+                            limparSelect("mySelect");
 
                             //Limpa todos os campos da tela
                             document.itemForm.pergunta.value = "";
@@ -1578,7 +1578,7 @@ function carregaPerg()
                 // do sqlite por não ter conseguido ajuda com as requisições assíncronas a tempo. 
                 var pausa = setInterval(function(){
                    document.getElementById('pergunta').innerHTML = p; 
-                   limparSelect('respostas',true);
+                   limparSelect('respostas');
 
                    insertQuestionsSelect(r1,'respostas');
                    insertQuestionsSelect(r2,'respostas');
@@ -1624,7 +1624,7 @@ function corrigir()
          efeitosErrou();  
       }
 
-    limparSelect('respostas', true);
+    limparSelect('respostas');
     document.getElementById('pergunta').innerHTML = "";
 
 

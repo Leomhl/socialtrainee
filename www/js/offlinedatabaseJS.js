@@ -18,7 +18,6 @@
   var uacc = 1; //Última acessada
   var ucad = 0; //Última cadastrada
 
-
 function onInit()
 {
     try {
@@ -88,7 +87,6 @@ function dropTables()
             transaction.executeSql(querysegtrab, [], nullDataHandler, errorHandler);
             transaction.executeSql(querylogistica, [], nullDataHandler, errorHandler);
             alert("Tabelas 'dropadas' com sucesso!");
-
         });
     } 
     catch (e) {
@@ -138,7 +136,7 @@ function onCreate()
           popularTabelas();   
     }  
                       
-    document.getElementById('tt2').innerHTML = "Só um minuto... Já já estarei funcionando, estou agora carregando as perguntas no seu celular (:";
+    document.getElementById('tt2').innerHTML = "Enquanto a instalação termina... <br><br> Porque a roda de trem é de ferro e não de borracha? Por que se fosse de borracha apagaria a linha! (:";
     $("#cadastro").css("display", "none");
     $("#tt1").css("display", "none");
     $("#loading").show();
@@ -979,15 +977,14 @@ var logistica =
     'c':  'Prateleira dos módulos.'
   }
 ];       
-        alert('Aguarde alguns segundos enquanto o aplicativo configura o ambiente para o seu funcionamento.');
-        localDB.transaction(function(transaction){
-          var i = 0;
-          for(i; i<30; i++){
-              transaction.executeSql('INSERT INTO adm (pergunta, resposta1, resposta2, resposta3, resposta4, correta) VALUES (?, ?, ? ,?, ?, ?)', [administracao[i].p, administracao[i].r1, administracao[i].r2, administracao[i].r3, administracao[i].r4, administracao[i].c], nullDataHandler, errorHandler); 
-              transaction.executeSql('INSERT INTO segtrab (pergunta, resposta1, resposta2, resposta3, resposta4, correta) VALUES (?, ?, ? ,?, ?, ?)', [segurancaTrabalho[i].p, segurancaTrabalho[i].r1, segurancaTrabalho[i].r2, segurancaTrabalho[i].r3, segurancaTrabalho[i].r4, segurancaTrabalho[i].c], nullDataHandler, errorHandler);              
-              transaction.executeSql('INSERT INTO logistica (pergunta, resposta1, resposta2, resposta3, resposta4, correta) VALUES (?, ?, ? ,?, ?, ?)', [logistica[i].p, logistica[i].r1, logistica[i].r2, logistica[i].r3, logistica[i].r4, logistica[i].c], nullDataHandler, errorHandler);                                 
-          }
-        });             
+    localDB.transaction(function(transaction){
+      var i = 0;
+      for(i; i<30; i++){
+          transaction.executeSql('INSERT INTO adm (pergunta, resposta1, resposta2, resposta3, resposta4, correta) VALUES (?, ?, ? ,?, ?, ?)', [administracao[i].p, administracao[i].r1, administracao[i].r2, administracao[i].r3, administracao[i].r4, administracao[i].c], nullDataHandler, errorHandler); 
+          transaction.executeSql('INSERT INTO segtrab (pergunta, resposta1, resposta2, resposta3, resposta4, correta) VALUES (?, ?, ? ,?, ?, ?)', [segurancaTrabalho[i].p, segurancaTrabalho[i].r1, segurancaTrabalho[i].r2, segurancaTrabalho[i].r3, segurancaTrabalho[i].r4, segurancaTrabalho[i].c], nullDataHandler, errorHandler);              
+          transaction.executeSql('INSERT INTO logistica (pergunta, resposta1, resposta2, resposta3, resposta4, correta) VALUES (?, ?, ? ,?, ?, ?)', [logistica[i].p, logistica[i].r1, logistica[i].r2, logistica[i].r3, logistica[i].r4, logistica[i].c], nullDataHandler, errorHandler);                                 
+      }
+    });             
       
     //Tempo para que dê tempo de popular as tabelas e só depois trocar de tela
     var pausa = setInterval(function(){chamatela('home.html'); clearInterval(pausa); }, 6000);  
@@ -1042,8 +1039,7 @@ function onTest(){
                 {
                     chamatela('cadastro.html');
                 }
-
-                 
+   
             }, function(transaction, error){
                  updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
             });
@@ -1141,7 +1137,6 @@ function zerarPts()
 
     if(confirmacao)
     {
-
         var query = "update usuario set adm=0, segtrab=0, logistica=0, pergadm=1, pergsegtrab=1, perglogistica=1;";
         
         try 
@@ -1236,7 +1231,7 @@ function insertQuestionsInDB()
                             alert('Cadastrado com sucesso!');
 
                             //Limpa o select de pergunta correta
-                            limparSelect("mySelect");
+                            limparSelect("mySelect", true);
 
                             //Limpa todos os campos da tela
                             document.itemForm.pergunta.value = "";
@@ -1266,7 +1261,7 @@ function loadDelete()
 
   if(curso != "Clique aqui para selecionar")
   {
-     limparSelect("perguntaExcluir");
+     limparSelect("perguntaExcluir", true);
       var query = 'select pergunta from '+curso; 
       
         try {
@@ -1454,7 +1449,6 @@ function uAcessadauCadastrada()
             
             });
 
-
         //Transação para a última acessada
         transaction.executeSql(query2, [], function(transaction, results)
             {
@@ -1513,18 +1507,17 @@ function pontos(flag)
         arrayPts = arrayPts.split(' ');
         var pontos = parseInt(arrayPts[0]);
 
-        if(pontos < 15)
+        if(pontos < 12)
         {
            var pts = 0 + ' Pontos';
         }
         else
         {
-          var  pts = (pontos - 15) + ' Pontos';
+          var  pts = (pontos - 12) + ' Pontos';
             
         }
         
     }
-
         var arrayPts = pts;
         arrayPts = arrayPts.split(' ');
         pontos = arrayPts[0];
@@ -1631,7 +1624,7 @@ function corrigir()
          efeitosErrou();  
       }
 
-    limparSelect('respostas');
+    limparSelect('respostas', true);
     document.getElementById('pergunta').innerHTML = "";
 
 

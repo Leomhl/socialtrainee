@@ -625,75 +625,75 @@ var segurancaTrabalho =
   },
   {
     //Pergunta 23
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'Sobre o adicional de insalubridade, escolha a resposta correta.',
+    'r1': 'Todos têm o direito de receber.',
+    'r2': 'Apenas quem trabalha em zona de risco tem direito de receber.',
+    'r3': 'Apenas quem sofreu acidente tem direito',
+    'r4': 'Nenhuma das anteriores.',
+    'c':  'Apenas quem trabalha em zona de risco tem direito de receber.'
   },
   {
     //Pergunta 24
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'A remuneração da insalubridade é dada de qual maneira?',
+    'r1': 'Risco leve 20%, intermediário 30%, alto 50% ',
+    'r2': 'Risco leve 15%, intermediário 25%, alto 45%',
+    'r3': 'Risco leve 5%, intermediário 15%, alto 25%',
+    'r4': 'Risco leve 10%, intermediário 20%, alto 40%',
+    'c':  'Risco leve 10%, intermediário 20%, alto 40%'
   },
   {
     //Pergunta 25
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'São periculosas as atividades ou operações que?',
+    'r1': 'Tenha contato com radiação, eletrecidade, iodo radioativo, explosivos, tóxicos e etc.',
+    'r2': 'Tenha contato com documentos e canetas.',
+    'r3': 'Tenha contato com produtos inodoros',
+    'r4': 'Tenha contato com radiação branca.',
+    'c':  'Tenha contato com radiação, eletrecidade, iodo radioativo, explosivos, tóxicos e etc.'
   },
   {
     //Pergunta 26
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'A remuneração da periculosidade é de?',
+    'r1': '25%',
+    'r2': '12%',
+    'r3': '35%',
+    'r4': '30%',
+    'c':  '30%'
   },
   {
     //Pergunta 27
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'Ainda sobre a remuneração da periculosidade, responda:',
+    'r1': 'É calculada em cima do salário mínimo bruto.',
+    'r2': 'É calculda em cima do salário do funcionário.',
+    'r3': 'É calculada em cima do rendimento mensal da empresa.',
+    'r4': 'Nenhuma das anteriores.',
+    'c':  'É calculda em cima do salário do funcionário.'
   },
   {
     //Pergunta 28
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'Sobre o adicional de risco portuário, ele constitui em:',
+    'r1': '20%',
+    'r2': '30%',
+    'r3': '40%',
+    'r4': '50%',
+    'c':  '40%'
   },
   {
     //Pergunta 29
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'É devido ao empregado que trabalha no porto?',
+    'r1': 'Ordenado',
+    'r2': 'Alinhado',
+    'r3': 'Organizado',
+    'r4': 'Sindicalizado',
+    'c':  'Organizado'
   },
   {
     //Pergunta 30
-    'p':   '',
-    'r1': '',
-    'r2': '',
-    'r3': '',
-    'r4': '',
-    'c':  ''
+    'p':  'O adicional para os profissionais portuários é pago quando?',
+    'r1': 'Para qualquer um que trabalhe em portos.',
+    'r2': 'Quando houver riscos portuários.',
+    'r3': 'Quando houver algum acidente portuário.',
+    'r4': 'Para qualquer profissional legalizado em qualquer porto.',
+    'c':  'Quando houver riscos portuários.'
   }
 ];  
 
@@ -1007,19 +1007,10 @@ nullDataHandler = function(transaction, results)
 }
 
 // Funções de update
-
-function updateForm(id, nome, email)
-{
-    document.itemForm.id.value = id;
-    document.itemForm.nome.value = nome;
-    document.itemForm.email.value = email;
-}
-
 function updateStatus(status)
 {
     document.getElementById('status').innerHTML = status;
 }
-
 
 
 //***********#########################****#################********#####*******
@@ -1594,7 +1585,7 @@ function carregaPerg()
                 // do sqlite por não ter conseguido ajuda com as requisições assíncronas a tempo. 
                 var pausa = setInterval(function(){
                    document.getElementById('pergunta').innerHTML = p; 
-                   limparSelect('respostas');
+                   limparSelect('respostas',true);
 
                    insertQuestionsSelect(r1,'respostas');
                    insertQuestionsSelect(r2,'respostas');

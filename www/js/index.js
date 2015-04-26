@@ -96,23 +96,31 @@ function insertQuestionsSelect(valor, idCampo)
 }
 
 //Limpa o campo select e insere um valor inicial
- function limparSelect(idCampo){
+ function limparSelect(idCampo, flag)
+ {
     // vamos obter o elemento select
-    var elem = document.getElementById(idCampo);    
+    var elem = document.getElementById(idCampo);  
 
-    // vamos excluir todas as opções
-    if(elem.options.length > 0)
+
+    // Para excluir todas as opções e inserir o "Toque aqui para selecionar"
+    if(elem.options.length > 0 && flag == true)
 	{
 		elem.options.length = 0;
-		 insertQuestionsSelect("Toque aqui para selecionar", idCampo);
-	}
-        
-  }  
+		insertQuestionsSelect("Toque aqui para selecionar", idCampo);
+	}else//Exclui apenas o "Toque aqui para selecionar", usado na tela dos jogos
+	{
+		var sel = $('#respostas').get(0);
+		var txt = sel.options[sel.selectedIndex].text;
+
+		if(txt == "Toque aqui para selecionar")
+			elem.remove(0);
+	}  
+ }  
+	
 
 //Gera a animação agráfica para as imagens de acerto da tela de jogo
 function efeitosAcertou()
 {
-
 	var acertou = $("#imgAcerto");
 	acertou.show();
 	acertou.animate({"left": "25%"}, 1500);
@@ -125,10 +133,8 @@ function efeitosErrou()
 	var errou = $("#imgErro");
 	errou.show();
 	errou.animate({"left": "25%"}, 1500);
-	vibrar();
 	errou.delay(500).animate({"left": "100%"}, 800, null, function(){$("#imgErro").css("display", "none");});	
 }
-
 
 function sairJogo()//Para sair do jogo
 {

@@ -608,7 +608,7 @@ var segurancaTrabalho =
     'p':  'Cabe às empresas:',
     'r1': 'Facilitar o exercício da fiscalização pela autoridade competente;',
     'r2': 'Cumprir e fazer cumprir as disposições legais e regulamentares sobre segurança e medicina do trabalho.',
-    'r3': 'ornecer aos empregados, gratuitamente, EPI adequado ao risco, em perfeito estado de conservação e funcionamento.',
+    'r3': 'Fornecer aos empregados, gratuitamente, EPI adequado ao risco, em perfeito estado de conservação e funcionamento.',
     'r4': 'Fornecer EPI ao trabalhador compatível ao risco da atividade gratuitamente.',
     'c':  'Facilitar o exercício da fiscalização pela autoridade competente;'
   },

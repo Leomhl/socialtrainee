@@ -79,17 +79,19 @@ function dropTables()
     var queryadm = 'drop table adm';
     var querysegtrab = 'drop table segtrab';
     var querylogistica = 'drop table logistica';
-    try {
-        localDB.transaction(function(transaction){
 
-            transaction.executeSql(query, [], nullDataHandler, errorHandler);
-            transaction.executeSql(queryadm, [], nullDataHandler, errorHandler);
-            transaction.executeSql(querysegtrab, [], nullDataHandler, errorHandler);
-            transaction.executeSql(querylogistica, [], nullDataHandler, errorHandler);
-            alert("Tabelas 'dropadas' com sucesso!");
-        });
+    try {
+          localDB.transaction(function(transaction){
+
+              transaction.executeSql(query, [], nullDataHandler, errorHandler);
+              transaction.executeSql(queryadm, [], nullDataHandler, errorHandler);
+              transaction.executeSql(querysegtrab, [], nullDataHandler, errorHandler);
+              transaction.executeSql(querylogistica, [], nullDataHandler, errorHandler);
+              alert("Tabelas 'dropadas' com sucesso!");
+          });
     } 
-    catch (e) {
+    catch (e) 
+    {
         alert("Erro: drop não feito " + e + ".");
         return;
     }
@@ -108,11 +110,13 @@ function dropDatabase()
 
         });
     } 
-    catch (e) {
+    catch (e)
+    {
         // updateStatus("Erro: drop não feito " + e + ".");
         alert("Erro: drop no banco não feito " + e + ".");
         return;
     }
+    
     initDB();
 }
 
@@ -121,7 +125,8 @@ function onCreate()
     var nome = document.itemForm.nome.value;
     var email = document.itemForm.email.value;
 
-    if (nome == "" || email == "") {
+    if (nome == "" || email == "") 
+    {
         updateStatus("Erro: 'Nome' e 'Email' são campos obrigatórios!");
     }
     else
@@ -150,7 +155,7 @@ var administracao =
 [
   {
     //Pergunta 1
-    'p':   'Existem alguns tipos de cheque, escolha qual não é um.',
+    'p':  'Existem alguns tipos de cheque, escolha qual não é um.',
     'r1': 'Cheque ao portador',
     'r2': 'Cheque tracejado',
     'r3': 'Cheque cruzado',
@@ -159,79 +164,79 @@ var administracao =
   },
   {
     //Pergunta 2
-    'p':   'O endosso permite?',
-    'r1': 'Transferir a posse do documento',
-    'r2': 'Proibir a transferência do documento',
-    'r3': 'Permite o descarte do documento',
-    'r4': 'Nenhuma das anteriores',
-    'c':  'Transferir a posse do documento'
+    'p':  'O endosso permite?',
+    'r1': 'Transferir a posse do documento.',
+    'r2': 'Proibir a transferência do documento.',
+    'r3': 'Permite o descarte do documento.',
+    'r4': 'Nenhuma das anteriores.',
+    'c':  'Transferir a posse do documento.'
   },
   {  
     //Pergunta 3
-    'p':   'Complete: O cheque nominal não à ordem?',
-    'r1': 'Não pode haver ordem de pagamento',
-    'r2': 'Não se transmite por endosso',
-    'r3': 'Não é transmissível sem endosso',
-    'r4': 'É transmissível parcialmente',
-    'c':  'Não se transmite por endosso'
+    'p':  'Complete: O cheque nominal não à ordem?',
+    'r1': 'Não pode haver ordem de pagamento.',
+    'r2': 'Não se transmite por endosso.',
+    'r3': 'Não é transmissível sem endosso.',
+    'r4': 'É transmissível parcialmente.',
+    'c':  'Não se transmite por endosso.'
   },  
   { 
     //Pergunta 4
-    'p':   'Sobre o cheque cruzado',
-    'r1': 'Contém informações cruzadas de usuários',
-    'r2': 'Pode ser sacado apenas em conta',
-    'r3': 'Pode ser sacado livremente',
-    'r4': 'Nenhuma das anteriores',
-    'c':  'Pode ser sacado apenas em conta'
+    'p':  'Sobre o cheque cruzado:',
+    'r1': 'Contém informações cruzadas de usuários.',
+    'r2': 'Pode ser sacado apenas em conta.',
+    'r3': 'Pode ser sacado livremente.',
+    'r4': 'Nenhuma das anteriores.',
+    'c':  'Pode ser sacado apenas em conta.'
   },
   { 
     //Pergunta 5
-    'p':   'O cheque visado é?',
-    'r1': 'Aquele que poucos têm acesso',
-    'r2': 'Aquele que o banco paga apenas em caixa',
-    'r3': 'Aquele que o banco emite um visto',
-    'r4': 'Aquele que o banco paga sem testar autenticidade',
-    'c':  'Aquele que o banco emite um visto'
+    'p':  'O cheque visado é?',
+    'r1': 'Aquele que poucos têm acesso.',
+    'r2': 'Aquele que o banco paga apenas em caixa.',
+    'r3': 'Aquele que o banco emite um visto.',
+    'r4': 'Aquele que o banco paga sem testar autenticidade.',
+    'c':  'Aquele que o banco emite um visto.'
   }, 
   {
     //Pergunta 6
-    'p':   'O cheque ao portador tem "problema" de segurança, qual é esse problema?',
-    'r1': 'Não precisar de autenticação do banco',
-    'r2': 'Não ser assinado pelo emitente ',
-    'r3': 'Não ter o nome de quem o recebe',
-    'r4': 'Não poder ser rastreado',
-    'c':  'Não ter o nome de quem o recebe'
+    'p':  'O cheque ao portador tem "problema" de segurança, qual é esse problema?',
+    'r1': 'Não precisar de autenticação do banco.',
+    'r2': 'Não ser assinado pelo emitente.',
+    'r3': 'Não ter o nome de quem o recebe.',
+    'r4': 'Não poder ser rastreado.',
+    'c':  'Não ter o nome de quem o recebe.'
   },
   {
     //Pergunta 7
-    'p':   'Sobre a hora extra, marque a alternativa correta.',
-    'r1': 'É um adicional pago após 44h extras trabalhadas',
-    'r2': 'É pago por semestre',
-    'r3': 'De seg à sab cada hora vale 55% a mais e domingo 50%',
-    'r4': 'De seg à sab cada hora vale 50% a mais e domingo 100%',
-    'c':  'De seg à sab cada hora vale 50% a mais e domingo 100%'
+    'p':  'Sobre a hora extra, marque a alternativa correta:',
+    'r1': 'É um adicional pago após 44h extras trabalhadas.',
+    'r2': 'É pago por semestre.',
+    'r3': 'De seg à sab cada hora vale 55% a mais e domingo 50%.',
+    'r4': 'De seg à sab cada hora vale 50% a mais e domingo 100%.',
+    'c':  'De seg à sab cada hora vale 50% a mais e domingo 100%.'
   },
   { 
     //Pergunta 8
-    'p':   'O limite de hora extra por dia é de:',
+    'p':  'O limite de hora extra por dia é de:',
     'r1': '2h',
     'r2': '4h',
     'r3': '1h',
-    'r4': 'Nenhuma das anteriores',
+    'r4': 'Nenhuma das anteriores.',
     'c':  '2h'
   },
   {  
     //Pergunta 9
-    'p':   'A hora extra só é aceita legalmente quando?',
-    'r1': 'A pessoa tem contrato por tempo definido',
-    'r2': 'A pessoa tem carteira temporária',
-    'r3': 'A pessoa tem carteira assinada',
-    'r4': 'A pessoa não tem vínculo empregatício',
-    'c':  'A pessoa tem carteira assinada'
+    'p':  'A hora extra só é aceita legalmente quando?',
+    'r1': 'A pessoa tem contrato por tempo definido.',
+    'r2': 'A pessoa tem carteira temporária.',
+    'r3': 'A pessoa tem carteira assinada.',
+    'r4': 'A pessoa não tem vínculo empregatício.',
+    'c':  'A pessoa tem carteira assinada.'
   },
   {
     //Pergunta 10
-    'p':   'Existem quantos tipos de cheque?',
+    'p':  'Existem quantos tipos de cheque?',
     'r1': '7',
     'r2': '5',
     'r3': '8',
@@ -240,98 +245,98 @@ var administracao =
   },
   {  
     //Pergunta 11
-    'p':   'O cálculo de hora extra redonda é o mesmo das horas extras quebradas!',
-    'r1': 'Está correto',
-    'r2': 'Está incorreto',
-    'r3': 'Está parcialmente correto',
-    'r4': 'Nenhuma das anteriores',
-    'c':  'Está incorreto'
+    'p':  'O cálculo de hora extra redonda é o mesmo das horas extras quebradas!',
+    'r1': 'Está correto.',
+    'r2': 'Está incorreto.',
+    'r3': 'Está parcialmente correto.',
+    'r4': 'Nenhuma das anteriores.',
+    'c':  'Está incorreto.'
   },
   {  
     //Pergunta 12
-    'p':   'Sobre a ética, é fundamental que:',
-    'r1': 'As informações devem ser espalhadas',
-    'r2': 'As informações devem ser mantidas por algum tempo',
-    'r3': 'As informações confidenciais devem ser propagadas para toda a empresa',
-    'r4': 'As informações devem ser guardadas por tempo indeterminado',
-    'c':  'As informações devem ser guardadas por tempo indeterminado'
+    'p':  'Sobre a ética, é fundamental que:',
+    'r1': 'As informações devem ser espalhadas.',
+    'r2': 'As informações devem ser mantidas por algum tempo.',
+    'r3': 'As informações confidenciais devem ser propagadas para toda a empresa.',
+    'r4': 'As informações devem ser guardadas por tempo indeterminado.',
+    'c':  'As informações devem ser guardadas por tempo indeterminado.'
   },
   {  
     //Pergunta 13
-    'p':   'A administração é uma área:',
-    'r1': 'Área peculiar',
-    'r2': 'Área gerencial menos importante',
-    'r3': 'Área de grande importância nas empresas',
-    'r4': 'Área de igual importância aos demais setores',
-    'c':  'Área de igual importância aos demais setores'
+    'p':  'A administração é uma área:',
+    'r1': 'Área peculiar.',
+    'r2': 'Área gerencial menos importante.',
+    'r3': 'Área de grande importância nas empresas.',
+    'r4': 'Área de igual importância aos demais setores.',
+    'c':  'Área de igual importância aos demais setores.'
   },
   {  
     //Pergunta 14
-    'p':   'Dados de funcionários como telefone, devem ser divulgados quando?',
-    'r1': 'Requisitado por alguém',
-    'r2': 'Autorizado pelo funcionário e gerentes',
-    'r3': 'Autorizado pelo gerente',
-    'r4': 'Nenhuma das anteriores',
-    'c':  'Autorizado pelo funcionário e gerentes'
+    'p':  'Dados de funcionários como telefone, devem ser divulgados quando?',
+    'r1': 'Requisitado por alguém.',
+    'r2': 'Autorizado pelo funcionário e gerentes.',
+    'r3': 'Autorizado pelo gerente.',
+    'r4': 'Nenhuma das anteriores.',
+    'c':  'Autorizado pelo funcionário e gerentes.'
   },
   {  
     //Pergunta 15
-    'p':   'Projetos da empresa devem ter sigilo desde que:',
-    'r1': 'Seja exigido o mesmo',
-    'r2': 'Éticamente o ideal é que nunca sejam contados',
-    'r3': 'Haja um contrato de sigilo formalizado',
-    'r4': 'Quando a empresa não se preocupa com sigilo',
-    'c':  'Haja um contrato de sigilo formalizado'
+    'p':  'Projetos da empresa devem ter sigilo desde que:',
+    'r1': 'Seja exigido o mesmo.',
+    'r2': 'Éticamente o ideal é que nunca sejam contados.',
+    'r3': 'Haja um contrato de sigilo formalizado.',
+    'r4': 'Quando a empresa não se preocupa com sigilo.',
+    'c':  'Haja um contrato de sigilo formalizado.'
   },
   {
     //Pergunta 16
-    'p':   'O endosso dos cheques auxiliam na segurança da transação financeira. A afirmativa está:',
-    'r1': 'Correta',
-    'r2': 'Incorreta',
-    'r3': 'Parcialmente Correta',
-    'r4': 'Nenhuma das anteriores',
-    'c':  'Parcialmente Correta'
+    'p':  'O endosso dos cheques auxiliam na segurança da transação financeira. A afirmativa está:',
+    'r1': 'Correta.',
+    'r2': 'Incorreta.',
+    'r3': 'Parcialmente Correta.',
+    'r4': 'Nenhuma das anteriores.',
+    'c':  'Parcialmente Correta.'
   },
   {
     //Pergunta 17
-    'p':   'A ética é:',
-    'r1': 'Uma coisa dispensável',
-    'r2': 'Chave para o profissional de qualquer ramo',
-    'r3': 'Parte de uma empresa',
-    'r4': 'De uma pessoa contratada',
-    'c':  'Chave para o profissional de qualquer ramo'
+    'p':  'A ética é:',
+    'r1': 'Uma coisa dispensável.',
+    'r2': 'Chave para o profissional de qualquer ramo.',
+    'r3': 'Parte de uma empresa.',
+    'r4': 'De uma pessoa contratada.',
+    'c':  'Chave para o profissional de qualquer ramo.'
   },
   {  
     //Pergunta 18
-    'p':   'Os canais de distribuição de uma empresa são:',
-    'r1': 'Modos de distribuição da renda das empresas',
-    'r2': 'Modos que as empresas recebem mercadorias',
-    'r3': 'Modos que as empresas gerenciam internamente mercadorias',
-    'r4': 'Modos que as empresas escoam sua produção',
-    'c':  'Modos que as empresas escoam sua produção'
+    'p':  'Os canais de distribuição de uma empresa são:',
+    'r1': 'Modos de distribuição da renda das empresas.',
+    'r2': 'Modos que as empresas recebem mercadorias.',
+    'r3': 'Modos que as empresas gerenciam internamente mercadorias.',
+    'r4': 'Modos que as empresas escoam sua produção.',
+    'c':  'Modos que as empresas escoam sua produção.'
   },
   {  
     //Pergunta 19
     'p':  'Para uma empresa de software, qual canal de distribuiçao abaixo é o correto?',
-    'r1': 'Caminhão',
-    'r2': 'Avião',
-    'r3': 'Cloud',
-    'r4': 'Carro',
-    'c':  'Cloud'
+    'r1': 'Caminhão.',
+    'r2': 'Avião.',
+    'r3': 'Cloud.',
+    'r4': 'Carro.',
+    'c':  'Cloud.'
   },
   {
     //Pergunta 20
     'p':  'Quais devem ser os tipos de arquivo?',
-    'r1': 'Ativo, parcial, inativo',
-    'r2': 'Ativo, ativo parcial, inativo',
-    'r3': 'Ativo, inativo, morto',
-    'r4': 'Ativo inicial, ativo parcial, inativo',
-    'c':  'Ativo, inativo, morto'
+    'r1': 'Ativo, parcial, inativo.',
+    'r2': 'Ativo, ativo parcial, inativo.',
+    'r3': 'Ativo, inativo, morto.',
+    'r4': 'Ativo inicial, ativo parcial, inativo.',
+    'c':  'Ativo, inativo, morto.'
   },
   {  
     //Pergunta 21
     'p':  'Quantos são os tipos de suporte?',
-    'r1':'5',
+    'r1': '5',
     'r2': '6',
     'r3': '7',
     'r4': '8',
@@ -340,83 +345,83 @@ var administracao =
   {  
     //Pergunta 22
     'p':  'Qual o nome da tabela que controla o tempo que os documentos devem ser guardados?',
-    'r1': 'Tabela documental',
-    'r2': 'Tabela de temporalidade',
-    'r3': 'Tabela administrativa',
-    'r4': 'Tabela insertiva',
-    'c':  'Tabela de temporalidade'    
+    'r1': 'Tabela documental.',
+    'r2': 'Tabela de temporalidade.',
+    'r3': 'Tabela administrativa.',
+    'r4': 'Tabela insertiva.',
+    'c':  'Tabela de temporalidade.'    
   },
   {  
     //Pergunta 23
     'p':  'O suporte textual, proporciona o armazenamento de mensagens de texto vindas de qualquer área , seja digital, cartográfica e etc.',
-    'r1': 'Correto',
-    'r2': 'Incorreto',
-    'r3': 'Parcialmente correto',
-    'r4': 'Nenhuma das anteriores',
-    'c':  'Incorreto'    
+    'r1': 'Correto.',
+    'r2': 'Incorreto.',
+    'r3': 'Parcialmente correto.',
+    'r4': 'Nenhuma das anteriores.',
+    'c':  'Incorreto.'    
   },
   {  
     //Pergunta 24
     'p':  'Caso o documento tenha sido armazenado em um suporte informático, deve haver uma checagem de dados de quanto em quanto tempo?',
-    'r1': '1 ano',
-    'r2': '8 meses',
-    'r3': '8 anos',
-    'r4': '20 anos',
-    'c':  '8 anos'    
+    'r1': '1 ano.',
+    'r2': '8 meses.',
+    'r3': '8 anos.',
+    'r4': '20 anos.',
+    'c':  '8 anos.'    
   },
   {  
     //Pergunta 25
     'p':  'Microfilmático pigmentado é um tipo de suporte?',
-    'r1': 'Sim',
-    'r2': 'Não',
-    'r3': 'Apenas para vídeos',
-    'r4': 'Apeas para fotos',
-    'c':  'Não'    
+    'r1': 'Sim.',
+    'r2': 'Não.',
+    'r3': 'Apenas para vídeos.',
+    'r4': 'Apeas para fotos.',
+    'c':  'Não.'    
   },
   {  
     //Pergunta 26
     'p':  'O contrato por tempo determinado tem duração máxima de 1 ano?',
-    'r1': 'Não, sua duração varia',
-    'r2': 'Sim',
-    'r3': 'Não, deve durar apenas 90 dias',
-    'r4': 'Nenhuma das anteriores',
-    'c':  'Não, sua duração varia'    
+    'r1': 'Não, sua duração varia.',
+    'r2': 'Sim.',
+    'r3': 'Não, deve durar apenas 90 dias.',
+    'r4': 'Nenhuma das anteriores.',
+    'c':  'Não, sua duração varia.'    
   },
   {  
     //Pergunta 27
     'p':  'O contrato de experiência não pode ultrapassar 90 dias! Esta afirmação está?',
-    'r1': 'Expressamente incorreta',
-    'r2': 'Parcialmente correta',
-    'r3': 'Correta',
-    'r4': 'Nenhuma das anteriores',
-    'c':  'Correta'    
+    'r1': 'Expressamente incorreta.',
+    'r2': 'Parcialmente correta.',
+    'r3': 'Correta.',
+    'r4': 'Nenhuma das anteriores.',
+    'c':  'Correta.'    
   },
   {  
     //Pergunta 28
     'p':  'O empregador não precisa pela lei declara na carteira de alguém que está em período de experiência! A afirmativa está?',
-    'r1': 'Incorreta pois a lei não cuida de período experimental',
-    'r2': 'Correta pois só assina-se a carteira quando há contratação',
-    'r3': 'Incorreta pois o empregador não precisa assinar a carteira nunca',
-    'r4': 'Incorreta pois é necessário registrar o período de experiência na carteira de trabalho',
-    'c':  'Incorreta pois é necessário registrar o período de experiência na carteira de trabalho'    
+    'r1': 'Incorreta pois a lei não cuida de período experimental.',
+    'r2': 'Correta pois só assina-se a carteira quando há contratação.',
+    'r3': 'Incorreta pois o empregador não precisa assinar a carteira nunca.',
+    'r4': 'Incorreta pois é necessário registrar o período de experiência na carteira de trabalho.',
+    'c':  'Incorreta pois é necessário registrar o período de experiência na carteira de trabalho.'    
   },
   {  
     //Pergunta 29
     'p':  'A carga horária integral de um trabalhador pela lei deve ser de?',
-    'r1': '44 horas mensais',
-    'r2': '4 horas diárias',
-    'r3': '44 horas semanais',
-    'r4': '7 horas diárias',
-    'c':  '44 horas semanais'    
+    'r1': '44 horas mensais.',
+    'r2': '4 horas diárias.',
+    'r3': '44 horas semanais.',
+    'r4': '7 horas diárias.',
+    'c':  '44 horas semanais.'    
   },
   {  
     //Pergunta 30
     'p':  'A carga horária parcial de um trabalhador pela lei deve ser de?',
-    'r1': '44 horas mensais',
-    'r2': '20 horas mensais até 44 horas mensais',
-    'r3': '20 horas semanais até 25 horas semanais',
-    'r4': '25 horas semanais até 44 horas semanais',
-    'c':  '20 horas semanais até 25 horas semanais'    
+    'r1': '44 horas mensais.',
+    'r2': '20 horas mensais até 44 horas mensais.',
+    'r3': '20 horas semanais até 25 horas semanais.',
+    'r4': '25 horas semanais até 44 horas semanais.',
+    'c':  '20 horas semanais até 25 horas semanais.'    
   }
 ];
 
@@ -606,11 +611,11 @@ var segurancaTrabalho =
   {
     //Pergunta 21
     'p':  'Cabe às empresas:',
-    'r1': 'Facilitar o exercício da fiscalização pela autoridade competente;',
+    'r1': 'Facilitar o exercício da fiscalização pela autoridade competente.',
     'r2': 'Cumprir e fazer cumprir as disposições legais e regulamentares sobre segurança e medicina do trabalho.',
     'r3': 'Fornecer aos empregados, gratuitamente, EPI adequado ao risco, em perfeito estado de conservação e funcionamento.',
     'r4': 'Fornecer EPI ao trabalhador compatível ao risco da atividade gratuitamente.',
-    'c':  'Facilitar o exercício da fiscalização pela autoridade competente;'
+    'c':  'Facilitar o exercício da fiscalização pela autoridade competente.'
   },
   {
     //Pergunta 22
@@ -633,11 +638,11 @@ var segurancaTrabalho =
   {
     //Pergunta 24
     'p':  'A remuneração da insalubridade é dada de qual maneira?',
-    'r1': 'Risco leve 20%, intermediário 30%, alto 50% ',
-    'r2': 'Risco leve 15%, intermediário 25%, alto 45%',
-    'r3': 'Risco leve 5%, intermediário 15%, alto 25%',
-    'r4': 'Risco leve 10%, intermediário 20%, alto 40%',
-    'c':  'Risco leve 10%, intermediário 20%, alto 40%'
+    'r1': 'Risco leve 20%, intermediário 30%, alto 50%.',
+    'r2': 'Risco leve 15%, intermediário 25%, alto 45%.',
+    'r3': 'Risco leve 5%, intermediário 15%, alto 25%.',
+    'r4': 'Risco leve 10%, intermediário 20%, alto 40%.',
+    'c':  'Risco leve 10%, intermediário 20%, alto 40%.'
   },
   {
     //Pergunta 25
@@ -737,8 +742,8 @@ var logistica =
     //Pergunta 5 
     'p':  'O que é just in time?',
     'r1': 'Ter um estoque justo e equilibrado.',
-    'r2': 'Ter um vasto estoque',
-    'r3': 'Ter uma reserva além do necessário',
+    'r2': 'Ter um vasto estoque.',
+    'r3': 'Ter uma reserva além do necessário.',
     'r4': 'Ter apenas o necessário.',
     'c':  'Ter apenas o necessário.'
   },
@@ -1013,9 +1018,7 @@ function updateStatus(status)
 //***********#########################****#################********#####*******
 
 
-
 // Daqui para baixo foi personalizado para as necessidades do projeto
-
 
 // ### Testa se o registro do usuário existe, se exitir chama a home ###
 function onTest(){
@@ -1269,20 +1272,19 @@ function loadDelete()
             
                 transaction.executeSql(query, [], function(transaction, results){
 
-
                     // Carrega no select de questões para excluir as questões do curso (adm, segtrab, logist.)
                     for(i=0;i<results.rows.length;i++)
                     {
                         insertQuestionsSelect(results.rows.item(i).pergunta, "perguntaExcluir");
                     }
-
                     
                 }, function(transaction, error){
                     updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
                 });
             });
         } 
-        catch (e) {
+        catch (e)
+        {
             updateStatus("Error: SELECT não realizado " + e + ".");
         }
     }
@@ -1292,8 +1294,8 @@ function loadDelete()
 function deleteQuestion()
 {
 
-var curso = document.deleteForm.jogoExcluir.value;
-var pergunta = document.deleteForm.perguntaExcluir.value;
+  var curso = document.deleteForm.jogoExcluir.value;
+  var pergunta = document.deleteForm.perguntaExcluir.value;
 
     if(curso == "Toque aqui para selecionar")
     {
@@ -1324,7 +1326,8 @@ var pergunta = document.deleteForm.perguntaExcluir.value;
                 }, errorHandler);
             });
         } 
-        catch (e) {
+        catch (e)
+        {
             updateStatus("Erro: DELETE não realizado " + e + ".");
             alert('O campo do jogo ou o  da pergunta não foi selecionado!');
         }
@@ -1407,7 +1410,6 @@ function uAcessadauCadastrada()
             break;   
         } 
 
-    
         localDB.transaction(function(transaction){
 
             transaction.executeSql(query1, [], function(transaction, results)
@@ -1442,7 +1444,6 @@ function uAcessadauCadastrada()
                         break;   
                     } 
                 }
-
                  
             }, function(transaction, error){
                  updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
@@ -1486,7 +1487,6 @@ function uAcessadauCadastrada()
                  
             }, function(transaction, error){
                  updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
-            
             });
         });
 }
@@ -1550,52 +1550,51 @@ function carregaPerg()
 {
     if(uacc <= ucad)
     {
-        switch(materia)
-            {
-                case 'adm':
-                    var query = 'select * from adm where id = '+uacc;  
-                    break;
-                case 'segtrab':
-                    var query = 'select * from segtrab where id = '+uacc;  
-                    break;
-                case 'logistica':
-                    var query = 'select * from logistica where id = '+uacc;
-                    break;   
-            } 
+      switch(materia)
+      {
+        case 'adm':
+            var query = 'select * from adm where id = '+uacc;  
+            break;
+        case 'segtrab':
+            var query = 'select * from segtrab where id = '+uacc;  
+            break;
+        case 'logistica':
+            var query = 'select * from logistica where id = '+uacc;
+            break;   
+      } 
 
-        localDB.transaction(function(transaction){
+      localDB.transaction(function(transaction){
 
-            transaction.executeSql(query, [], function(transaction, results)
-            {
-                var p = results.rows.item(0).pergunta;
-                var r1 = results.rows.item(0).resposta1;
-                var r2 = results.rows.item(0).resposta2;
-                var r3 = results.rows.item(0).resposta3;
-                var r4 = results.rows.item(0).resposta4;
-                var c = results.rows.item(0).correta;
+          transaction.executeSql(query, [], function(transaction, results)
+          {
+              var p = results.rows.item(0).pergunta;
+              var r1 = results.rows.item(0).resposta1;
+              var r2 = results.rows.item(0).resposta2;
+              var r3 = results.rows.item(0).resposta3;
+              var r4 = results.rows.item(0).resposta4;
+              var c = results.rows.item(0).correta;
 
-                //Infelizmente a linha abaixo é uma gambiarra que precisei fazer para receber dados assíncronos
-                // do sqlite por não ter conseguido ajuda com as requisições assíncronas a tempo. 
-                var pausa = setInterval(function(){
-                   document.getElementById('pergunta').innerHTML = p; 
-                   limparSelect('respostas');
+              //Infelizmente a linha abaixo é uma gambiarra que precisei fazer para receber dados assíncronos
+              // do sqlite por não ter conseguido ajuda com as requisições assíncronas a tempo. 
+              var pausa = setInterval(function(){
+                 document.getElementById('pergunta').innerHTML = p; 
+                 limparSelect('respostas');
 
-                   insertQuestionsSelect(r1,'respostas');
-                   insertQuestionsSelect(r2,'respostas');
-                   insertQuestionsSelect(r3,'respostas');
-                   insertQuestionsSelect(r4,'respostas');
-                   correta = c;
-                    
-                    clearInterval(pausa); 
-                        }, 700);   
+                 insertQuestionsSelect(r1,'respostas');
+                 insertQuestionsSelect(r2,'respostas');
+                 insertQuestionsSelect(r3,'respostas');
+                 insertQuestionsSelect(r4,'respostas');
+                 correta = c;
+                  
+                  clearInterval(pausa); 
+                      }, 700);   
 
-            }, function(transaction, error){
-                 updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
-            
-           });
-        });  
-              
-            
+          }, function(transaction, error){
+               updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
+          
+         });
+      });  
+                          
     }else if(uacc > ucad && ucad != 0)
     {
         alert('O jogo terminou! Aproveite para jogar as outras modalidades ou pessa para alguém cadastrar mais perguntas (: .');
@@ -1627,14 +1626,12 @@ function corrigir()
     limparSelect('respostas');
     document.getElementById('pergunta').innerHTML = "";
 
-
     if(uacc > ucad)
     {
         alert('O jogo terminou! Aproveite para jogar as outras modalidades ou pessa para alguém cadastrar mais perguntas (: .');
         chamatela('informacoes.html');
     }else
       
-
     atualizaUltAcessada();
     carregaPerg();
 }
@@ -1644,25 +1641,25 @@ function atualizaUltAcessada()
 {
    if(uacc == 0)
     uacc = uacc + 2;
-  else
+   else
     uacc = uacc +1;
 
     var pausa = setInterval(function(){
                
-        localDB.transaction(function(transaction){
-          switch(materia)
-          {
-            case 'adm':
-              transaction.executeSql('update usuario set pergadm = ?', [uacc], nullDataHandler, errorHandler);
-              break;
-            case 'segtrab':
-              transaction.executeSql('update usuario set pergsegtrab = ? ', [uacc], nullDataHandler, errorHandler);  
-              break;
-            case 'logistica':
-               transaction.executeSql('update usuario set perglogistica = ? ', [uacc], nullDataHandler, errorHandler);
-              break;   
-          }
-        });
+      localDB.transaction(function(transaction){
+        switch(materia)
+        {
+          case 'adm':
+            transaction.executeSql('update usuario set pergadm = ?', [uacc], nullDataHandler, errorHandler);
+            break;
+          case 'segtrab':
+            transaction.executeSql('update usuario set pergsegtrab = ? ', [uacc], nullDataHandler, errorHandler);  
+            break;
+          case 'logistica':
+             transaction.executeSql('update usuario set perglogistica = ? ', [uacc], nullDataHandler, errorHandler);
+            break;   
+        }
+      });
     clearInterval(pausa); 
     }, 800);      
 }
